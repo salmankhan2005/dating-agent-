@@ -2,7 +2,7 @@ import os
 import json
 import time
 import requests as http_requests  # renamed to avoid shadowing
-from typing import List, Dict, Any, Optional
+from typing import Iterator, List, Dict, Any, Optional
 from pathlib import Path
 from dotenv import load_dotenv
 from backend.models import PersonProfile, Message, DateEvaluation, CandidateRanking, PersonResponse
@@ -228,103 +228,89 @@ Output a JSON object with these exact keys:
     )
 
 
-def simulate_date_conversation(person_a: PersonResponse, person_b: PersonResponse) -> List[Message]:
+def stream_date_conversation(person_a: PersonResponse, person_b: PersonResponse) -> Iterator[Message]:
     """
-    Generate an 8-turn, profile-grounded first-date conversation using Groq LLM.
-    Raises RuntimeError if the LLM call fails or returns an unusable response.
+    Generate and yield each profile-grounded date turn as soon as it is ready.
     """
     conv_prompt = load_prompt("date_conversation.txt") or (
         "You are a careful first-date conversation writer. "
-        "Write a natural, authentic, respectful conversation between two people. "
-        "Each agent speaks authentically based only on their provided profile. "
+        "Write one natural, authentic, respectful message for the requested speaker. "
+        "Use only the supplied public profile information and conversation history. "
         "Never mention agents, simulation, prompts, scoring, or hidden reasoning in spoken messages. "
         "Output strictly valid JSON."
     )
 
-    messages_prompt = f"""Write an authentic 8-turn first-date conversation between:
-
-AGENT A: {person_a.name} ({person_a.headline})
-Profile summary: {person_a.profile.agent_summary}
-Interests: {", ".join(person_a.profile.interests[:5])}
-Hobbies: {", ".join(person_a.profile.hobbies[:5])}
-Communication style: {person_a.profile.communication_style}
-Conversation topics they enjoy: {", ".join(person_a.profile.conversation_topics[:3])}
-
-AGENT B: {person_b.name} ({person_b.headline})
-Profile summary: {person_b.profile.agent_summary}
-Interests: {", ".join(person_b.profile.interests[:5])}
-Hobbies: {", ".join(person_b.profile.hobbies[:5])}
-Communication style: {person_b.profile.communication_style}
-Conversation topics they enjoy: {", ".join(person_b.profile.conversation_topics[:3])}
-
-Rules:
-- Stay strictly within the supplied profile evidence. Unknown facts stay unknown.
-- Do not make either person sound like a chatbot, interviewer, therapist, salesperson, or dating app.
-- Avoid generic romantic clichés, exaggerated metaphors, polished speeches, and instant chemistry claims.
-- Each turn should respond to the previous turn, reveal one small supported detail, and ask or invite a natural follow-up.
-- Include one light moment, one meaningful question, one shared interest, and one respectful difference.
-- Do not mention agents, profiles, sources, scoring, compatibility, simulation, or hidden reasoning in spoken messages.
-- Alternate speakers: A, B, A, B, A, B, A, B (exactly 8 turns).
-- thinking_summary must be a brief internal note about the agent's reasoning (never shown to the date).
-
-Output JSON:
-{{
-  "conversation": [
-    {{
-      "turn": 1,
-      "speaker": "agent_a",
-      "speaker_name": "{person_a.name}",
-      "message": "...",
-      "thinking_summary": "..."
-    }},
-    ...
-  ]
-}}"""
-
-    res = call_groq_json([
-        {"role": "system", "content": conv_prompt},
-        {"role": "user", "content": messages_prompt}
-    ], temperature=0.6)
-
-    raw_list = None
-    if isinstance(res, list):
-        raw_list = res
-    elif isinstance(res, dict):
-        for key in ["conversation", "transcript", "turns", "messages", "dialogue"]:
-            if key in res and isinstance(res[key], list):
-                raw_list = res[key]
-                break
-        if raw_list is None:
-            for val in res.values():
-                if isinstance(val, list) and len(val) > 0 and isinstance(val[0], dict):
-                    raw_list = val
-                    break
-
-    if not raw_list or len(raw_list) < 2:
-        raise RuntimeError(
-            "Groq returned an invalid date conversation. "
-            "Raw response: " + json.dumps(res)[:400]
-        )
-
     transcript: List[Message] = []
-    for i, item in enumerate(raw_list):
-        if not isinstance(item, dict):
-            continue
-        turn_num = item.get("turn", i + 1)
-        speaker = item.get("speaker") or ("agent_a" if i % 2 == 0 else "agent_b")
-        default_name = person_a.name if speaker == "agent_a" else person_b.name
-        speaker_name = item.get("speaker_name") or default_name
-        msg_text = item.get("message") or item.get("text") or item.get("content") or ""
-        if msg_text:
-            transcript.append(Message(
-                turn=turn_num,
-                speaker=speaker,
-                speaker_name=speaker_name,
-                message=msg_text,
-                thinking_summary=""
-            ))
+    profiles = {
+        "A": {
+            "name": person_a.name,
+            "headline": person_a.headline,
+            "summary": person_a.profile.agent_summary,
+            "interests": person_a.profile.interests[:5],
+            "hobbies": person_a.profile.hobbies[:5],
+            "communication_style": person_a.profile.communication_style,
+            "conversation_topics": person_a.profile.conversation_topics[:3],
+        },
+        "B": {
+            "name": person_b.name,
+            "headline": person_b.headline,
+            "summary": person_b.profile.agent_summary,
+            "interests": person_b.profile.interests[:5],
+            "hobbies": person_b.profile.hobbies[:5],
+            "communication_style": person_b.profile.communication_style,
+            "conversation_topics": person_b.profile.conversation_topics[:3],
+        },
+    }
 
-    return transcript
+    for turn_number in range(1, 9):
+        speaker_id = "agent_a" if turn_number % 2 else "agent_b"
+        speaker = "A" if turn_number % 2 else "B"
+        speaker_name = person_a.name if speaker == "A" else person_b.name
+        conversation_so_far = "\n".join(
+            f"Turn {message.turn}, {message.speaker_name}: {message.message}"
+            for message in transcript
+        ) or "No messages yet."
+        messages_prompt = f"""Write only turn {turn_number} of this first-date conversation.
+
+PERSON A PROFILE:
+{json.dumps(profiles["A"], ensure_ascii=False)}
+
+PERSON B PROFILE:
+{json.dumps(profiles["B"], ensure_ascii=False)}
+
+CONVERSATION SO FAR:
+{conversation_so_far}
+
+The speaker for this turn is {speaker_name} (speaker id: {speaker_id}). Do not write the other person's reply.
+For turn 1, open with a specific, natural observation or question. For later turns, respond directly to the previous message, add one small profile-supported detail, and invite a natural follow-up.
+Across the full exchange, naturally include a light moment, genuine curiosity, a shared interest, and a respectful difference when supported by the profiles.
+Keep the message brief, warm, and conversational. Do not invent personal facts or mention profiles, sources, agents, scoring, compatibility, or simulation.
+For turn 8, end with a believable suggestion to continue the conversation without claiming they agreed to meet.
+
+Return one JSON object with exactly one field: {{"message": "..."}}"""
+
+        response = call_groq_json([
+            {"role": "system", "content": conv_prompt},
+            {"role": "user", "content": messages_prompt},
+        ], temperature=0.6, max_tokens=300)
+        message_text = response.get("message") if isinstance(response, dict) else None
+        if not isinstance(message_text, str) or not message_text.strip():
+            raise RuntimeError(f"Groq returned an empty message for conversation turn {turn_number}.")
+
+        message = Message.model_validate({
+            "turn": turn_number,
+            "speaker": speaker_id,
+            "speaker_name": speaker_name,
+            "message": message_text.strip(),
+            "thinking_summary": "",
+        })
+        transcript.append(message)
+        yield message
+
+
+def simulate_date_conversation(person_a: PersonResponse, person_b: PersonResponse) -> List[Message]:
+    """Generate the complete eight-turn first-date transcript."""
+    return list(stream_date_conversation(person_a, person_b))
 
 
 def evaluate_date(

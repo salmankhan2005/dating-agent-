@@ -1,35 +1,14 @@
-You are writing an 8-turn first-date conversation between {person_a_name} and {person_b_name}.
-
-Agent A Profile:
-{person_a_profile}
-
-Agent B Profile:
-{person_b_profile}
+You write one message at a time for a natural, respectful first-date conversation.
 
 CONVERSATION RULES:
-1. Make it sound like two thoughtful adults on a real first date, not like a demo, interview, therapy session, or compatibility test.
-2. Start with a specific, natural observation or question. Skip generic hellos, scripted flattery, and over-earnest introspection.
-3. Each person should answer the previous message, add one small supported personal detail, and ask a natural follow-up that keeps the conversation moving.
-4. Use concrete details from the profiles, but never invent employers, memories, travel, relationships, beliefs, or experiences.
-5. Include one moment of playful warmth, one genuine curiosity, one shared interest, and one respectful difference without making either person sound robotic.
-6. Write in a way that feels social and human: brief, warm, observant, and conversational, not polished speech or AI voice.
-7. Do not mention agents, prompts, profiles, sources, scoring, compatibility, simulation, or hidden reasoning in spoken messages.
-8. Alternate speakers for exactly 8 turns and end with a believable suggestion to continue the conversation, without claiming they agreed to meet.
-9. Output format must be a JSON array of message objects:
+1. Sound like a thoughtful person texting, not a demo, interview, therapy session, or compatibility test.
+2. Keep each message brief, warm, and conversational. Avoid generic romantic clichés, polished speeches, and instant chemistry claims.
+3. Respond directly to the previous message, add at most one small detail supported by the speaker's profile, and invite a natural follow-up.
+4. Use only the supplied public profile information and conversation history. Never invent employers, memories, travel, relationships, beliefs, or experiences.
+5. Do not mention agents, prompts, profiles, sources, scoring, compatibility, simulation, or hidden reasoning in spoken messages.
+6. Only write for the requested speaker and requested turn. Do not write the other person's response.
+7. Across the full exchange, include a light moment, genuine curiosity, a shared interest, and a respectful difference when supported by the profiles.
+8. For the final turn, suggest a believable way to continue chatting without claiming they agreed to meet.
 
-[
-  {
-    "turn": 1,
-    "speaker": "agent_a",
-    "speaker_name": "{person_a_name}",
-    "message": "...",
-    "thinking_summary": "Greeting and asking about weekend photography project"
-  },
-  {
-    "turn": 2,
-    "speaker": "agent_b",
-    "speaker_name": "{person_b_name}",
-    "message": "...",
-    "thinking_summary": "Acknowledging photography passion and sharing favorite travel spot"
-  }
-]
+Return only a valid JSON object with one field:
+{"message": "..."}

@@ -25,7 +25,7 @@ from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 try:
     from backend.models import (
         AnalyzeRequest, PersonResponse, PersonUpdateRequest, PersonCreateRequest,
-        DateRunRequest, DateResult, RankingsResponse, DemoNetworkResponse, PersonProfile
+        DateRunRequest, DateResult, Message, RankingsResponse, DemoNetworkResponse, PersonProfile
     )
     from backend.database import (
         init_db, get_all_people, get_person_by_id, save_person,
@@ -33,13 +33,13 @@ try:
     )
     from backend.extractor import validate_sources, extract_public_content
     from backend.agent_engine import (
-        analyze_person_profile, simulate_date_conversation,
+        analyze_person_profile, simulate_date_conversation, stream_date_conversation,
         evaluate_date, compute_rankings_for_person
     )
 except ImportError:
     from models import (
         AnalyzeRequest, PersonResponse, PersonUpdateRequest, PersonCreateRequest,
-        DateRunRequest, DateResult, RankingsResponse, DemoNetworkResponse, PersonProfile
+        DateRunRequest, DateResult, Message, RankingsResponse, DemoNetworkResponse, PersonProfile
     )
     from database import (
         init_db, get_all_people, get_person_by_id, save_person,
@@ -47,7 +47,7 @@ except ImportError:
     )
     from extractor import validate_sources, extract_public_content
     from agent_engine import (
-        analyze_person_profile, simulate_date_conversation,
+        analyze_person_profile, simulate_date_conversation, stream_date_conversation,
         evaluate_date, compute_rankings_for_person
     )
 
@@ -381,8 +381,11 @@ def run_agent_date_stream(req: DateRunRequest):
         yield emit("step", {"id": "connecting", "label": f"Connecting {person_a.name} ↔ {person_b.name}", "status": "completed"})
         yield emit("step", {"id": "conversation", "label": "Conversation is underway…", "status": "running"})
 
+        transcript: List[Message] = []
         try:
-            transcript = simulate_date_conversation(person_a, person_b)
+            for msg in stream_date_conversation(person_a, person_b):
+                transcript.append(msg)
+                yield emit("turn", msg.model_dump())
         except RuntimeError as e:
             yield emit("error", {"step": "conversation", "message": str(e)})
             return
@@ -392,9 +395,6 @@ def run_agent_date_stream(req: DateRunRequest):
             "label": f"Conversation complete — {len(transcript)} turns",
             "status": "completed"
         })
-        # Emit each turn for live display
-        for msg in transcript:
-            yield emit("turn", msg.model_dump())
 
         yield emit("step", {"id": "evaluation", "label": "Evaluating compatibility…", "status": "running"})
 
