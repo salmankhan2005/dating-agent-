@@ -194,7 +194,10 @@ def _run_apify_actor(actor_id: str, url: str, platform: str) -> str:
         raise RuntimeError("APIFY_API_TOKEN is not configured.")
 
     if platform == "instagram":
-        actor_input = {"directUrls": [url], "resultsLimit": 50}
+        username = urllib.parse.unquote(urllib.parse.urlparse(url).path.strip("/").split("/", 1)[0])
+        if not username:
+            raise RuntimeError("Invalid Instagram profile URL: a username is required.")
+        actor_input = {"usernames": [username], "includeAboutSection": False}
     else:
         actor_input = {"urls": [url]}
 
@@ -210,6 +213,18 @@ def _run_apify_actor(actor_id: str, url: str, platform: str) -> str:
         )
         response.raise_for_status()
         items = response.json()
+    except requests.HTTPError as exc:
+        response = exc.response
+        status = response.status_code if response is not None else "unknown"
+        try:
+            error_data = response.json() if response is not None else {}
+            detail = error_data.get("error", {}).get("message", error_data) if isinstance(error_data, dict) else error_data
+        except ValueError:
+            detail = response.text if response is not None else str(exc)
+        detail_text = json.dumps(detail, ensure_ascii=False) if not isinstance(detail, str) else detail
+        raise RuntimeError(
+            f"Apify {platform} extraction failed (HTTP {status}): {detail_text[:500]}"
+        ) from exc
     except requests.RequestException as exc:
         raise RuntimeError(f"Apify {platform} extraction failed: {exc}") from exc
     except ValueError as exc:
