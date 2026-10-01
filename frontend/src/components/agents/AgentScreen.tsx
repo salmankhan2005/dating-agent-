@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { PersonResponse, DateResult, Message } from "@/lib/types";
 import { Avatar, ScoreRing } from "@/components/ui";
+import ThinkingState from "@/components/agents/ThinkingState";
+import StreamingText from "@/components/agents/StreamingText";
 
 interface AgentScreenProps {
   personA: PersonResponse;
@@ -97,6 +99,23 @@ export default function AgentScreen({
       <div className="flex flex-1 overflow-hidden flex-col lg:flex-row">
         {/* Left: Chat Container */}
         <div className="flex-1 flex flex-col border-b lg:border-b-0 lg:border-r border-[#ece7df] bg-[#fcfaf7]">
+          {isRunning && (
+            <div className="border-b border-[#ece7df] bg-[#faf7f2] p-4 sm:p-5">
+              <ThinkingState variant="Steps" />
+              <div className="mt-4 rounded-2xl border border-[#e8e3da] bg-white p-3 shadow-sm">
+                <StreamingText
+                  loop={true}
+                  fill={true}
+                  labels={{ sources: "3 sources", followUps: "Follow-up prompts" }}
+                  followUps={[
+                    "What are the strongest compatibility signals?",
+                    "How do their values align on lifestyle?",
+                  ]}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Messages Stream */}
           <div
             ref={scrollRef}

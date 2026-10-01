@@ -19,6 +19,18 @@
   --radius: 0.5rem;
   --radius-sm: 0.25rem;
   --radius-lg: 0.75rem;
+  --canvas: #fcfaf7;
+  --ink: #1c1c1a;
+  --ink-2: #484554;
+  --ink-3: #797586;
+  --line: #e4dfd7;
+  --line-strong: #cdc5b7;
+  --inset: #f3f0ec;
+  --hover: #f5f0ff;
+  --hover-2: #f1eef8;
+  --orange: #f59e0b;
+  --green: #16a34a;
+  --red: #dc2626;
 }
 
 * {
@@ -81,6 +93,31 @@ body {
   50% { transform: translateY(-4px); }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer-text {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
 .animate-slide-left { animation: slideInLeft 0.35s ease-out forwards; }
 .animate-slide-right { animation: slideInRight 0.35s ease-out forwards; }
@@ -90,6 +127,40 @@ body {
 .animate-dot-1 { animation: bounce-dot 1.2s ease-in-out infinite; animation-delay: 0s; }
 .animate-dot-2 { animation: bounce-dot 1.2s ease-in-out infinite; animation-delay: 0.2s; }
 .animate-dot-3 { animation: bounce-dot 1.2s ease-in-out infinite; animation-delay: 0.4s; }
+
+.bg-inset { background: var(--inset); }
+.bg-hover { background: var(--hover); }
+.bg-hover-2 { background: var(--hover-2); }
+.bg-accent { background: var(--primary); }
+.bg-orange { background: var(--orange); }
+.bg-green { background: var(--green); }
+.text-ink { color: var(--ink); }
+.text-ink-2 { color: var(--ink-2); }
+.text-ink-3 { color: var(--ink-3); }
+.border-line { border-color: var(--line); }
+.border-line-strong { border-color: var(--line-strong); }
+.shadow-hairline { box-shadow: 0 0 0 1px rgba(17, 24, 39, 0.05); }
+.source-avatar { object-fit: cover; }
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
+}
+.animated-underline:hover::after {
+  transform: scaleX(1);
+}
 
 /* Shimmer skeleton */
 .skeleton {
