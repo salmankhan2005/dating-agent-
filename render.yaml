@@ -15,3 +15,5 @@
         value: openai/gpt-oss-120b
       - key: DATABASE_URL
         sync: false
+      - key: APIFY_API_TOKEN
+        sync: false
