@@ -310,14 +310,13 @@ Output JSON:
         default_name = person_a.name if speaker == "agent_a" else person_b.name
         speaker_name = item.get("speaker_name") or default_name
         msg_text = item.get("message") or item.get("text") or item.get("content") or ""
-        thinking = item.get("thinking_summary") or item.get("thinking") or "Reflecting on conversation flow"
         if msg_text:
             transcript.append(Message(
                 turn=turn_num,
                 speaker=speaker,
                 speaker_name=speaker_name,
                 message=msg_text,
-                thinking_summary=thinking
+                thinking_summary=""
             ))
 
     return transcript

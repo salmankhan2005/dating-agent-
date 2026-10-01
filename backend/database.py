@@ -16,6 +16,8 @@ if IS_POSTGRES:
     import psycopg2.extras
 
 SEED_PATH = Path(__file__).resolve().parent.parent / "data" / "demo_seed.json"
+if not SEED_PATH.exists():
+    SEED_PATH = SEED_PATH.with_suffix(SEED_PATH.suffix + ".disabled")
 SQLITE_PATH = Path(__file__).resolve().parent.parent / "data" / "pair_agents.db"
 
 def get_connection():
@@ -62,6 +64,12 @@ def init_db():
     """)
     
     conn.commit()
+
+    cursor.execute("SELECT COUNT(*) AS count FROM people")
+    count_row = cursor.fetchone()
+    people_count = count_row["count"] if isinstance(count_row, dict) else count_row[0]
+    if people_count == 0 and SEED_PATH.exists():
+        seed_database(conn)
     
     conn.close()
 
@@ -69,6 +77,9 @@ def seed_database(conn):
     cursor = conn.cursor()
     with open(SEED_PATH, "r", encoding="utf-8") as f:
         seed_items = json.load(f)
+
+    if len(seed_items) < 25:
+        raise RuntimeError("Demo seed must contain at least 25 people.")
         
     for item in seed_items:
         p_id = item.get("id")

@@ -144,18 +144,6 @@ export default function AgentScreen({
                     {msg.message}
                   </div>
 
-                  {msg.thinking_summary && (
-                    <div
-                      className={`mt-1.5 text-[11px] font-mono italic px-2.5 py-1 rounded border ${
-                        isA
-                          ? "bg-[#f5f1eb] text-[#6d687a] border-[#e2ddd5]"
-                          : "bg-[#f0ecfc] text-[#451ebb] border-[#d8ceff]"
-                      } max-w-[85%] sm:max-w-[78%] flex items-center gap-1.5`}
-                    >
-                      <span className="text-[12px]">💭</span>
-                      <span className="truncate">{msg.thinking_summary}</span>
-                    </div>
-                  )}
                 </div>
               );
             })}
