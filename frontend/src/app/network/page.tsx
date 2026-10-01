@@ -188,7 +188,7 @@ function NetworkContent() {
               Agent Network
             </h1>
             <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
-              {people.length} autonomous agents. Click any agent to inspect, edit, or simulate dates.
+              {people.length} autonomous agents. Click any agent to inspect or edit profiles, or open a live date from rankings.
             </p>
           </div>
           <Link href="/create" className="btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.875rem" }}>

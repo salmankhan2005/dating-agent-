@@ -121,7 +121,7 @@ export default function RecordsTable({ rankings, subjectId }: RecordsTableProps)
                       href={`/date?personA=${subjectId}&personB=${item.candidate_id}`}
                       className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium text-white bg-[#451ebb] hover:bg-[#341496] transition-colors"
                     >
-                      <span>Simulate Date</span>
+                      <span>Open Date</span>
                       <span>→</span>
                     </Link>
                   </td>
