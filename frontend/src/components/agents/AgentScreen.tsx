@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import type { PersonResponse, DateResult, Message } from "@/lib/types";
 import { Avatar, ScoreRing } from "@/components/ui";
-import StreamingText from "@/components/agents/StreamingText";
 
 interface AgentScreenProps {
   personA: PersonResponse;
@@ -30,10 +29,7 @@ function TypewriterMessage({
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
-    if (!isTyping) {
-      setDisplayText(text);
-      return;
-    }
+    if (!isTyping) return;
 
     let index = 0;
     let cancelled = false;
@@ -49,7 +45,6 @@ function TypewriterMessage({
       window.setTimeout(tick, 14 + (index % 4) * 5);
     };
 
-    setDisplayText("");
     const timeout = window.setTimeout(tick, 120);
 
     return () => {
@@ -66,8 +61,8 @@ function TypewriterMessage({
           : "bg-[#451ebb] text-white rounded-tr-sm"
       }`}
     >
-      {displayText || ""}
-      {displayText.length < text.length && (
+      {isTyping ? displayText : text}
+      {isTyping && displayText.length < text.length && (
         <span className={`ml-1 inline-block h-4 w-[2px] align-middle ${isAgentA ? "bg-[#451ebb]" : "bg-white"}`} />
       )}
     </div>
@@ -85,6 +80,21 @@ export default function AgentScreen({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"insights" | "sources">("insights");
   const [completedMessageCount, setCompletedMessageCount] = useState(0);
+  const personBInterests = new Set(
+    personB.profile.interests.map((interest) => interest.trim().toLocaleLowerCase())
+  );
+  const sharedProfileInterests = Array.from(
+    new Map(
+      personA.profile.interests
+        .map((interest) => interest.trim())
+        .filter((interest) => interest && personBInterests.has(interest.toLocaleLowerCase()))
+        .map((interest) => [interest.toLocaleLowerCase(), interest])
+    ).values()
+  );
+  const sharedInterests = dateResult?.evaluation.shared_interests.length
+    ? dateResult.evaluation.shared_interests
+    : sharedProfileInterests;
+  const complementaryTraits = dateResult?.evaluation.complementary_traits ?? [];
 
   // Auto-scroll as messages appear
   useEffect(() => {
@@ -260,14 +270,24 @@ export default function AgentScreen({
                   </div>
                   <p className="text-xs text-[#484554] leading-relaxed">
                     {dateResult.evaluation.strongest_connection ||
-                      dateResult.evaluation.date_summary}
+                      dateResult.evaluation.date_summary ||
+                      "The date finished, but no summary was returned."}
                   </p>
                 </div>
               ) : (
-                <div className="p-4 rounded-xl border border-dashed border-[#ddd8ce] text-center space-y-2">
-                  <div className="text-xs text-[#797586] font-mono">EVALUATION IN PROGRESS</div>
-                  <p className="text-xs text-[#a19cae]">
-                    Synthesizing communication cadence, lifestyle alignment, and shared energy…
+                <div className="p-4 rounded-xl border border-[#e8e3da] bg-white space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-[11px] text-[#797586] font-mono">LIVE DATE SIGNALS</div>
+                    <span className="text-xs font-semibold text-[#451ebb]">
+                      {revealedMessages.length}/8 turns
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#484554]">
+                    {revealedMessages.length > 0
+                      ? `Latest message from ${revealedMessages[revealedMessages.length - 1].speaker_name}.`
+                      : isRunning
+                        ? "Waiting for the first message."
+                        : "Start a date to see profile signals and conversation progress."}
                   </p>
                 </div>
               )}
@@ -278,9 +298,8 @@ export default function AgentScreen({
                   <span>✨ Shared Interests</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {dateResult?.evaluation?.shared_interests &&
-                  dateResult.evaluation.shared_interests.length > 0 ? (
-                    dateResult.evaluation.shared_interests.map((interest) => (
+                  {sharedInterests.length > 0 ? (
+                    sharedInterests.map((interest) => (
                       <span
                         key={interest}
                         className="px-2 py-0.5 rounded-full text-xs bg-[#f2ecff] text-[#451ebb] font-medium"
@@ -289,65 +308,60 @@ export default function AgentScreen({
                       </span>
                     ))
                   ) : (
-                    // Intersect profile interests if evaluation isn't ready
-                    personA.profile.interests
-                      .filter((i) => personB.profile.interests.includes(i))
-                      .map((interest) => (
-                        <span
-                          key={interest}
-                          className="px-2 py-0.5 rounded-full text-xs bg-[#f2ecff] text-[#451ebb] font-medium"
-                        >
-                          {interest}
-                        </span>
-                      ))
+                    <span className="text-xs text-[#797586] italic">
+                      {dateResult
+                        ? "No shared interests were identified."
+                        : "No exact overlap in the listed profile interests."}
+                    </span>
                   )}
-                  {(!dateResult?.evaluation?.shared_interests ||
-                    dateResult.evaluation.shared_interests.length === 0) &&
-                    personA.profile.interests.filter((i) =>
-                      personB.profile.interests.includes(i)
-                    ).length === 0 && (
-                      <span className="text-xs text-[#797586] italic">
-                        Evaluating shared overlaps…
-                      </span>
-                    )}
                 </div>
               </div>
 
               {/* Synergy & Complementary Traits */}
               <div className="p-3.5 rounded-xl bg-white border border-[#ece7df] shadow-xs space-y-2">
                 <div className="text-[11px] font-mono uppercase tracking-wider text-[#797586]">
-                  🌱 Complementary Dynamics
+                  {dateResult ? "🌱 Complementary Dynamics" : "Communication Styles"}
                 </div>
                 <div className="space-y-1.5">
-                  {dateResult?.evaluation?.complementary_traits?.map((trait, idx) => (
-                    <div
-                      key={idx}
-                      className="text-xs text-[#484554] flex items-start gap-1.5 leading-snug"
-                    >
-                      <span className="text-emerald-500 font-bold">✓</span>
-                      <span>{trait}</span>
-                    </div>
-                  )) || (
+                  {complementaryTraits.length > 0 ? (
+                    complementaryTraits.map((trait, idx) => (
+                      <div
+                        key={`${idx}-${trait}`}
+                        className="text-xs text-[#484554] flex items-start gap-1.5 leading-snug"
+                      >
+                        <span className="text-emerald-500 font-bold">✓</span>
+                        <span>{trait}</span>
+                      </div>
+                    ))
+                  ) : dateResult ? (
                     <div className="text-xs text-[#797586] italic">
-                      Tracking reciprocal conversation moves…
+                      No complementary dynamics were identified in this date.
+                    </div>
+                  ) : (
+                    <div className="space-y-2 text-xs text-[#484554]">
+                      <p><span className="font-medium">{personA.name}:</span> {personA.profile.communication_style || "Not specified in profile."}</p>
+                      <p><span className="font-medium">{personB.name}:</span> {personB.profile.communication_style || "Not specified in profile."}</p>
                     </div>
                   )}
                 </div>
               </div>
 
               {/* Potential Friction / Balance */}
-              {dateResult?.evaluation?.potential_friction &&
-                dateResult.evaluation.potential_friction.length > 0 && (
+              {dateResult && (
                   <div className="p-3.5 rounded-xl bg-[#fffcf5] border border-[#f2e6cb] shadow-xs space-y-2">
                     <div className="text-[11px] font-mono uppercase tracking-wider text-[#b45309]">
-                      ⚠️ Growth & Friction Points
+                      Potential Friction
                     </div>
                     <div className="space-y-1">
-                      {dateResult.evaluation.potential_friction.map((f, idx) => (
-                        <p key={idx} className="text-xs text-[#78350f] leading-snug">
-                          • {f}
-                        </p>
-                      ))}
+                      {dateResult.evaluation.potential_friction.length > 0 ? (
+                        dateResult.evaluation.potential_friction.map((friction, idx) => (
+                          <p key={`${idx}-${friction}`} className="text-xs text-[#78350f] leading-snug">
+                            • {friction}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-xs text-[#78350f] leading-snug">No distinct friction points were returned.</p>
+                      )}
                     </div>
                   </div>
                 )}
