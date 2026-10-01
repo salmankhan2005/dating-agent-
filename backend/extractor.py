@@ -196,7 +196,7 @@ def _run_apify_actor(actor_id: str, url: str, platform: str) -> str:
     if platform == "instagram":
         actor_input = {"directUrls": [url], "resultsLimit": 50}
     else:
-        actor_input = {"profileUrls": [url]}
+        actor_input = {"urls": [url]}
 
     endpoint = "https://api.apify.com/v2/acts/{}/run-sync-get-dataset-items".format(
         urllib.parse.quote(actor_id, safe="")
