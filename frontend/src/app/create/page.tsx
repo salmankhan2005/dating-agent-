@@ -178,7 +178,7 @@ export default function CreatePage() {
                 <div className="flex flex-col gap-4">
                   <div>
                     <label style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--text-muted)", display: "block", marginBottom: "0.375rem" }}>
-                      LinkedIn Profile URL (optional)
+                      LinkedIn Profile URL
                     </label>
                     <input
                       className="input-field"
@@ -190,7 +190,7 @@ export default function CreatePage() {
                   </div>
                   <div>
                     <label style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--text-muted)", display: "block", marginBottom: "0.375rem" }}>
-                      Instagram Profile URL (optional)
+                      Instagram Profile URL
                     </label>
                     <input
                       className="input-field"
@@ -389,7 +389,7 @@ export default function CreatePage() {
             {/* Strict Dual Sources Card */}
             <div className="mb-6">
               <h3 className="font-serif text-base font-medium mb-3 text-[#1c1c1a]">
-                Verified Dual Sources
+                Verified Sources
               </h3>
               <ContextCards person={result} />
             </div>

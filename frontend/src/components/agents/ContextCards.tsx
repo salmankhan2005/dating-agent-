@@ -10,6 +10,7 @@ export default function ContextCards({ person }: ContextCardsProps) {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       {/* LinkedIn Source Card */}
+      {person.linkedin_url && (
       <div className="card p-5 bg-white border border-[#e4dfd7] rounded-xl flex flex-col justify-between hover:border-[#451ebb]/30 transition-all">
         <div>
           <div className="flex items-center justify-between mb-3">
@@ -59,9 +60,10 @@ export default function ContextCards({ person }: ContextCardsProps) {
           <span className="text-[11px] text-[#797586] font-mono">Evidence ID: LI-VERIFIED</span>
         </div>
       </div>
+      )}
 
       {/* Instagram Source Card */}
-      {(() => {
+      {person.instagram_url && (() => {
         const isPrivate = (
           person.cached_instagram_content?.toLowerCase().includes("private") ||
           person.profile.evidence_notes?.some(n => n.toLowerCase().includes("private"))
