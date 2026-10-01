@@ -57,7 +57,7 @@ export default function RecommendationCard({
             href={`/date?personA=${subject.id}&personB=${candidate.id}`}
             className="btn-primary text-xs px-4 py-2"
           >
-            Launch Agent Date ✦
+            Start Live Date ✦
           </Link>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function RecommendationCard({
 
       {dateScore !== undefined && (
         <div className="mt-3 flex items-center justify-between text-xs text-[#797586] pt-2 border-t border-[#f0ece5]">
-          <span>Simulated Date Score</span>
+          <span>Live Date Score</span>
           <span className="font-semibold text-[#1c1c1a]">{Math.round(dateScore)} / 100</span>
         </div>
       )}

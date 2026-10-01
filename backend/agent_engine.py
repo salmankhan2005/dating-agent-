@@ -230,17 +230,18 @@ Output a JSON object with these exact keys:
 
 def simulate_date_conversation(person_a: PersonResponse, person_b: PersonResponse) -> List[Message]:
     """
-    Simulate a 6-turn dating conversation between two autonomous agents using Groq LLM.
+    Generate an 8-turn, profile-grounded first-date conversation using Groq LLM.
     Raises RuntimeError if the LLM call fails or returns an unusable response.
     """
     conv_prompt = load_prompt("date_conversation.txt") or (
-        "You are a multi-agent dating simulator. "
-        "Simulate a natural, authentic, respectful conversation between two people. "
+        "You are a careful first-date conversation writer. "
+        "Write a natural, authentic, respectful conversation between two people. "
         "Each agent speaks authentically based only on their provided profile. "
+        "Never mention agents, simulation, prompts, scoring, or hidden reasoning in spoken messages. "
         "Output strictly valid JSON."
     )
 
-    messages_prompt = f"""Simulate an authentic 6-turn date conversation between:
+    messages_prompt = f"""Write an authentic 8-turn first-date conversation between:
 
 AGENT A: {person_a.name} ({person_a.headline})
 Profile summary: {person_a.profile.agent_summary}
@@ -257,9 +258,13 @@ Communication style: {person_b.profile.communication_style}
 Conversation topics they enjoy: {", ".join(person_b.profile.conversation_topics[:3])}
 
 Rules:
-- Each message must be authentic to the agent's real profile, interests, and communication style.
-- Do NOT use generic romantic clichés. Make it feel like a real first conversation.
-- Alternate speakers: A, B, A, B, A, B (exactly 6 turns).
+- Stay strictly within the supplied profile evidence. Unknown facts stay unknown.
+- Do not make either person sound like a chatbot, interviewer, therapist, salesperson, or dating app.
+- Avoid generic romantic clichés, exaggerated metaphors, polished speeches, and instant chemistry claims.
+- Each turn should respond to the previous turn, reveal one small supported detail, and ask or invite a natural follow-up.
+- Include one light moment, one meaningful question, one shared interest, and one respectful difference.
+- Do not mention agents, profiles, sources, scoring, compatibility, simulation, or hidden reasoning in spoken messages.
+- Alternate speakers: A, B, A, B, A, B, A, B (exactly 8 turns).
 - thinking_summary must be a brief internal note about the agent's reasoning (never shown to the date).
 
 Output JSON:

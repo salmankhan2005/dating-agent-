@@ -106,8 +106,8 @@ export default function HomePage() {
         <section style={{ background: "var(--surface)", borderTop: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }}>
           <div className="max-w-4xl mx-auto px-6 py-5 grid grid-cols-3 gap-8">
             {[
-              { label: "Agents in Network", value: loading ? null : demo?.total_agents ?? 0, suffix: "" },
-              { label: "Simulated Dates", value: loading ? null : demo?.total_simulated_dates ?? 0, suffix: "" },
+              { label: "People in Network", value: loading ? null : demo?.total_agents ?? 0, suffix: "" },
+              { label: "Dates Run", value: loading ? null : demo?.total_simulated_dates ?? 0, suffix: "" },
               { label: "Top Match Score", value: loading ? null : (demo?.top_dyad?.score ?? 0), suffix: "" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -138,7 +138,7 @@ export default function HomePage() {
                     <Avatar name={demo.top_dyad.person_a_name} size={52} />
                     <div>
                       <div className="font-medium" style={{ color: "var(--text)" }}>{demo.top_dyad.person_a_name}</div>
-                      <div style={{ fontSize: "0.78rem", color: "var(--text-faint)" }}>Agent A</div>
+                      <div style={{ fontSize: "0.78rem", color: "var(--text-faint)" }}>Person 1</div>
                     </div>
                   </div>
                   <div className="flex flex-col items-center flex-1 gap-1">
@@ -148,7 +148,7 @@ export default function HomePage() {
                   <div className="flex items-center gap-3">
                     <div className="text-right">
                       <div className="font-medium" style={{ color: "var(--text)" }}>{demo.top_dyad.person_b_name}</div>
-                      <div style={{ fontSize: "0.78rem", color: "var(--text-faint)" }}>Agent B</div>
+                      <div style={{ fontSize: "0.78rem", color: "var(--text-faint)" }}>Person 2</div>
                     </div>
                     <Avatar name={demo.top_dyad.person_b_name} size={52} />
                   </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
           <section style={{ background: "var(--surface)", borderTop: "1px solid var(--border-light)" }}>
             <div className="max-w-4xl mx-auto px-6 py-16">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 400 }}>Agent Network</h2>
+                <h2 className="font-display" style={{ fontSize: "1.5rem", fontWeight: 400 }}>People Network</h2>
                 <Link href="/network" className="btn-ghost">View all →</Link>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">

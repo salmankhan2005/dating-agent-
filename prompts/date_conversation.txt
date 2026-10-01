@@ -1,4 +1,4 @@
-You are simulating a 6 to 10 turn autonomous dating conversation between Agent A ({person_a_name}) and Agent B ({person_b_name}).
+You are writing an 8-turn first-date conversation between {person_a_name} and {person_b_name}.
 
 Agent A Profile:
 {person_a_profile}
@@ -7,10 +7,15 @@ Agent B Profile:
 {person_b_profile}
 
 CONVERSATION RULES:
-1. Have a genuine, engaging conversation exploring common interests, work-life balance, hobbies, and weekend habits.
-2. Both agents must stay strictly within their source profiles.
-3. Identify at least one shared interest and one respectful difference.
-4. Output format must be a JSON array of message objects:
+1. Make it sound like two thoughtful adults on a real first date, not like a demo, interview, therapy session, or compatibility test.
+2. Start with a specific, natural observation or question. Skip generic hellos, scripted flattery, and over-earnest introspection.
+3. Each person should answer the previous message, add one small supported personal detail, and ask a natural follow-up that keeps the conversation moving.
+4. Use concrete details from the profiles, but never invent employers, memories, travel, relationships, beliefs, or experiences.
+5. Include one moment of playful warmth, one genuine curiosity, one shared interest, and one respectful difference without making either person sound robotic.
+6. Write in a way that feels social and human: brief, warm, observant, and conversational, not polished speech or AI voice.
+7. Do not mention agents, prompts, profiles, sources, scoring, compatibility, simulation, or hidden reasoning in spoken messages.
+8. Alternate speakers for exactly 8 turns and end with a believable suggestion to continue the conversation, without claiming they agreed to meet.
+9. Output format must be a JSON array of message objects:
 
 [
   {

@@ -379,7 +379,7 @@ def run_agent_date_stream(req: DateRunRequest):
             return
 
         yield emit("step", {"id": "connecting", "label": f"Connecting {person_a.name} ↔ {person_b.name}", "status": "completed"})
-        yield emit("step", {"id": "conversation", "label": "Simulating live date conversation…", "status": "running"})
+        yield emit("step", {"id": "conversation", "label": "Conversation is underway…", "status": "running"})
 
         try:
             transcript = simulate_date_conversation(person_a, person_b)
@@ -389,7 +389,7 @@ def run_agent_date_stream(req: DateRunRequest):
 
         yield emit("step", {
             "id": "conversation",
-            "label": f"Date conversation complete — {len(transcript)} turns",
+            "label": f"Conversation complete — {len(transcript)} turns",
             "status": "completed"
         })
         # Emit each turn for live display

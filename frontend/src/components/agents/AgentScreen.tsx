@@ -54,12 +54,9 @@ export default function AgentScreen({
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-sm truncate text-[#1c1c1a]">{personA.name}</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full font-mono bg-[#ece7df] text-[#484554]">
-                Agent A
-              </span>
             </div>
             <p className="text-xs text-[#797586] truncate max-w-[180px] sm:max-w-[220px]">
-              {personA.headline || "Autonomous Dating Agent"}
+              {personA.headline || "Profile"}
             </p>
           </div>
         </div>
@@ -67,7 +64,7 @@ export default function AgentScreen({
         {/* Center Connection Indicator */}
         <div className="hidden sm:flex flex-col items-center justify-center px-4">
           <div className="flex items-center gap-2 text-xs font-mono text-[#797586] uppercase tracking-wider mb-1">
-            <span>Live Sync</span>
+            <span>Live Conversation</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </div>
           <div className="text-lg text-[#797586]">↔</div>
@@ -77,13 +74,10 @@ export default function AgentScreen({
         <div className="flex items-center gap-3 min-w-0 text-right flex-row-reverse sm:flex-row">
           <div className="min-w-0">
             <div className="flex items-center justify-end gap-2">
-              <span className="text-[10px] px-2 py-0.5 rounded-full font-mono bg-[#ece7df] text-[#484554]">
-                Agent B
-              </span>
               <span className="font-semibold text-sm truncate text-[#1c1c1a]">{personB.name}</span>
             </div>
             <p className="text-xs text-[#797586] truncate max-w-[180px] sm:max-w-[220px]">
-              {personB.headline || "Autonomous Dating Agent"}
+              {personB.headline || "Profile"}
             </p>
           </div>
           <div className="relative">
@@ -131,7 +125,6 @@ export default function AgentScreen({
                   >
                     <Avatar name={msg.speaker_name} size={22} />
                     <span className="font-medium text-[#1c1c1a]">{msg.speaker_name}</span>
-                    <span className="text-[10px] font-mono text-[#a19cae]">Turn {msg.turn}</span>
                   </div>
 
                   <div
@@ -157,7 +150,7 @@ export default function AgentScreen({
               >
                 <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-[#e4dfd7] shadow-sm">
                   <span className="text-xs text-[#797586] font-medium">
-                    {thinkingTurn} is crafting response
+                    {thinkingTurn} is responding…
                   </span>
                   <div className="flex gap-1 items-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce" />
@@ -173,10 +166,10 @@ export default function AgentScreen({
           <div className="p-3 border-t border-[#ece7df] bg-white flex items-center justify-between text-xs text-[#797586]">
             <div className="flex items-center gap-2">
               <span className="font-mono text-[11px] bg-[#f5f1eb] px-2 py-0.5 rounded text-[#484554]">
-                Turn {revealedMessages.length} of 6-10
+                Live chat
               </span>
               <span className="text-[#a19cae]">•</span>
-              <span className="italic">Autonomous Agent-to-Agent Dating</span>
+              <span className="italic">Real-time conversation</span>
             </div>
 
             {onNewDate && (
@@ -212,7 +205,7 @@ export default function AgentScreen({
                     : "text-[#797586] hover:text-[#1c1c1a]"
                 }`}
               >
-                Dual Sources
+                Source Context
               </button>
             </div>
 

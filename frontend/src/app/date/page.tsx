@@ -57,7 +57,7 @@ function LiveDateContent() {
     setRevealedMessages([]);
     setError("");
     setPipelineSteps([]);
-    setThinkingMsg("Connecting agents…");
+    setThinkingMsg("Setting the scene and finding the right rhythm…");
     setThinkingTurn(null);
 
     try {
@@ -119,10 +119,10 @@ function LiveDateContent() {
       <main className="max-w-5xl mx-auto px-6 py-10 w-full flex-1">
         <div className="mb-8">
           <h1 className="font-display" style={{ fontSize: "2rem", fontWeight: 400, marginBottom: "0.5rem" }}>
-            Live Agent Date
+            Live Date
           </h1>
           <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
-            Select two agents to run a live multi-turn date conversation and compatibility evaluation.
+            Pick two people and watch a real-time first-date conversation unfold.
           </p>
         </div>
 
@@ -137,8 +137,8 @@ function LiveDateContent() {
           <div className="animate-fade-in">
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {[
-                { label: "Agent A", agent: personA, setAgent: setPersonA },
-                { label: "Agent B", agent: personB, setAgent: setPersonB },
+                { label: "Person 1", agent: personA, setAgent: setPersonA },
+                { label: "Person 2", agent: personB, setAgent: setPersonB },
               ].map(({ label, agent, setAgent }) => (
                 <div key={label}>
                   <div className="flex items-center justify-between mb-3">
