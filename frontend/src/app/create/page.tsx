@@ -10,6 +10,27 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 type Step = "form" | "loading" | "result" | "error";
 
+function isValidProfileUrl(value: string, platform: "linkedin" | "instagram"): boolean {
+  try {
+    const url = new URL(value.trim());
+    const domain = platform === "linkedin" ? "linkedin.com" : "instagram.com";
+    const hostname = url.hostname.toLowerCase();
+    const validHost = hostname === domain || hostname.endsWith(`.${domain}`);
+
+    if (!validHost || !["http:", "https:"].includes(url.protocol) || url.username || url.password) {
+      return false;
+    }
+
+    if (platform === "linkedin") {
+      return /^\/(?:in\/[\w%-]+|pub\/[\w%-]+|[\w%-]+)(?:\/.*)?$/i.test(url.pathname);
+    }
+
+    return /^\/[\w.-]+\/?$/i.test(url.pathname);
+  } catch {
+    return false;
+  }
+}
+
 export default function CreatePage() {
   const [step, setStep] = useState<Step>("form");
   const [linkedinUrl, setLinkedinUrl] = useState("");
@@ -18,6 +39,7 @@ export default function CreatePage() {
   const [headline, setHeadline] = useState("");
   const [result, setResult] = useState<PersonResponse | null>(null);
   const [error, setError] = useState<string>("");
+  const [linkErrors, setLinkErrors] = useState<{ linkedin?: string; instagram?: string }>({});
   const [thinkingMsg, setThinkingMsg] = useState("Validating sources…");
   const [tasks, setTasks] = useState<TaskItem[]>([
     { id: "1", label: "Validate LinkedIn Profile", detail: "Verify public URL format and access", status: "idle" },
@@ -39,18 +61,29 @@ export default function CreatePage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!linkedinUrl && !instagramUrl) {
+    const linkedinValue = linkedinUrl.trim();
+    const instagramValue = instagramUrl.trim();
+
+    if (!linkedinValue && !instagramValue) {
+      setLinkErrors({});
       setError("Please provide at least one public LinkedIn or Instagram URL.");
       return;
     }
-    if (linkedinUrl && !linkedinUrl.includes("linkedin.com")) {
-      setError("Please provide a valid LinkedIn URL.");
+
+    const nextLinkErrors: { linkedin?: string; instagram?: string } = {};
+    if (linkedinValue && !isValidProfileUrl(linkedinValue, "linkedin")) {
+      nextLinkErrors.linkedin = "Enter a valid LinkedIn profile URL, such as https://www.linkedin.com/in/username.";
+    }
+    if (instagramValue && !isValidProfileUrl(instagramValue, "instagram")) {
+      nextLinkErrors.instagram = "Enter a valid Instagram profile URL, such as https://www.instagram.com/username.";
+    }
+    if (Object.keys(nextLinkErrors).length > 0) {
+      setLinkErrors(nextLinkErrors);
+      setError("Please correct the highlighted profile URL before continuing.");
       return;
     }
-    if (instagramUrl && !instagramUrl.includes("instagram.com")) {
-      setError("Please provide a valid Instagram URL.");
-      return;
-    }
+
+    setLinkErrors({});
     setError("");
     setStep("loading");
     // All tasks start as idle — they will be updated in real-time via SSE stream
@@ -70,8 +103,8 @@ export default function CreatePage() {
     }, 1800);
 
     const body = JSON.stringify({
-      linkedin_url: linkedinUrl,
-      instagram_url: instagramUrl,
+      linkedin_url: linkedinValue,
+      instagram_url: instagramValue,
       name: name || undefined,
       headline: headline || undefined,
     });
@@ -165,7 +198,7 @@ export default function CreatePage() {
             </div>
 
             {error && (
-              <div className="card mb-6" style={{ padding: "0.875rem 1rem", borderColor: "#fda4af", background: "#fff1f2" }}>
+              <div role="alert" aria-live="assertive" className="card mb-6" style={{ padding: "0.875rem 1rem", borderColor: "#fda4af", background: "#fff1f2" }}>
                 <p style={{ fontSize: "0.875rem", color: "#be123c" }}>⚠ {error}</p>
               </div>
             )}
@@ -182,11 +215,23 @@ export default function CreatePage() {
                     </label>
                     <input
                       className="input-field"
-                      type="url"
+                      type="text"
+                      inputMode="url"
+                      autoCapitalize="none"
+                      spellCheck={false}
                       placeholder="https://linkedin.com/in/yourprofile"
                       value={linkedinUrl}
-                      onChange={(e) => setLinkedinUrl(e.target.value)}
+                      aria-invalid={Boolean(linkErrors.linkedin)}
+                      aria-describedby={linkErrors.linkedin ? "linkedin-url-error" : undefined}
+                      onChange={(e) => {
+                        setLinkedinUrl(e.target.value);
+                        setLinkErrors((current) => ({ ...current, linkedin: undefined }));
+                        setError("");
+                      }}
                     />
+                    {linkErrors.linkedin && (
+                      <p id="linkedin-url-error" className="mt-1 text-xs text-rose-700">{linkErrors.linkedin}</p>
+                    )}
                   </div>
                   <div>
                     <label style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--text-muted)", display: "block", marginBottom: "0.375rem" }}>
@@ -194,11 +239,23 @@ export default function CreatePage() {
                     </label>
                     <input
                       className="input-field"
-                      type="url"
+                      type="text"
+                      inputMode="url"
+                      autoCapitalize="none"
+                      spellCheck={false}
                       placeholder="https://instagram.com/yourhandle"
                       value={instagramUrl}
-                      onChange={(e) => setInstagramUrl(e.target.value)}
+                      aria-invalid={Boolean(linkErrors.instagram)}
+                      aria-describedby={linkErrors.instagram ? "instagram-url-error" : undefined}
+                      onChange={(e) => {
+                        setInstagramUrl(e.target.value);
+                        setLinkErrors((current) => ({ ...current, instagram: undefined }));
+                        setError("");
+                      }}
                     />
+                    {linkErrors.instagram && (
+                      <p id="instagram-url-error" className="mt-1 text-xs text-rose-700">{linkErrors.instagram}</p>
+                    )}
                   </div>
                 </div>
               </div>
