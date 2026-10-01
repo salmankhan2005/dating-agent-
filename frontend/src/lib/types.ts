@@ -116,8 +116,8 @@ export interface DemoNetworkResponse {
 }
 
 export interface AnalyzeRequest {
-  linkedin_url: string;
-  instagram_url: string;
+  linkedin_url?: string;
+  instagram_url?: string;
   name?: string;
   headline?: string;
 }

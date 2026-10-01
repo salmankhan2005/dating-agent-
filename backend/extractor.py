@@ -5,23 +5,24 @@ import time
 import urllib.parse
 import urllib.request
 import urllib.error
-from typing import Dict, Tuple
+from typing import Dict, Optional, Tuple
 
 import requests
 
 
-def validate_sources(linkedin_url: str, instagram_url: str) -> Tuple[bool, str]:
-    """Validate that the supplied URLs are strictly public LinkedIn and Instagram endpoints."""
+def validate_sources(linkedin_url: Optional[str], instagram_url: Optional[str]) -> Tuple[bool, str]:
+    """Validate whichever supplied URL is present; at least one public source is required."""
     if not linkedin_url or not instagram_url:
-        return False, "Both LinkedIn and Instagram public URLs are required."
+        if not linkedin_url and not instagram_url:
+            return False, "Provide at least one public LinkedIn or Instagram URL."
 
     li_pattern = r"^https?:\/\/([a-zA-Z0-9\-]+\.)?linkedin\.com\/(in\/[\w\-\%]+|pub\/[\w\-\%]+|[\w\-\%]+)\/?.*$"
     ig_pattern = r"^https?:\/\/([a-zA-Z0-9\-]+\.)?instagram\.com\/[\w\.\_\-\%]+(\/.*|\?.*)?$"
 
-    if not re.match(li_pattern, linkedin_url.strip(), re.IGNORECASE):
+    if linkedin_url and not re.match(li_pattern, linkedin_url.strip(), re.IGNORECASE):
         return False, "Invalid LinkedIn profile URL. Must be in format https://linkedin.com/in/username"
 
-    if not re.match(ig_pattern, instagram_url.strip(), re.IGNORECASE):
+    if instagram_url and not re.match(ig_pattern, instagram_url.strip(), re.IGNORECASE):
         return False, "Invalid Instagram profile URL. Must be in format https://instagram.com/username"
 
     return True, "Valid"
@@ -227,7 +228,7 @@ def _run_apify_actor(actor_id: str, url: str, platform: str) -> str:
     return content
 
 
-def extract_public_content(linkedin_url: str, instagram_url: str, name_hint: str = None) -> Dict[str, str]:
+def extract_public_content(linkedin_url: Optional[str], instagram_url: Optional[str], name_hint: str = None) -> Dict[str, str]:
     """
     Extract public text STRICTLY from the two provided URLs.
     Tries Playwright first (full JS rendering), falls back to urllib+BeautifulSoup.
@@ -242,44 +243,54 @@ def extract_public_content(linkedin_url: str, instagram_url: str, name_hint: str
     instagram_actor_id = os.getenv("APIFY_INSTAGRAM_ACTOR_ID", "").strip()
 
     if apify_token or linkedin_actor_id or instagram_actor_id:
-        if not apify_token or not linkedin_actor_id or not instagram_actor_id:
-            raise RuntimeError(
-                "Apify is partially configured. Set APIFY_API_TOKEN, "
-                "APIFY_LINKEDIN_ACTOR_ID, and APIFY_INSTAGRAM_ACTOR_ID."
-            )
+        if not apify_token:
+            raise RuntimeError("APIFY_API_TOKEN is not configured.")
 
-        linkedin_text = _run_apify_actor(linkedin_actor_id, linkedin_url, "linkedin")
-        instagram_text = _run_apify_actor(instagram_actor_id, instagram_url, "instagram")
+        if linkedin_url:
+            if not linkedin_actor_id:
+                raise RuntimeError("APIFY_LINKEDIN_ACTOR_ID is not configured.")
+            linkedin_text = _run_apify_actor(linkedin_actor_id, linkedin_url, "linkedin")
+        else:
+            linkedin_text = "[PUBLIC LINKEDIN SOURCE NOT PROVIDED]"
+
+        if instagram_url:
+            if not instagram_actor_id:
+                raise RuntimeError("APIFY_INSTAGRAM_ACTOR_ID is not configured.")
+            instagram_text = _run_apify_actor(instagram_actor_id, instagram_url, "instagram")
+        else:
+            instagram_text = "[PUBLIC INSTAGRAM SOURCE NOT PROVIDED]"
     else:
-        # --- LinkedIn ---
-        try:
-            linkedin_text = _fetch_with_playwright(linkedin_url)
-        except RuntimeError as e:
-            if "Playwright is not installed" in str(e):
-                # Playwright unavailable, try requests fallback
-                try:
+        if linkedin_url:
+            try:
+                linkedin_text = _fetch_with_playwright(linkedin_url)
+            except RuntimeError as e:
+                if "Playwright is not installed" in str(e):
                     linkedin_text = _fetch_with_requests(linkedin_url)
-                except RuntimeError:
-                    raise  # Re-raise the requests error
-            else:
-                raise  # Re-raise Playwright error (private profile, timeout, etc.)
-
-        # --- Instagram ---
-        try:
-            instagram_text = _fetch_with_playwright(instagram_url)
-        except RuntimeError as e:
-            if "Playwright is not installed" in str(e):
-                try:
-                    instagram_text = _fetch_with_requests(instagram_url)
-                except RuntimeError:
+                else:
                     raise
-            else:
-                raise
+        else:
+            linkedin_text = "[PUBLIC LINKEDIN SOURCE NOT PROVIDED]"
+
+        if instagram_url:
+            try:
+                instagram_text = _fetch_with_playwright(instagram_url)
+            except RuntimeError as e:
+                if "Playwright is not installed" in str(e):
+                    instagram_text = _fetch_with_requests(instagram_url)
+                else:
+                    raise
+        else:
+            instagram_text = "[PUBLIC INSTAGRAM SOURCE NOT PROVIDED]"
 
     # Derive name from URL slug if not provided
     if not name_hint:
-        li_match = re.search(r"linkedin\.com\/in\/([\w\-]+)", linkedin_url)
-        name_hint = li_match.group(1).replace("-", " ").title() if li_match else "Unknown"
+        source_url = linkedin_url or instagram_url or ""
+        li_match = re.search(r"linkedin\.com\/in\/([\w\-]+)", source_url)
+        ig_match = re.search(r"instagram\.com\/([\w\.\-_]+)", source_url)
+        name_hint = (
+            li_match.group(1).replace("-", " ").title() if li_match
+            else (ig_match.group(1).replace("_", " ").replace(".", " ").title() if ig_match else "Unknown")
+        )
 
     return {
         "name": name_hint,

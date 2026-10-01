@@ -39,16 +39,24 @@ export default function CreatePage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!linkedinUrl.includes("linkedin.com") || !instagramUrl.includes("instagram.com")) {
-      setError("Please provide valid LinkedIn and Instagram URLs.");
+    if (!linkedinUrl && !instagramUrl) {
+      setError("Please provide at least one public LinkedIn or Instagram URL.");
+      return;
+    }
+    if (linkedinUrl && !linkedinUrl.includes("linkedin.com")) {
+      setError("Please provide a valid LinkedIn URL.");
+      return;
+    }
+    if (instagramUrl && !instagramUrl.includes("instagram.com")) {
+      setError("Please provide a valid Instagram URL.");
       return;
     }
     setError("");
     setStep("loading");
     // All tasks start as idle — they will be updated in real-time via SSE stream
     setTasks([
-      { id: "1", label: "Validate LinkedIn Profile", detail: "Checking public URL access…", status: "running" },
-      { id: "2", label: "Validate Instagram Profile", detail: "Checking public URL access…", status: "running" },
+      { id: "1", label: "Validate LinkedIn Profile", detail: linkedinUrl ? "Checking public URL access…" : "Not provided", status: linkedinUrl ? "running" : "completed" },
+      { id: "2", label: "Validate Instagram Profile", detail: instagramUrl ? "Checking public URL access…" : "Not provided", status: instagramUrl ? "running" : "completed" },
       { id: "3", label: "Extract Public Content", detail: "Pending validation", status: "idle" },
       { id: "4", label: "Synthesize Knowledge Graph", detail: "Pending extraction", status: "idle" },
       { id: "5", label: "Instantiate Agent Persona", detail: "Pending synthesis", status: "idle" },
@@ -165,12 +173,12 @@ export default function CreatePage() {
             <form onSubmit={submit} className="flex flex-col gap-5">
               <div className="card" style={{ padding: "1.5rem" }}>
                 <h2 className="font-medium mb-4" style={{ fontSize: "0.95rem" }}>
-                  Required — Source Profiles
+                  Source Profiles (at least one required)
                 </h2>
                 <div className="flex flex-col gap-4">
                   <div>
                     <label style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--text-muted)", display: "block", marginBottom: "0.375rem" }}>
-                      LinkedIn Profile URL *
+                      LinkedIn Profile URL (optional)
                     </label>
                     <input
                       className="input-field"
@@ -178,12 +186,11 @@ export default function CreatePage() {
                       placeholder="https://linkedin.com/in/yourprofile"
                       value={linkedinUrl}
                       onChange={(e) => setLinkedinUrl(e.target.value)}
-                      required
                     />
                   </div>
                   <div>
                     <label style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--text-muted)", display: "block", marginBottom: "0.375rem" }}>
-                      Instagram Profile URL *
+                      Instagram Profile URL (optional)
                     </label>
                     <input
                       className="input-field"
@@ -191,7 +198,6 @@ export default function CreatePage() {
                       placeholder="https://instagram.com/yourhandle"
                       value={instagramUrl}
                       onChange={(e) => setInstagramUrl(e.target.value)}
-                      required
                     />
                   </div>
                 </div>

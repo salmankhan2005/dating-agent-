@@ -16,8 +16,8 @@ class PersonProfile(BaseModel):
     agent_summary: str = ""
 
 class AnalyzeRequest(BaseModel):
-    linkedin_url: str
-    instagram_url: str
+    linkedin_url: Optional[str] = None
+    instagram_url: Optional[str] = None
     name: Optional[str] = None
     headline: Optional[str] = None
 

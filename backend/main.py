@@ -1,7 +1,17 @@
 import os
+import sys
 import uuid
 import json
 from pathlib import Path
+
+# Ensure both current directory and parent directory are on sys.path
+_cur_dir = Path(__file__).resolve().parent
+_par_dir = _cur_dir.parent
+for _p in (_cur_dir, _par_dir):
+    _sp = str(_p)
+    if _sp not in sys.path:
+        sys.path.insert(0, _sp)
+
 from typing import List, Optional
 from dotenv import load_dotenv
 
@@ -12,19 +22,34 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 
-from backend.models import (
-    AnalyzeRequest, PersonResponse, PersonUpdateRequest, PersonCreateRequest,
-    DateRunRequest, DateResult, RankingsResponse, DemoNetworkResponse, PersonProfile
-)
-from backend.database import (
-    init_db, get_all_people, get_person_by_id, save_person,
-    delete_person, delete_all_people, save_date, get_all_dates, get_date_by_id
-)
-from backend.extractor import validate_sources, extract_public_content
-from backend.agent_engine import (
-    analyze_person_profile, simulate_date_conversation,
-    evaluate_date, compute_rankings_for_person
-)
+try:
+    from backend.models import (
+        AnalyzeRequest, PersonResponse, PersonUpdateRequest, PersonCreateRequest,
+        DateRunRequest, DateResult, RankingsResponse, DemoNetworkResponse, PersonProfile
+    )
+    from backend.database import (
+        init_db, get_all_people, get_person_by_id, save_person,
+        delete_person, delete_all_people, save_date, get_all_dates, get_date_by_id
+    )
+    from backend.extractor import validate_sources, extract_public_content
+    from backend.agent_engine import (
+        analyze_person_profile, simulate_date_conversation,
+        evaluate_date, compute_rankings_for_person
+    )
+except ImportError:
+    from models import (
+        AnalyzeRequest, PersonResponse, PersonUpdateRequest, PersonCreateRequest,
+        DateRunRequest, DateResult, RankingsResponse, DemoNetworkResponse, PersonProfile
+    )
+    from database import (
+        init_db, get_all_people, get_person_by_id, save_person,
+        delete_person, delete_all_people, save_date, get_all_dates, get_date_by_id
+    )
+    from extractor import validate_sources, extract_public_content
+    from agent_engine import (
+        analyze_person_profile, simulate_date_conversation,
+        evaluate_date, compute_rankings_for_person
+    )
 
 app = FastAPI(
     title="PAIR//AGENTS API",
@@ -142,8 +167,8 @@ def analyze_person_stream(req: AnalyzeRequest):
                 id=person_id,
                 name=name,
                 headline=headline,
-                linkedin_url=req.linkedin_url,
-                instagram_url=req.instagram_url,
+                linkedin_url=req.linkedin_url or "",
+                instagram_url=req.instagram_url or "",
                 cached_linkedin_content=extracted["linkedin_content"],
                 cached_instagram_content=extracted["instagram_content"],
                 profile=profile
@@ -196,8 +221,8 @@ def analyze_person(req: AnalyzeRequest):
         id=person_id,
         name=name,
         headline=headline,
-        linkedin_url=req.linkedin_url,
-        instagram_url=req.instagram_url,
+        linkedin_url=req.linkedin_url or "",
+        instagram_url=req.instagram_url or "",
         cached_linkedin_content=extracted["linkedin_content"],
         cached_instagram_content=extracted["instagram_content"],
         profile=profile
@@ -210,7 +235,11 @@ def analyze_person(req: AnalyzeRequest):
 # CREATE (Manual)
 @app.post("/api/people", response_model=PersonResponse)
 def create_person_manual(req: PersonCreateRequest):
-    """Manually create an agent without URL scraping."""
+    """Create an agent while preserving the required LinkedIn/Instagram source boundary."""
+    valid, msg = validate_sources(req.linkedin_url, req.instagram_url)
+    if not valid:
+        raise HTTPException(status_code=400, detail=msg)
+
     person_id = f"person-{uuid.uuid4().hex[:8]}"
     profile = PersonProfile(
         professional_summary=f"{req.name} — {req.headline}",
@@ -254,6 +283,12 @@ def update_person(person_id: str, req: PersonUpdateRequest):
     if not existing:
         raise HTTPException(status_code=404, detail=f"Person with ID '{person_id}' not found.")
 
+    linkedin_url = req.linkedin_url or existing.linkedin_url
+    instagram_url = req.instagram_url or existing.instagram_url
+    valid, msg = validate_sources(linkedin_url, instagram_url)
+    if not valid:
+        raise HTTPException(status_code=400, detail=msg)
+
     prof_data = existing.profile.model_dump()
 
     if req.name is not None:
@@ -261,9 +296,9 @@ def update_person(person_id: str, req: PersonUpdateRequest):
     if req.headline is not None:
         existing.headline = req.headline
     if req.linkedin_url is not None:
-        existing.linkedin_url = req.linkedin_url
+        existing.linkedin_url = linkedin_url
     if req.instagram_url is not None:
-        existing.instagram_url = req.instagram_url
+        existing.instagram_url = instagram_url
 
     if req.agent_summary is not None:
         prof_data["agent_summary"] = req.agent_summary
