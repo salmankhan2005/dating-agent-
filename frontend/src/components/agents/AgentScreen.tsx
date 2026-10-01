@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { PersonResponse, DateResult, Message } from "@/lib/types";
 import { Avatar, ScoreRing } from "@/components/ui";
-import ThinkingState from "@/components/agents/ThinkingState";
 import StreamingText from "@/components/agents/StreamingText";
 
 interface AgentScreenProps {
@@ -12,9 +11,48 @@ interface AgentScreenProps {
   dateResult: DateResult | null;
   revealedMessages: Message[];
   isRunning: boolean;
-  thinkingMsg?: string;
-  thinkingTurn?: string | null;
   onNewDate?: () => void;
+}
+
+function TypewriterMessage({ text, isAgentA }: { text: string; isAgentA: boolean }) {
+  const [displayText, setDisplayText] = useState("");
+
+  useEffect(() => {
+    let index = 0;
+    let cancelled = false;
+
+    const tick = () => {
+      if (cancelled) return;
+      index += 1;
+      setDisplayText(text.slice(0, index));
+      if (index < text.length) {
+        window.setTimeout(tick, 14 + (index % 4) * 5);
+      }
+    };
+
+    setDisplayText("");
+    const timeout = window.setTimeout(tick, 120);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+    };
+  }, [text]);
+
+  return (
+    <div
+      className={`max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
+        isAgentA
+          ? "bg-white text-[#1c1c1a] border border-[#e8e3da] rounded-tl-sm"
+          : "bg-[#451ebb] text-white rounded-tr-sm"
+      }`}
+    >
+      {displayText || ""}
+      {displayText.length < text.length && (
+        <span className={`ml-1 inline-block h-4 w-[2px] align-middle ${isAgentA ? "bg-[#451ebb]" : "bg-white"}`} />
+      )}
+    </div>
+  );
 }
 
 export default function AgentScreen({
@@ -23,8 +61,6 @@ export default function AgentScreen({
   dateResult,
   revealedMessages,
   isRunning,
-  thinkingMsg = "Calibrating conversation tone…",
-  thinkingTurn,
   onNewDate,
 }: AgentScreenProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -35,7 +71,7 @@ export default function AgentScreen({
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [revealedMessages, thinkingTurn]);
+  }, [revealedMessages]);
 
   return (
     <div className="card overflow-hidden border border-[#e4dfd7] shadow-sm bg-[#fdfcf9] rounded-2xl flex flex-col h-[780px]">
@@ -47,9 +83,7 @@ export default function AgentScreen({
             <Avatar name={personA.name} size={46} />
             <span
               className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${
-                isRunning && thinkingTurn === personA.name
-                  ? "bg-purple-600 animate-ping"
-                  : "bg-emerald-500"
+                  "bg-emerald-500"
               }`}
             />
           </div>
@@ -86,9 +120,7 @@ export default function AgentScreen({
             <Avatar name={personB.name} size={46} />
             <span
               className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${
-                isRunning && thinkingTurn === personB.name
-                  ? "bg-purple-600 animate-ping"
-                  : "bg-emerald-500"
+                  "bg-emerald-500"
               }`}
             />
           </div>
@@ -99,35 +131,11 @@ export default function AgentScreen({
       <div className="flex flex-1 overflow-hidden flex-col lg:flex-row">
         {/* Left: Chat Container */}
         <div className="flex-1 flex flex-col border-b lg:border-b-0 lg:border-r border-[#ece7df] bg-[#fcfaf7]">
-          {isRunning && (
-            <div className="border-b border-[#ece7df] bg-[#faf7f2] p-4 sm:p-5">
-              <ThinkingState variant="Steps" />
-              <div className="mt-4 rounded-2xl border border-[#e8e3da] bg-white p-3 shadow-sm">
-                <StreamingText
-                  loop={true}
-                  fill={true}
-                  labels={{ sources: "3 sources", followUps: "Follow-up prompts" }}
-                  followUps={[
-                    "What are the strongest compatibility signals?",
-                    "How do their values align on lifestyle?",
-                  ]}
-                />
-              </div>
-            </div>
-          )}
-
           {/* Messages Stream */}
           <div
             ref={scrollRef}
             className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 scroll-smooth"
           >
-            {revealedMessages.length === 0 && isRunning && (
-              <div className="flex flex-col items-center justify-center h-full text-center p-8 space-y-3">
-                <div className="w-10 h-10 rounded-full border-2 border-purple-200 border-t-purple-600 animate-spin" />
-                <p className="font-serif italic text-sm text-[#797586]">{thinkingMsg}</p>
-              </div>
-            )}
-
             {revealedMessages.map((msg, idx) => {
               const isA = msg.speaker === "agent_a";
               return (
@@ -146,39 +154,11 @@ export default function AgentScreen({
                     <span className="font-medium text-[#1c1c1a]">{msg.speaker_name}</span>
                   </div>
 
-                  <div
-                    className={`max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                      isA
-                        ? "bg-white text-[#1c1c1a] border border-[#e8e3da] rounded-tl-sm"
-                        : "bg-[#451ebb] text-white rounded-tr-sm"
-                    }`}
-                  >
-                    {msg.message}
-                  </div>
+                  <TypewriterMessage text={msg.message} isAgentA={isA} />
 
                 </div>
               );
             })}
-
-            {/* In-flight typing indicator */}
-            {isRunning && thinkingTurn && (
-              <div
-                className={`flex items-center gap-2 animate-fade-in ${
-                  thinkingTurn === personB.name ? "justify-end" : "justify-start"
-                }`}
-              >
-                <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-[#e4dfd7] shadow-sm">
-                  <span className="text-xs text-[#797586] font-medium">
-                    {thinkingTurn} is responding…
-                  </span>
-                  <div className="flex gap-1 items-center">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce [animation-delay:0.15s]" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-600 animate-bounce [animation-delay:0.3s]" />
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Chat Footer Bar */}

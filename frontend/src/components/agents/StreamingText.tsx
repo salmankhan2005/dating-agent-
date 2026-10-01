@@ -8,18 +8,18 @@ const HOLD_MS = 3400;
 export type StreamingToken = { text: string; cite?: boolean };
 
 const TOKENS: StreamingToken[] = [
-  ..."Pistachio is your fastest-growing flavor — sales are up 23% this month and margins beat vanilla by 8 points."
+  ..."Comparing shared values, lifestyle cues, and conversation rhythm for this date."
     .split(" ")
     .map((text) => ({ text })),
   { text: "", cite: true },
-  ..."Stone-fruit flavors are trending in the same range."
+  ..."Checking for chemistry, overlap, and a natural next-step conversation."
     .split(" ")
     .map((text) => ({ text })),
 ];
 
 const FOLLOW_UPS = [
-  "Which flavors sell best in winter",
-  "Compare gelato and soft serve margins",
+  "What matters most in their compatibility?",
+  "How do their values and lifestyle align?",
 ];
 
 const SOURCE_IMAGES = {

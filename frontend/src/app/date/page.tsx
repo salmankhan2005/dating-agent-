@@ -250,8 +250,6 @@ function LiveDateContent() {
               dateResult={dateResult}
               revealedMessages={revealedMessages}
               isRunning={step === "running"}
-              thinkingMsg={thinkingMsg}
-              thinkingTurn={thinkingTurn}
               onNewDate={reset}
             />
           </div>

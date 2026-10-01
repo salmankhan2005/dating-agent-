@@ -25,40 +25,40 @@ type Row = {
 
 const VARIANTS: Record<string, { active: string; done: string; rows: Row[]; query?: string }> = {
   Steps: {
-    active: "Thinking",
-    done: "Thought for 4 seconds",
+    active: "Comparing profiles",
+    done: "Profile comparison complete",
     rows: [
-      { primary: "Reading flavor briefs" },
-      { primary: "Scanning supplier lists" },
-      { primary: "Comparing tasting notes", secondary: "6 flavors" },
-      { primary: "Writing the scoop report" },
+      { primary: "Reviewing public profile signals" },
+      { primary: "Comparing communication styles" },
+      { primary: "Checking overlap in interests", secondary: "shared signals" },
+      { primary: "Assessing compatibility fit" },
     ],
   },
   Reasoning: {
-    active: "Thinking",
-    done: "Thought for 4 seconds",
+    active: "Assessing chemistry",
+    done: "Chemistry check complete",
     rows: [
-      { primary: "Summer demand spikes for stone-fruit flavors — peach and apricot lead." },
-      { primary: "I should check cone inventory before promoting a waffle-bowl special." },
+      { primary: "Looking for meaningful overlap in values, habits, and energy." },
+      { primary: "Weighing conversation flow and long-term compatibility." },
     ],
   },
   Search: {
-    active: "Searching the web",
-    done: "Searched the web",
-    query: "best waffle cone supplier",
+    active: "Checking source context",
+    done: "Source context gathered",
+    query: "public signal review",
     rows: [
-      { primary: "Joy Cone", secondary: "joycone.com", href: "https://joycone.com/fs_products/waffle-cones/" },
-      { primary: "WebstaurantStore", secondary: "webstaurantstore.com", href: "https://www.webstaurantstore.com/ice-cream-shop-supplies.html" },
-      { primary: "The Konery", secondary: "thekonery.com", href: "https://www.thekonery.com/" },
+      { primary: "LinkedIn profile summary", secondary: "career and focus" },
+      { primary: "Instagram signal scan", secondary: "lifestyle and interests" },
+      { primary: "Compatibility notes", secondary: "shared themes" },
     ],
   },
   Coding: {
-    active: "Running tools",
-    done: "Ran 3 tools",
+    active: "Running profile analysis",
+    done: "Analysis finished",
     rows: [
-      { primary: "Read", secondary: "flavors.ts", mono: true },
-      { primary: "Edit", secondary: "ChurnSchedule.tsx", mono: true, add: 74, del: 41 },
-      { primary: "Run", secondary: "npm run freeze", mono: true },
+      { primary: "Read", secondary: "profile summary", mono: true },
+      { primary: "Compare", secondary: "compatibility factors", mono: true },
+      { primary: "Score", secondary: "date fit", mono: true },
     ],
   },
 };
