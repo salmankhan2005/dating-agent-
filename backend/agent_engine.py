@@ -80,9 +80,10 @@ def call_groq_json(
 
     last_error = None
     raw_content = ""
+    json_repair_attempted = False
 
     # Outer loop: exponential backoff on Groq overload / rate-limit
-    for backoff_attempt in range(max_backoff_attempts):
+    for backoff_attempt in range(max_backoff_attempts + 1):
         try:
             data = _groq_post(payload)
             raw_content = data["choices"][0]["message"]["content"]
@@ -111,8 +112,10 @@ def call_groq_json(
         except http_requests.exceptions.HTTPError as e:
             status = e.response.status_code if e.response is not None else 0
             body = ""
+            error_code = ""
             try:
                 body = e.response.text[:400] if e.response is not None else str(e)
+                error_code = e.response.json().get("error", {}).get("code", "") if e.response is not None else ""
             except Exception:
                 body = str(e)
 
@@ -129,6 +132,24 @@ def call_groq_json(
                     f"Your key may be revoked or the model '{GROQ_MODEL}' may not be available. "
                     f"Details: {body}"
                 )
+
+            if status == 400 and error_code == "json_validate_failed":
+                if not json_repair_attempted:
+                    payload = {
+                        **payload,
+                        "messages": messages + [{
+                            "role": "user",
+                            "content": (
+                                "Your previous response was rejected because it was not valid JSON. "
+                                "Retry the request and return a non-empty JSON object matching the requested format. "
+                                "Do not include markdown or text outside the JSON object."
+                            ),
+                        }],
+                    }
+                    json_repair_attempted = True
+                    continue
+                last_error = "Groq could not produce valid JSON after one repair attempt. Please retry."
+                break
 
             last_error = f"Groq API HTTP {status}: {body}"
             if status in _GROQ_RETRY_CODES and backoff_attempt < max_backoff_attempts - 1:
@@ -292,7 +313,7 @@ Return one JSON object with exactly one field: {{"message": "..."}}"""
         response = call_groq_json([
             {"role": "system", "content": conv_prompt},
             {"role": "user", "content": messages_prompt},
-        ], temperature=0.6, max_tokens=300)
+        ], temperature=0.6, max_tokens=1024)
         message_text = response.get("message") if isinstance(response, dict) else None
         if not isinstance(message_text, str) or not message_text.strip():
             raise RuntimeError(f"Groq returned an empty message for conversation turn {turn_number}.")
