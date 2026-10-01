@@ -17,3 +17,7 @@
         sync: false
       - key: APIFY_API_TOKEN
         sync: false
+      - key: APIFY_LINKEDIN_ACTOR_ID
+        value: LpVuK3Zozwuipa5bp
+      - key: APIFY_INSTAGRAM_ACTOR_ID
+        value: dSCLg0C3YEZ83HzYX

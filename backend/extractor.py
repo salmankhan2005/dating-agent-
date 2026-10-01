@@ -1,8 +1,13 @@
+import json
+import os
 import re
 import time
+import urllib.parse
 import urllib.request
 import urllib.error
 from typing import Dict, Tuple
+
+import requests
 
 
 def validate_sources(linkedin_url: str, instagram_url: str) -> Tuple[bool, str]:
@@ -181,6 +186,47 @@ def _fetch_with_requests(url: str) -> str:
     return content
 
 
+def _run_apify_actor(actor_id: str, url: str, platform: str) -> str:
+    """Run a configured Apify Actor against exactly one supplied public profile URL."""
+    token = os.getenv("APIFY_API_TOKEN", "").strip()
+    if not token:
+        raise RuntimeError("APIFY_API_TOKEN is not configured.")
+
+    if platform == "instagram":
+        actor_input = {"directUrls": [url], "resultsLimit": 50}
+    else:
+        actor_input = {"profileUrls": [url]}
+
+    endpoint = "https://api.apify.com/v2/acts/{}/run-sync-get-dataset-items".format(
+        urllib.parse.quote(actor_id, safe="")
+    )
+    try:
+        response = requests.post(
+            endpoint,
+            json=actor_input,
+            headers={"Authorization": f"Bearer {token}"},
+            timeout=120,
+        )
+        response.raise_for_status()
+        items = response.json()
+    except requests.RequestException as exc:
+        raise RuntimeError(f"Apify {platform} extraction failed: {exc}") from exc
+    except ValueError as exc:
+        raise RuntimeError(f"Apify {platform} returned invalid JSON.") from exc
+
+    if not items:
+        raise RuntimeError(
+            f"Apify {platform} Actor returned no public data for the supplied URL."
+        )
+
+    content = json.dumps(items, ensure_ascii=False, indent=2)
+    if len(content) < 30:
+        raise RuntimeError(
+            f"Apify {platform} Actor returned insufficient public data for the supplied URL."
+        )
+    return content
+
+
 def extract_public_content(linkedin_url: str, instagram_url: str, name_hint: str = None) -> Dict[str, str]:
     """
     Extract public text STRICTLY from the two provided URLs.
@@ -191,30 +237,44 @@ def extract_public_content(linkedin_url: str, instagram_url: str, name_hint: str
     
     Does NOT use Google, Wikipedia, or any third-party data source.
     """
-    # --- LinkedIn ---
-    try:
-        linkedin_text = _fetch_with_playwright(linkedin_url)
-    except RuntimeError as e:
-        if "Playwright is not installed" in str(e):
-            # Playwright unavailable, try requests fallback
-            try:
-                linkedin_text = _fetch_with_requests(linkedin_url)
-            except RuntimeError:
-                raise  # Re-raise the requests error
-        else:
-            raise  # Re-raise Playwright error (private profile, timeout, etc.)
+    apify_token = os.getenv("APIFY_API_TOKEN", "").strip()
+    linkedin_actor_id = os.getenv("APIFY_LINKEDIN_ACTOR_ID", "").strip()
+    instagram_actor_id = os.getenv("APIFY_INSTAGRAM_ACTOR_ID", "").strip()
 
-    # --- Instagram ---
-    try:
-        instagram_text = _fetch_with_playwright(instagram_url)
-    except RuntimeError as e:
-        if "Playwright is not installed" in str(e):
-            try:
-                instagram_text = _fetch_with_requests(instagram_url)
-            except RuntimeError:
+    if apify_token or linkedin_actor_id or instagram_actor_id:
+        if not apify_token or not linkedin_actor_id or not instagram_actor_id:
+            raise RuntimeError(
+                "Apify is partially configured. Set APIFY_API_TOKEN, "
+                "APIFY_LINKEDIN_ACTOR_ID, and APIFY_INSTAGRAM_ACTOR_ID."
+            )
+
+        linkedin_text = _run_apify_actor(linkedin_actor_id, linkedin_url, "linkedin")
+        instagram_text = _run_apify_actor(instagram_actor_id, instagram_url, "instagram")
+    else:
+        # --- LinkedIn ---
+        try:
+            linkedin_text = _fetch_with_playwright(linkedin_url)
+        except RuntimeError as e:
+            if "Playwright is not installed" in str(e):
+                # Playwright unavailable, try requests fallback
+                try:
+                    linkedin_text = _fetch_with_requests(linkedin_url)
+                except RuntimeError:
+                    raise  # Re-raise the requests error
+            else:
+                raise  # Re-raise Playwright error (private profile, timeout, etc.)
+
+        # --- Instagram ---
+        try:
+            instagram_text = _fetch_with_playwright(instagram_url)
+        except RuntimeError as e:
+            if "Playwright is not installed" in str(e):
+                try:
+                    instagram_text = _fetch_with_requests(instagram_url)
+                except RuntimeError:
+                    raise
+            else:
                 raise
-        else:
-            raise
 
     # Derive name from URL slug if not provided
     if not name_hint:
