@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import type { PersonResponse, DateResult, Message } from "@/lib/types";
 import { Avatar, ScoreRing } from "@/components/ui";
 import StreamingText from "@/components/agents/StreamingText";
@@ -14,20 +14,39 @@ interface AgentScreenProps {
   onNewDate?: () => void;
 }
 
-function TypewriterMessage({ text, isAgentA }: { text: string; isAgentA: boolean }) {
+function TypewriterMessage({
+  text,
+  isAgentA,
+  isTyping,
+  messageIndex,
+  setCompletedMessageCount,
+}: {
+  text: string;
+  isAgentA: boolean;
+  isTyping: boolean;
+  messageIndex: number;
+  setCompletedMessageCount: Dispatch<SetStateAction<number>>;
+}) {
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
+    if (!isTyping) {
+      setDisplayText(text);
+      return;
+    }
+
     let index = 0;
     let cancelled = false;
 
     const tick = () => {
       if (cancelled) return;
+      if (index >= text.length) {
+        setCompletedMessageCount((completed) => Math.max(completed, messageIndex + 1));
+        return;
+      }
       index += 1;
       setDisplayText(text.slice(0, index));
-      if (index < text.length) {
-        window.setTimeout(tick, 14 + (index % 4) * 5);
-      }
+      window.setTimeout(tick, 14 + (index % 4) * 5);
     };
 
     setDisplayText("");
@@ -37,7 +56,7 @@ function TypewriterMessage({ text, isAgentA }: { text: string; isAgentA: boolean
       cancelled = true;
       window.clearTimeout(timeout);
     };
-  }, [text]);
+  }, [isTyping, messageIndex, setCompletedMessageCount, text]);
 
   return (
     <div
@@ -65,6 +84,7 @@ export default function AgentScreen({
 }: AgentScreenProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState<"insights" | "sources">("insights");
+  const [completedMessageCount, setCompletedMessageCount] = useState(0);
 
   // Auto-scroll as messages appear
   useEffect(() => {
@@ -136,7 +156,10 @@ export default function AgentScreen({
             ref={scrollRef}
             className="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 scroll-smooth"
           >
-            {revealedMessages.map((msg, idx) => {
+            {(isRunning
+              ? revealedMessages.slice(0, completedMessageCount + 1)
+              : revealedMessages
+            ).map((msg, idx) => {
               const isA = msg.speaker === "agent_a";
               return (
                 <div
@@ -154,7 +177,13 @@ export default function AgentScreen({
                     <span className="font-medium text-[#1c1c1a]">{msg.speaker_name}</span>
                   </div>
 
-                  <TypewriterMessage text={msg.message} isAgentA={isA} />
+                  <TypewriterMessage
+                    text={msg.message}
+                    isAgentA={isA}
+                    isTyping={isRunning && idx === completedMessageCount}
+                    messageIndex={idx}
+                    setCompletedMessageCount={setCompletedMessageCount}
+                  />
 
                 </div>
               );
