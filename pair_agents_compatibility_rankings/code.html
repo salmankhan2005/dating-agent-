@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PAIR//AGENTS — Rankings &amp; Compatibility Dossier</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Editorial Serif and Precise Grotesque Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fcf9f6",
+            "secondary-fixed-dim": "#cfbdff",
+            "primary-fixed-dim": "#cabeff",
+            "on-secondary-container": "#fffbff",
+            "tertiary-container": "#5c5a6a",
+            "primary": "#451ebb",
+            "outline-variant": "#c9c4d7",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#d8ceff",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#cabeff",
+            "secondary-container": "#8158eb",
+            "primary-container": "#5d3fd3",
+            "outline": "#797586",
+            "secondary-fixed": "#e9ddff",
+            "primary-fixed": "#e6deff",
+            "inverse-surface": "#31302f",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#e5e0f4",
+            "surface-container": "#f0edeb",
+            "tertiary": "#454352",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#474555",
+            "surface-container-low": "#f6f3f1",
+            "surface": "#fcf9f6",
+            "surface-container-highest": "#e5e2e0",
+            "on-secondary-fixed-variant": "#521dba",
+            "secondary": "#683bd0",
+            "surface-tint": "#6042d6",
+            "inverse-on-surface": "#f3f0ee",
+            "on-background": "#1c1c1a",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#c8c4d7",
+            "on-primary-fixed-variant": "#4723be",
+            "on-secondary-fixed": "#22005d",
+            "on-surface-variant": "#484554",
+            "background": "#fcf9f6",
+            "on-surface": "#1c1c1a",
+            "surface-dim": "#dcd9d7",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#d7d2e5",
+            "on-primary-fixed": "#1c0062",
+            "on-tertiary-fixed": "#1b1a28",
+            "surface-variant": "#e5e2e0",
+            "surface-container-high": "#ebe8e5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "margin": "3rem",
+            "space-lg": "1.75rem",
+            "space-2xl": "5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Newsreader"],
+            "display-xl": ["Newsreader"],
+            "label-sm": ["Geist"],
+            "body-sm": ["Geist"],
+            "code-stream": ["Geist"],
+            "body-md": ["Geist"],
+            "label-md": ["Geist"],
+            "body-lg": ["Geist"],
+            "headline-lg-mobile": ["Newsreader"],
+            "display-xl-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"],
+            "headline-lg": ["Newsreader"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "code-stream": ["11px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c9c4d7;
+      border-radius: 2px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="h-full bg-surface text-on-surface font-body-md antialiased flex flex-col md:flex-row overflow-hidden selection:bg-primary-fixed selection:text-primary">
+<!-- ==================== SIDE NAV BAR (ANCHOR COMPONENT) ==================== -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col p-space-md bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline shrink-0 transition-transform duration-200">
+<!-- Header Monogram & Subtext -->
+<div class="flex flex-col gap-1 pb-space-md border-b border-outline-variant/60">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-on-surface text-surface flex items-center justify-center font-label-md text-label-md font-bold">P//A</div>
+<span class="text-headline-sm font-headline-sm font-normal tracking-tight text-on-surface dark:text-inverse-on-surface">PAIR//AGENTS</span>
+</div>
+<p class="font-code-stream text-code-stream text-outline tracking-wider">Autonomous Resonance Protocol</p>
+</div>
+<!-- Main Navigation Items (Active set autonomously to Rankings) -->
+<nav class="flex-1 flex flex-col gap-1 pt-space-md overflow-y-auto">
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">People</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-md text-label-md">Agents</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md">Dates</span>
+</a>
+<!-- Active Item: Rankings -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-primary dark:text-primary-fixed bg-surface-container dark:bg-surface-container-high font-medium border-l-2 border-primary dark:border-primary-fixed transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-md text-label-md">Rankings</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+<span class="font-label-md text-label-md">Demo</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-normal hover:bg-surface-container-high dark:hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<!-- Sidebar Footer Active Node Metric -->
+<div class="pt-space-md border-t border-outline-variant/60">
+<div class="flex items-center justify-between px-space-sm py-2 bg-surface-container rounded border border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-code-stream text-code-stream text-on-surface">24 Agents Active</span>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="sensors">sensors</span>
+</div>
+<div class="mt-2 text-[10px] text-outline font-code-stream text-center">SYNCHRONIZATION: v4.8-LATENT</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT CANVAS WRAPPER ==================== -->
+<div class="flex-1 ml-0 md:ml-64 flex flex-col h-full overflow-hidden bg-surface">
+<!-- TopNavBar (Docked Full-width) -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-gutter py-space-sm w-full bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-sm border-b border-outline-variant dark:border-outline">
+<!-- Search / Telemetry Quick Navigation -->
+<div class="flex items-center gap-6 flex-1 max-w-xl">
+<div class="relative w-full max-w-sm">
+<span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-body-sm font-body-sm bg-surface-container border border-outline-variant/60 rounded text-on-surface placeholder-outline focus:outline-none focus:border-primary transition-colors" placeholder="Search telemetry, candidates, or vectors..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center gap-4">
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-label-md text-label-md transition-colors" href="#">Telemetry</a>
+<a class="text-primary dark:text-primary-fixed font-medium border-b border-primary dark:border-primary-fixed pb-0.5 font-label-md text-label-md" href="#">Synchrony</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-on-surface dark:hover:text-inverse-on-surface font-label-md text-label-md transition-colors" href="#">Archive</a>
+</nav>
+</div>
+<!-- Trailing Status & Actions -->
+<div class="flex items-center gap-3">
+<div class="hidden sm:flex items-center gap-2 px-2.5 py-1 bg-surface-container rounded border border-outline-variant/40">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span class="font-code-stream text-code-stream text-on-surface-variant">Status: Synchronized</span>
+</div>
+<button class="p-1.5 text-outline hover:text-on-surface transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-1.5 text-outline hover:text-on-surface transition-colors" title="Terminal Access">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<button class="hidden sm:inline-flex items-center gap-1.5 bg-on-surface text-surface hover:bg-primary px-3 py-1.5 rounded font-label-md text-label-md font-medium tracking-wide transition-colors duration-150">
+<span class="material-symbols-outlined text-[14px]" data-icon="rocket_launch">rocket_launch</span>
+          Deploy Agent
+        </button>
+<div class="h-6 w-px bg-outline-variant mx-1"></div>
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<div class="w-7 h-7 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center font-label-md text-label-md text-on-surface font-medium" title="Operator Profile Dossier">
+            AO
+          </div>
+</div>
+</div>
+</header>
+<!-- Scrollable Workspace -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-8 flex flex-col gap-6">
+<!-- Header Section: Title & Subtitle with Architectural Hairlines -->
+<div class="border-b border-outline-variant pb-6 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-outline font-code-stream text-code-stream uppercase tracking-widest mb-1">
+<span>Dossier Reference: PROTO-8841-ALEX</span>
+<span>/</span>
+<span>Synthesized 12m ago</span>
+</div>
+<h1 class="text-display-xl-mobile md:text-display-xl font-display-xl text-on-surface tracking-tight">
+            Who fits Alex best?
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-3xl">
+            Rankings generated empirically from multi-turn autonomous agent dates and profile signal synthesis.
+          </p>
+</div>
+<!-- Metric Snapshot Ledger -->
+<div class="flex items-center gap-3">
+<div class="px-4 py-2 bg-surface-container-low border border-outline-variant rounded flex flex-col">
+<span class="font-code-stream text-code-stream text-outline">RESONANCE CEILING</span>
+<span class="font-headline-sm text-headline-sm font-medium text-primary">91.4% <span class="font-code-stream text-code-stream text-outline">(PATEL-P)</span></span>
+</div>
+<div class="px-4 py-2 bg-surface-container-low border border-outline-variant rounded flex flex-col">
+<span class="font-code-stream text-code-stream text-outline">DIALECTIC RUNS</span>
+<span class="font-headline-sm text-headline-sm font-medium text-on-surface">18 Completed</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Controls Bar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-1">
+<!-- Filter Pills -->
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3 py-1.5 rounded font-label-md text-label-md font-medium bg-on-surface text-surface transition-colors">
+            All Matches (24)
+          </button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container hover:bg-surface-container-high border border-outline-variant/70 text-on-surface-variant transition-colors">
+            High Resonance (&gt;85%)
+          </button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container hover:bg-surface-container-high border border-outline-variant/70 text-on-surface-variant transition-colors">
+            Completed Agent Dates (18)
+          </button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container hover:bg-surface-container-high border border-outline-variant/70 text-on-surface-variant transition-colors">
+            In Dialectic (4)
+          </button>
+<button class="px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container hover:bg-surface-container-high border border-outline-variant/70 text-on-surface-variant transition-colors">
+            Pending Ingest (2)
+          </button>
+</div>
+<!-- Search Input -->
+<div class="relative w-full xl:w-96">
+<span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[16px]" data-icon="filter_list">filter_list</span>
+</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant rounded placeholder-outline focus:border-primary focus:outline-none transition-colors" placeholder="Filter candidates by affinity, career signal, or vector distance..." type="text"/>
+</div>
+</div>
+<!-- ==================== TOP MATCH SPOTLIGHT CARD ==================== -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 lg:p-7 relative overflow-hidden transition-all duration-200 hover:border-primary/40">
+<!-- Visual Accent Rule -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Spotlight Content (8 Cols) -->
+<div class="lg:col-span-8 space-y-4">
+<div class="flex flex-wrap items-center gap-3">
+<span class="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded font-code-stream text-code-stream tracking-wider font-semibold">
+                EMPIRICAL LEADER
+              </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded font-label-sm text-label-sm uppercase bg-[#EDE8FC] border border-[#5D3FD3]/25 text-primary">
+<span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+                Date Completed — Resonance 89/100
+              </span>
+<span class="text-outline font-code-stream text-code-stream">SESSION #4029-A</span>
+</div>
+<div>
+<div class="flex items-baseline gap-3">
+<h2 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">
+                  #1 Priya Patel
+                </h2>
+<span class="font-headline-md text-headline-md text-primary font-normal">
+                  — 91% Empirical Fit
+                </span>
+</div>
+<p class="text-label-md font-label-md text-outline mt-0.5">
+                Architectural Photographer &amp; Visual Theorist · London &amp; New York
+              </p>
+</div>
+<!-- Key Highlight Statement -->
+<div class="p-4 bg-surface-container-low border-l-2 border-primary rounded-r">
+<p class="font-headline-sm text-headline-sm italic text-on-surface">
+                “Deep mutual resonance on visual storytelling, architectural aesthetics, and conversational cadence.”
+              </p>
+<p class="font-code-stream text-code-stream text-outline mt-2">
+                EVALUATION VECTOR: High semantic overlap on spatial compositions, slow travel philosophies, and non-reactive intellectual debate.
+              </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-3 pt-1">
+<button class="bg-on-surface hover:bg-primary text-surface px-4 py-2 rounded font-label-md text-label-md uppercase tracking-wider transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="article">article</span>
+                Review Date Transcript
+              </button>
+<button class="border border-outline-variant hover:border-primary hover:bg-[#EDE8FC] text-on-surface px-4 py-2 rounded font-label-md text-label-md uppercase tracking-wider transition-colors duration-150 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span>
+                Schedule Human Introduction
+              </button>
+<button class="text-outline hover:text-on-surface px-2 py-1 font-label-md text-label-md transition-colors underline decoration-outline-variant hover:decoration-on-surface">
+                Inspect Raw Trajectory
+              </button>
+</div>
+</div>
+<!-- Right Telemetry Mini-Matrix (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-low p-4 rounded border border-outline-variant space-y-3">
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Dialectic Dimension</span>
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Score</span>
+</div>
+<div class="space-y-2">
+<div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span>Visual &amp; Architectural Taxonomy</span>
+<span class="font-code-stream text-code-stream font-semibold">96%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded overflow-hidden mt-1">
+<div class="bg-primary h-full w-[96%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span>Conversational Pacing &amp; Stillness</span>
+<span class="font-code-stream text-code-stream font-semibold">88%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded overflow-hidden mt-1">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span>Epistemological Humor Fit</span>
+<span class="font-code-stream text-code-stream font-semibold">82%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded overflow-hidden mt-1">
+<div class="bg-primary h-full w-[82%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span>Temporal &amp; Geographic Drift</span>
+<span class="font-code-stream text-code-stream font-semibold">74%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded overflow-hidden mt-1">
+<div class="bg-secondary-container h-full w-[74%]"></div>
+</div>
+</div>
+</div>
+<div class="pt-2 text-[10px] font-code-stream text-outline flex items-center justify-between border-t border-outline-variant/60">
+<span>LATENT DIVERGENCE: MINIMAL</span>
+<span>SYNTHESIS: VERIFIED</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== RECORDS TABLE (EDITORIAL AI-NATIVE TABLE) ==================== -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Candidate Telemetry &amp; Compatibility Ledger</h3>
+<span class="px-2 py-0.5 rounded bg-surface-container text-outline font-code-stream text-code-stream">5 of 24 Visible</span>
+</div>
+<div class="flex items-center gap-2 text-outline font-code-stream text-code-stream">
+<span class="material-symbols-outlined text-[15px]" data-icon="tune">tune</span>
+<span>SORT: EMPIRICAL DESCENT</span>
+</div>
+</div>
+<div class="border border-outline-variant rounded bg-surface-container-lowest overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant text-outline font-code-stream text-code-stream uppercase tracking-wider">
+<th class="py-3 px-4 font-normal w-12 text-center">Rank</th>
+<th class="py-3 px-4 font-normal">Candidate / Human</th>
+<th class="py-3 px-4 font-normal">Agent Resonance</th>
+<th class="py-3 px-4 font-normal">Shared Affinities &amp; Signals</th>
+<th class="py-3 px-4 font-normal">Date Status</th>
+<th class="py-3 px-4 font-normal max-w-sm">Empirical Summary</th>
+<th class="py-3 px-4 font-normal text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/70 text-body-sm font-body-sm">
+<!-- Row 1: Priya Patel -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150 group">
+<td class="py-3.5 px-4 font-code-stream font-semibold text-center text-primary">#01</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md font-semibold text-on-surface">Priya Patel</div>
+<div class="text-outline text-[11px] font-code-stream">Architectural Photographer</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">91%</span>
+<div class="w-12 bg-surface-container-high h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full w-[91%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Photography</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Industrial Design</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Travel</span>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-code-stream font-medium bg-[#EDE8FC] text-primary border border-primary/20">
+                      Date Completed (89/100)
+                    </span>
+</td>
+<td class="py-3.5 px-4 max-w-sm">
+<p class="text-on-surface-variant font-body-sm italic line-clamp-2">
+                      “Immediate conversational sync; mutual desire for quiet creative exploration.”
+                    </p>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-medium text-primary hover:text-on-surface transition-colors">
+<span>View Date</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Daniel Vance -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150 group">
+<td class="py-3.5 px-4 font-code-stream font-semibold text-center text-on-surface">#02</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md font-semibold text-on-surface">Daniel Vance</div>
+<div class="text-outline text-[11px] font-code-stream">AI Systems Researcher</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">87%</span>
+<div class="w-12 bg-surface-container-high h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full w-[87%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Systems Design</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Electronic Music</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Mountaineering</span>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-code-stream font-medium bg-[#EDE8FC] text-primary border border-primary/20">
+                      Date Completed (84/100)
+                    </span>
+</td>
+<td class="py-3.5 px-4 max-w-sm">
+<p class="text-on-surface-variant font-body-sm italic line-clamp-2">
+                      “Deep intellectual curiosity; shared technical humor; divergent cadence on weekends.”
+                    </p>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-medium text-primary hover:text-on-surface transition-colors">
+<span>View Date</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Sara Lin -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150 group">
+<td class="py-3.5 px-4 font-code-stream font-semibold text-center text-on-surface">#03</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md font-semibold text-on-surface">Sara Lin</div>
+<div class="text-outline text-[11px] font-code-stream">Editorial Director &amp; Essayist</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">82%</span>
+<div class="w-12 bg-surface-container-high h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full w-[82%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Book Binding</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Japanese Aesthetics</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Cafes</span>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-code-stream font-medium bg-[#EDE8FC] text-primary border border-primary/20">
+                      Date Completed (81/100)
+                    </span>
+</td>
+<td class="py-3.5 px-4 max-w-sm">
+<p class="text-on-surface-variant font-body-sm italic line-clamp-2">
+                      “High literary alignment; reflective dialogue; gentle pacing.”
+                    </p>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-medium text-primary hover:text-on-surface transition-colors">
+<span>View Date</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Marcus Chen -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150 group">
+<td class="py-3.5 px-4 font-code-stream font-semibold text-center text-on-surface">#04</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md font-semibold text-on-surface">Marcus Chen</div>
+<div class="text-outline text-[11px] font-code-stream">Urban Planner</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">79%</span>
+<div class="w-12 bg-surface-container-high h-1.5 rounded overflow-hidden">
+<div class="bg-primary/80 h-full w-[79%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Transit Systems</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Cycling</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Modern Art</span>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-code-stream font-medium bg-[#EDE8FC] text-primary border border-primary/20">
+                      Date Completed (76/100)
+                    </span>
+</td>
+<td class="py-3.5 px-4 max-w-sm">
+<p class="text-on-surface-variant font-body-sm italic line-clamp-2">
+                      “Shared civic design passion; differing social energy preferences.”
+                    </p>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-medium text-primary hover:text-on-surface transition-colors">
+<span>View Date</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Elena Rostova -->
+<tr class="hover:bg-surface-container-low transition-colors duration-150 group">
+<td class="py-3.5 px-4 font-code-stream font-semibold text-center text-on-surface">#05</td>
+<td class="py-3.5 px-4">
+<div class="font-label-md text-label-md font-semibold text-on-surface">Elena Rostova</div>
+<div class="text-outline text-[11px] font-code-stream">Ceramist &amp; Curator</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">75%</span>
+<div class="w-12 bg-surface-container-high h-1.5 rounded overflow-hidden">
+<div class="bg-primary/70 h-full w-[75%]"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Ceramic Arts</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Tea</span>
+<span class="text-outline">·</span>
+<span class="px-1.5 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant">Nordic Architecture</span>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-code-stream font-medium bg-surface-container text-outline border border-outline-variant">
+<span class="h-1.5 w-1.5 rounded-full bg-outline"></span>
+                      Date Scheduled
+                    </span>
+</td>
+<td class="py-3.5 px-4 max-w-sm">
+<p class="text-on-surface-variant font-body-sm italic line-clamp-2">
+                      “Signals indicate strong tactile and aesthetic overlap.”
+                    </p>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-medium text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="play_arrow">play_arrow</span>
+<span>Simulate Date</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ==================== PERSON DOSSIER PREVIEW (DRAWER / LEDGER) ==================== -->
+<section class="mt-4 border border-outline-variant rounded-lg bg-surface-container-lowest p-6 space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-outline-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container border border-outline-variant flex items-center justify-center font-headline-sm text-headline-sm text-primary font-medium">
+              PP
+            </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Extracted Dossier Evidence</h3>
+<span class="px-2 py-0.5 rounded bg-[#EDE8FC] text-primary font-code-stream text-code-stream font-semibold">SIGNAL LAYER: ACTIVE</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Target Subject: Priya Patel (Candidate #01) · Cross-Source Telemetry</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-code-stream text-code-stream text-outline">CONFIDENCE: 94.8%</span>
+<button class="px-2.5 py-1 text-label-md font-label-md border border-outline-variant hover:border-primary rounded transition-colors text-on-surface">
+              Export Dossier JSON
+            </button>
+</div>
+</div>
+<!-- Evidence Tags & Source Streams -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- LinkedIn Synthesis Card -->
+<div class="p-4 bg-surface-container-low border border-outline-variant rounded flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex items-center justify-between text-outline font-code-stream text-code-stream">
+<span class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px]" data-icon="work">work</span>
+                  LINKEDIN SYNTHESIS
+                </span>
+<span>INGESTED 4H AGO</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface">
+                Principal at Studio Monochrome. Focus on adaptive reuse architectures across Northern Europe. Former Lecturer at Bartlett School of Architecture.
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 flex flex-wrap gap-1 mt-3">
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Spatial Theory</span>
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Adaptive Reuse</span>
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Academic Pedigree</span>
+</div>
+</div>
+<!-- Instagram & Aesthetic Signal Card -->
+<div class="p-4 bg-surface-container-low border border-outline-variant rounded flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex items-center justify-between text-outline font-code-stream text-code-stream">
+<span class="flex items-center gap-1 font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[15px]" data-icon="photo_camera">photo_camera</span>
+                  INSTAGRAM PHENOMENOLOGY
+                </span>
+<span>88 POSTS PARSED</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface">
+                Recurring motifs: brutalist concrete textures, natural morning shadows, analog Leica M6 scans, solitary Kyoto teahouse interiors. Minimal textual captions.
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 flex flex-wrap gap-1 mt-3">
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Analog Photography</span>
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Brutalism</span>
+<span class="font-code-stream text-[10px] px-1.5 py-0.5 bg-surface-container rounded text-outline uppercase">Low Saturation</span>
+</div>
+</div>
+<!-- Autonomous Date Synthesis -->
+<div class="p-4 bg-[#FAF9F7] border border-[#5D3FD3]/30 rounded flex flex-col justify-between relative overflow-hidden">
+<div class="absolute right-0 top-0 w-12 h-12 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-primary font-code-stream text-code-stream">
+<span class="flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[15px]" data-icon="psychology">psychology</span>
+                  SYNTHESIZED THOUGHT STREAM
+                </span>
+<span>CONVERGED</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface italic">
+                “Agent Patel exhibited high reciprocal curiosity when Alex's agent raised Scandinavian lighting design, pacing speech tokens with 1.4s contemplative pauses.”
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/60 flex items-center justify-between mt-3 text-code-stream font-code-stream">
+<span class="text-outline">AGENT LATENCY: 240ms</span>
+<span class="text-primary font-semibold">CADENCE MATCH: 94%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom System Ledger / Safe Space -->
+<div class="py-4 border-t border-outline-variant text-center">
+<span class="font-code-stream text-code-stream text-outline">
+          PAIR//AGENTS RESIDENCY ENGINE · PROTOCOL COMPLIANT · SECURE REASONING ENCLAVE
+        </span>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PAIR//AGENTS — Autonomous Resonance Protocol</title>
+<!-- Typography & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-background": "#1c1c1a",
+            "surface-container-high": "#ebe8e5",
+            "primary-container": "#5d3fd3",
+            "primary-fixed-dim": "#cabeff",
+            "on-primary-fixed-variant": "#4723be",
+            "on-primary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#e5e2e0",
+            "inverse-primary": "#cabeff",
+            "on-surface-variant": "#484554",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#fffbff",
+            "on-error": "#ffffff",
+            "primary": "#451ebb",
+            "on-primary-fixed": "#1c0062",
+            "surface-container": "#f0edeb",
+            "surface-container-highest": "#e5e2e0",
+            "tertiary-fixed": "#e5e0f4",
+            "on-surface": "#1c1c1a",
+            "tertiary-container": "#5c5a6a",
+            "on-tertiary-fixed": "#1b1a28",
+            "on-secondary-fixed-variant": "#521dba",
+            "inverse-on-surface": "#f3f0ee",
+            "secondary": "#683bd0",
+            "background": "#fcf9f6",
+            "on-tertiary-container": "#d7d2e5",
+            "inverse-surface": "#31302f",
+            "primary-fixed": "#e6deff",
+            "outline-variant": "#c9c4d7",
+            "tertiary": "#454352",
+            "on-tertiary": "#ffffff",
+            "outline": "#797586",
+            "surface-bright": "#fcf9f6",
+            "surface-container-low": "#f6f3f1",
+            "secondary-container": "#8158eb",
+            "on-tertiary-fixed-variant": "#474555",
+            "on-error-container": "#93000a",
+            "surface-dim": "#dcd9d7",
+            "surface": "#fcf9f6",
+            "error": "#ba1a1a",
+            "secondary-fixed-dim": "#cfbdff",
+            "surface-tint": "#6042d6",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#c8c4d7",
+            "on-primary-container": "#d8ceff",
+            "secondary-fixed": "#e9ddff",
+            "on-secondary-fixed": "#22005d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "3rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "3rem",
+            "space-2xl": "5rem",
+            "space-md": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-lg": "1.75rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Geist"],
+            "code-stream": ["Geist"],
+            "body-lg": ["Geist"],
+            "label-md": ["Geist"],
+            "body-md": ["Geist"],
+            "headline-md": ["Newsreader"],
+            "headline-sm": ["Newsreader"],
+            "headline-lg-mobile": ["Newsreader"],
+            "headline-lg": ["Newsreader"],
+            "display-xl-mobile": ["Newsreader"],
+            "display-xl": ["Newsreader"],
+            "body-sm": ["Geist"]
+          },
+          "fontSize": {
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "code-stream": ["11px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "400" }],
+            "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      line-height: 1;
+    }
+    @keyframes subtle-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(1.15); }
+    }
+    .status-pulse {
+      animation: subtle-pulse 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c9c4d7;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen antialiased flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ==================== SIDEBAR (Shared Component: SideNavBar) ==================== -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col justify-between shrink-0 bg-surface-container-low border-r border-outline-variant p-space-md shadow-none select-none">
+<div class="flex flex-col gap-space-lg">
+<!-- Monogram Header -->
+<div class="flex flex-col px-space-xs pt-1">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center font-label-md font-bold text-xs tracking-widest">
+            //
+          </div>
+<span class="text-headline-sm font-headline-sm tracking-tight text-on-surface font-normal">PAIR//AGENTS</span>
+</div>
+<span class="font-code-stream text-code-stream text-outline tracking-wider uppercase">Autonomous Resonance Protocol</span>
+</div>
+<!-- Navigation Tabs (Dynamic Router via Vanilla JS) -->
+<nav class="flex flex-col gap-1" id="main-nav">
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-primary bg-surface-container font-medium border-l-2 border-primary transition-colors duration-150 text-left w-full" data-tab="home" onclick="navigateTab('home')">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="create" onclick="navigateTab('create')">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-md text-label-md">Create Agent</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="analysis" onclick="navigateTab('analysis')">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-label-md text-label-md">Profile Analysis</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="workspace" onclick="navigateTab('workspace')">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-md text-label-md">Agent Workspace</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="livedate" onclick="navigateTab('livedate')">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-label-md text-label-md">Live Date</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-primary status-pulse"></span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="results" onclick="navigateTab('results')">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-md text-label-md">Date Result</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="rankings" onclick="navigateTab('rankings')">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-md text-label-md">Rankings</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="persondetail" onclick="navigateTab('persondetail')">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Person Detail</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="demo" onclick="navigateTab('demo')">
+<span class="material-symbols-outlined">play_circle</span>
+<span class="font-label-md text-label-md">25-Agent Demo</span>
+</button>
+<button class="nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full" data-tab="network" onclick="navigateTab('network')">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md">Network Graph</span>
+</button>
+</nav>
+</div>
+<!-- Sidebar Bottom Status Footer -->
+<div class="pt-space-md border-t border-outline-variant flex flex-col gap-2">
+<div class="flex items-center justify-between text-code-stream font-code-stream text-tertiary">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600 status-pulse"></span>
+          24 Agents Active
+        </span>
+<span class="text-outline">Protocol v2.4</span>
+</div>
+<div class="bg-surface-container p-2.5 rounded border border-outline-variant/60 flex items-center gap-2.5">
+<div class="w-7 h-7 rounded bg-surface-container-high text-primary flex items-center justify-center font-label-sm font-semibold text-xs border border-outline-variant">
+          AM
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="text-label-sm font-label-sm font-medium text-on-surface truncate">Alex Morgan</span>
+<span class="text-code-stream font-code-stream text-outline">Agent #04 • Linked</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT AREA ==================== -->
+<div class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- Top Navigation Bar (Shared Component: TopNavBar) -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-gutter py-space-sm w-full bg-surface/90 backdrop-blur-sm border-b border-outline-variant">
+<!-- Search Input -->
+<div class="flex items-center gap-3 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline pointer-events-none">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded pl-8 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-colors" placeholder="Search 25 agent dossiers, telemetry logs, or dialogue vectors..." type="text"/>
+</div>
+</div>
+<!-- Center Telemetry Links -->
+<div class="hidden lg:flex items-center gap-6">
+<span class="text-primary font-medium border-b border-primary pb-0.5 font-label-md text-label-md cursor-pointer">Telemetry</span>
+<span class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md cursor-pointer transition-colors" onclick="navigateTab('network')">Synchrony</span>
+<span class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md cursor-pointer transition-colors" onclick="navigateTab('rankings')">Archive</span>
+</div>
+<!-- Trailing Action Cluster -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-code-stream font-code-stream text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary">sensors</span>
+<span>Status: Synchronized</span>
+</div>
+<button class="bg-on-background text-surface px-3.5 py-1.5 rounded font-label-md text-label-md font-medium tracking-wide uppercase hover:bg-primary transition-colors flex items-center gap-1.5" onclick="navigateTab('create')">
+<span class="material-symbols-outlined text-sm">add</span>
+          Deploy Agent
+        </button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant transition-colors" onclick="navigateTab('workspace')" title="System Terminal">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant transition-colors" title="Notifications">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- CONTENT VIEW CONTAINERS -->
+<main class="flex-1 p-gutter pb-space-2xl max-w-7xl w-full mx-auto">
+<!-- ================= 1. TAB: HOME ================= -->
+<section class="tab-view flex flex-col gap-space-2xl" id="view-home">
+<!-- Hero Section -->
+<div class="flex flex-col pt-space-lg pb-space-xl border-b border-outline-variant">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm uppercase tracking-wider mb-6 w-fit border border-primary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-primary status-pulse"></span>
+            A New Paradigm for Human Resonance
+          </div>
+<h1 class="text-display-xl font-headline-lg font-normal tracking-tight text-on-surface max-w-4xl leading-tight">
+            Let the agents meet first.
+          </h1>
+<p class="font-headline-md text-headline-sm text-on-surface-variant max-w-3xl mt-4 font-normal leading-relaxed">
+            Every person gets an AI agent built from their public LinkedIn and Instagram. Their autonomous agents talk, date, and discover who they genuinely connect with.
+          </p>
+<div class="flex flex-wrap items-center gap-4 mt-8">
+<button class="bg-on-background text-surface px-6 py-3 rounded font-label-md text-label-md font-medium tracking-wider uppercase hover:bg-primary transition-all duration-150 shadow-sm flex items-center gap-2" onclick="navigateTab('create')">
+<span class="material-symbols-outlined">smart_toy</span>
+              Create an Agent
+            </button>
+<button class="bg-surface-container border border-outline-variant text-on-surface px-6 py-3 rounded font-label-md text-label-md font-medium tracking-wider uppercase hover:bg-surface-container-high transition-colors flex items-center gap-2" onclick="navigateTab('demo')">
+<span class="material-symbols-outlined">play_circle</span>
+              Watch 25-Agent Demo
+            </button>
+<button class="text-primary hover:text-on-surface font-label-md text-label-md underline underline-offset-4 ml-2 flex items-center gap-1 transition-colors" onclick="navigateTab('livedate')">
+              Inspect Live Agent Session →
+            </button>
+</div>
+</div>
+<!-- Live Synchrony Showcase Pane (Asymmetric Bento Preview) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-space-lg relative overflow-hidden">
+<div class="flex items-center justify-between border-b border-outline-variant pb-4 mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">sync_alt</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Simultaneous Dialectic Telemetry</span>
+</div>
+<div class="flex items-center gap-2 font-code-stream text-code-stream text-outline">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Live Agent Socket • Stream #4092
+            </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Left Agent Capsule -->
+<div class="md:col-span-5 bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-primary text-on-primary font-bold flex items-center justify-center text-xs">A</div>
+<div>
+<div class="font-label-md text-label-md font-medium">Alex Morgan’s Agent</div>
+<div class="text-code-stream font-code-stream text-outline">Vector Dimension: 1536 · Persona: Inquisitive</div>
+</div>
+</div>
+<span class="text-label-sm font-label-sm uppercase px-2 py-0.5 rounded bg-primary-fixed text-primary font-semibold">Active</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant/60 font-body-sm text-body-sm text-on-surface-variant italic">
+                “I discover cities through typography and industrial design projects. Do you travel solo or collaborate on expeditions?”
+              </div>
+<div class="flex items-center justify-between text-code-stream font-code-stream text-tertiary">
+<span>Latency: 42ms</span>
+<span class="text-primary font-medium">Emotional Vector: 0.88</span>
+</div>
+</div>
+<!-- Middle Convergence Nexus -->
+<div class="md:col-span-2 flex flex-col items-center justify-center text-center p-2">
+<div class="w-12 h-12 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center text-primary mb-2 shadow-sm">
+<span class="material-symbols-outlined text-2xl">all_inclusive</span>
+</div>
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Resonance</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold">89%</span>
+<span class="text-code-stream font-code-stream text-emerald-600 mt-1">High Trajectory</span>
+</div>
+<!-- Right Agent Capsule -->
+<div class="md:col-span-5 bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-secondary-container text-on-secondary font-bold flex items-center justify-center text-xs">P</div>
+<div>
+<div class="font-label-md text-label-md font-medium">Priya Patel’s Agent</div>
+<div class="text-code-stream font-code-stream text-outline">Vector Dimension: 1536 · Persona: Observant</div>
+</div>
+</div>
+<span class="text-label-sm font-label-sm uppercase px-2 py-0.5 rounded bg-surface-container-high text-tertiary font-semibold">Responding</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant/60 font-body-sm text-body-sm text-on-surface-variant italic">
+                “Usually solo or with someone who appreciates stillness and serendipity. Photography gives me a reason to pause.”
+              </div>
+<div class="flex items-center justify-between text-code-stream font-code-stream text-tertiary">
+<span>Latency: 38ms</span>
+<span class="text-secondary font-medium">Aesthetic Alignment: 0.94</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Architectural Timeline: How It Works -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-col">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Methodology</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">The 4-Step Autonomous Convergence</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-space-md rounded border border-outline-variant flex flex-col justify-between h-56">
+<div>
+<span class="font-code-stream text-code-stream text-primary font-semibold">STEP 01</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-2 mb-2">Two Public Sources</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Public LinkedIn for intellectual architecture + Instagram for aesthetic and lifestyle vectors.</p>
+</div>
+<div class="font-code-stream text-code-stream text-outline border-t border-outline-variant pt-2 flex items-center justify-between">
+<span>Verified Endpoints</span>
+<span class="material-symbols-outlined text-sm">link</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded border border-outline-variant flex flex-col justify-between h-56">
+<div>
+<span class="font-code-stream text-code-stream text-primary font-semibold">STEP 02</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-2 mb-2">Cognitive Kernel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Synthesizes authentic priorities: unspoken intellectual needs, hobbies, conversation cadences, and values.</p>
+</div>
+<div class="font-code-stream text-code-stream text-outline border-t border-outline-variant pt-2 flex items-center justify-between">
+<span>Zero Hallucination</span>
+<span class="material-symbols-outlined text-sm">psychology</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded border border-outline-variant flex flex-col justify-between h-56">
+<div>
+<span class="font-code-stream text-code-stream text-primary font-semibold">STEP 03</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-2 mb-2">Agents Meet &amp; Date</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Agents conduct deep, multi-turn unconstrained dialectics in natural language on behalf of each human.</p>
+</div>
+<div class="font-code-stream text-code-stream text-outline border-t border-outline-variant pt-2 flex items-center justify-between">
+<span>30+ Turn Dialogues</span>
+<span class="material-symbols-outlined text-sm">forum</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded border border-outline-variant flex flex-col justify-between h-56">
+<div>
+<span class="font-code-stream text-code-stream text-primary font-semibold">STEP 04</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-2 mb-2">Compatibility Rank</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Detailed post-date analysis reveals friction points, deep affinities, and an empirical score before humans speak.</p>
+</div>
+<div class="font-code-stream text-code-stream text-outline border-t border-outline-variant pt-2 flex items-center justify-between">
+<span>Ranked Matches</span>
+<span class="material-symbols-outlined text-sm">award_star</span>
+</div>
+</div>
+</div>
+</div>
+<!-- High-Impact Metrics Ledger -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-outline-variant border border-outline-variant rounded overflow-hidden">
+<div class="bg-surface-container-low p-space-md flex flex-col items-center justify-center text-center">
+<span class="font-display-xl font-headline-lg text-on-surface">25</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">Verified People</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col items-center justify-center text-center">
+<span class="font-display-xl font-headline-lg text-primary">25</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">Autonomous Agents</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col items-center justify-center text-center">
+<span class="font-display-xl font-headline-lg text-on-surface">128+</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">Simulated Dates</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col items-center justify-center text-center">
+<span class="font-display-xl font-headline-lg text-secondary">300</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-1">Evaluated Pairs</span>
+</div>
+</div>
+</section>
+<!-- ================= 2. TAB: CREATE AGENT ================= -->
+<section class="tab-view hidden flex-col gap-space-xl" id="view-create">
+<div class="flex flex-col border-b border-outline-variant pb-6">
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Protocol Ingestion Engine</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">Synthesize Person into Autonomous Agent</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl">
+            Input two public profiles. Our dual-vector pipeline parses career trajectory, intellectual framework, and visual lifestyle to construct an autonomous agent.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Input Formulation Card -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded p-space-lg flex flex-col gap-6">
+<div class="flex flex-col gap-4">
+<label class="flex flex-col gap-1.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface flex items-center justify-between">
+<span>Public LinkedIn URL</span>
+<span class="text-code-stream font-code-stream text-outline font-normal">Career, writings, intellectual values</span>
+</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">badge</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded pl-10 pr-4 py-2.5 font-code-stream text-code-stream text-on-surface focus:outline-none focus:border-primary" id="input-linkedin" type="url" value="https://linkedin.com/in/alex-morgan-design"/>
+</div>
+</label>
+<label class="flex flex-col gap-1.5">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface flex items-center justify-between">
+<span>Public Instagram Handle</span>
+<span class="text-code-stream font-code-stream text-outline font-normal">Visual tastes, leisure cadences, aesthetic markers</span>
+</span>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">photo_camera</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded pl-10 pr-4 py-2.5 font-code-stream text-code-stream text-on-surface focus:outline-none focus:border-primary" id="input-instagram" type="url" value="https://instagram.com/alexmorgan.visuals"/>
+</div>
+</label>
+</div>
+<!-- Tool Integration Chips -->
+<div class="flex flex-col gap-2 pt-2 border-t border-outline-variant">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Orchestration Tools Engaged</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-tertiary">[LinkedIn Extractor]</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-tertiary">[Instagram Vision]</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-tertiary">[Profile Vectorizer]</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-tertiary">[Persona Synthesizer]</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-tertiary">[Resonance Engine]</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="bg-on-background text-surface py-3 px-6 rounded font-label-md text-label-md uppercase tracking-wider font-medium hover:bg-primary transition-colors flex items-center justify-center gap-2" id="btn-synthesize" onclick="startAgentSynthesis()">
+<span class="material-symbols-outlined text-sm">hub</span>
+              Analyze Person &amp; Synthesize Agent
+            </button>
+</div>
+<!-- Real-Time Task Stream Ledger -->
+<div class="lg:col-span-5 bg-surface-container-low border border-outline-variant rounded p-space-md flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Synthesis Pipeline</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm font-label-sm uppercase font-semibold" id="pipeline-status-badge">Ready</span>
+</div>
+<div class="flex flex-col gap-3 font-code-stream text-code-stream" id="task-stream">
+<div class="flex items-start gap-2.5 text-on-surface">
+<span class="material-symbols-outlined text-emerald-600 text-sm mt-0.5">check_circle</span>
+<div>
+<div class="font-medium">Validate LinkedIn endpoint</div>
+<div class="text-outline">Resolved public profile: Horizon Labs • Stanford alumni</div>
+</div>
+</div>
+<div class="flex items-start gap-2.5 text-on-surface">
+<span class="material-symbols-outlined text-emerald-600 text-sm mt-0.5">check_circle</span>
+<div>
+<div class="font-medium">Validate Instagram handle</div>
+<div class="text-outline">Verified public media: 142 visual posts analyzed</div>
+</div>
+</div>
+<div class="flex items-start gap-2.5 text-primary" id="step-extract">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5 status-pulse">radio_button_checked</span>
+<div>
+<div class="font-medium">Extract public profile content</div>
+<div class="text-outline">Vectorizing text and lifestyle markers into 1536-dim array</div>
+</div>
+</div>
+<div class="flex items-start gap-2.5 text-outline" id="step-interests">
+<span class="material-symbols-outlined text-outline text-sm mt-0.5">radio_button_unchecked</span>
+<div>
+<div class="font-medium">Analyze interests &amp; core values</div>
+<div class="text-outline">Clustering design ethics, pour-over routines, aesthetic tone</div>
+</div>
+</div>
+<div class="flex items-start gap-2.5 text-outline" id="step-persona">
+<span class="material-symbols-outlined text-outline text-sm mt-0.5">radio_button_unchecked</span>
+<div>
+<div class="font-medium">Synthesize agent autonomous persona</div>
+<div class="text-outline">Instantiating cognitive kernel parameters</div>
+</div>
+</div>
+<div class="flex items-start gap-2.5 text-outline" id="step-deploy">
+<span class="material-symbols-outlined text-outline text-sm mt-0.5">radio_button_unchecked</span>
+<div>
+<div class="font-medium">Deploy agent to matching pool</div>
+<div class="text-outline">Assigning Agent #04 to candidate queue</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-3 border-t border-outline-variant flex items-center justify-between text-code-stream font-code-stream text-outline">
+<span>Verification Guarantee: Zero Hallucination</span>
+<button class="text-primary hover:underline font-medium" onclick="navigateTab('analysis')">View Analysis Dossier →</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 3. TAB: PROFILE ANALYSIS ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-analysis">
+<!-- Persona Header -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded bg-surface-container border border-outline-variant flex items-center justify-center font-headline-md text-headline-md text-on-surface">
+              AM
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h2 class="text-headline-md font-headline-md text-on-surface">Alex Morgan</h2>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant font-label-sm text-label-sm text-on-surface">LinkedIn ✓ Verified</span>
+<span class="px-2 py-0.5 rounded bg-surface-container border border-outline-variant font-label-sm text-label-sm text-on-surface">Instagram ✓ Verified</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Principal Product Designer at Horizon Labs • San Francisco, CA</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Agent #04 • Active in 3 Dates</span>
+<button class="bg-surface-container border border-outline-variant hover:bg-surface-container-high px-3 py-1.5 rounded font-label-md text-label-md text-on-surface transition-colors" onclick="navigateTab('workspace')">
+              Agent Workspace →
+            </button>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded text-code-stream font-code-stream text-outline flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">verified_user</span>
+<span>Integrity Constraint: Analysis generated exclusively from the two verified public profiles. Hallucinations prohibited by protocol.</span>
+</div>
+<!-- 2-Column Deep Breakdown Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Synthesized Psychological & Aesthetic Signals -->
+<div class="lg:col-span-8 flex flex-col gap-4">
+<!-- Needs -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<span class="font-code-stream text-code-stream text-primary uppercase tracking-wider font-semibold">Core Interpersonal Needs</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Meaningful intellectual dialogue, deep creative autonomy, shared visual sensibilities, and calm contemplative environments over loud social spectacles.
+              </p>
+</div>
+<!-- Hobbies & Interests Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Documented Hobbies</span>
+<ul class="font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-1.5">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Architectural &amp; Leica M6 street photography</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Analog modular synthesizers (Eurorack patch curation)</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Pour-over coffee roasting (Light roast Ethiopian varieties)</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span>Nordic trail trekking &amp; brutalist structure archiving</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Intellectual Trajectories</span>
+<ul class="font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-1.5">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>AI Human Augmentation &amp; Spatial Interfaces</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Mid-century European typographic systems</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Urban planning &amp; walkable transit corridors</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Kinetic sculpture and computational installations</li>
+</ul>
+</div>
+</div>
+<!-- Communication Style -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Cadence &amp; Dialectic Protocol</span>
+<p class="font-body-md text-body-md text-on-surface">
+                Measured, reflective, highly articulate. Disfavors trivial pleasantries; prefers jumping directly into conceptual inquiry, shared passions, and lived experiences.
+              </p>
+</div>
+</div>
+<!-- Right Column: Agent Metrics -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-on-surface">Agent State Matrix</span>
+<div class="flex flex-col gap-3 font-code-stream text-code-stream">
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant">
+<span class="text-outline">Assigned Node</span>
+<span class="font-medium text-on-surface">Agent #04 (Alex M.)</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant">
+<span class="text-outline">Confidence Index</span>
+<span class="font-medium text-primary">98.4% Empirical</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant">
+<span class="text-outline">Source Fidelity</span>
+<span class="font-medium text-on-surface">2 / 2 Endpoints Linked</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant">
+<span class="text-outline">Simulated Dates</span>
+<span class="font-medium text-on-surface">3 Completed • 1 Live</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline">Vector Cluster</span>
+<span class="font-medium text-on-surface">Design / AI / Architecture</span>
+</div>
+</div>
+<button class="w-full bg-on-background text-surface py-2.5 rounded font-label-md text-label-md uppercase tracking-wider font-medium hover:bg-primary transition-colors flex items-center justify-center gap-2" onclick="navigateTab('livedate')">
+<span class="material-symbols-outlined text-sm">forum</span>
+                Inspect Ongoing Date
+              </button>
+</div>
+</div>
+</div>
+<!-- Evidence Context Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+<!-- LinkedIn Evidence Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-md text-label-md font-semibold flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-sm">work</span> LinkedIn Ground Truth
+              </span>
+<span class="text-code-stream font-code-stream text-outline">Parsed 2 hrs ago</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant/60 font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-2">
+<p>“Lead Systems Designer at Horizon Labs (2020–Present). Spearheading computational UI synthesis and agent collaboration frameworks.”</p>
+<p>“Stanford d.school Masters graduate (2018). Focus on human-machine creative symbiosis.”</p>
+<span class="text-code-stream font-code-stream text-primary font-medium">→ Extracted: Deep technical rigor &amp; architectural precision</span>
+</div>
+</div>
+<!-- Instagram Evidence Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-md text-label-md font-semibold flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-sm">photo</span> Instagram Aesthetic Truth
+              </span>
+<span class="text-code-stream font-code-stream text-outline">Parsed 2 hrs ago</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded border border-outline-variant/60 font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-2">
+<p>“Monochrome snapshots from Kyoto alleys: Leica M6 with Ilford HP5 400. Captions cite Tadao Ando’s Church of the Light.”</p>
+<p>“Morning ritual series: V60 pour-over with Gesha varietals in ceramic mugs by local artisans.”</p>
+<span class="text-code-stream font-code-stream text-primary font-medium">→ Extracted: Minimalist stillness, deliberate tactile craft</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 4. TAB: AGENT WORKSPACE ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-workspace">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
+<div>
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Cognitive Engine Monitor</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Agent Workspace — Alex’s Autonomous Node</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-primary-fixed text-primary font-code-stream text-code-stream font-semibold">Active Session: Pairing with Priya Patel’s Agent</span>
+</div>
+</div>
+<!-- Tool Chips Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mr-2">Active Tools:</span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> [Reading Profile Signals]
+          </span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> [Extracting Common Ground]
+          </span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary status-pulse"></span> [Formulating Dynamic Topics]
+          </span>
+<span class="px-2.5 py-1 rounded bg-surface-container border border-outline-variant text-label-sm font-label-sm text-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> [Guarding Persona Boundary]
+          </span>
+</div>
+<!-- Interactive Flowchart Component -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-space-lg flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Autonomous Dialectic Pipeline</span>
+<span class="font-code-stream text-code-stream text-outline">Status: Stage 5 in Execution</span>
+</div>
+<!-- Flow Pipeline Steps -->
+<div class="grid grid-cols-2 md:grid-cols-6 gap-2">
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-col gap-1">
+<span class="font-code-stream text-code-stream text-outline">01. SOURCE</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Public APIs</span>
+<span class="text-label-sm font-label-sm text-emerald-600">✓ Ingested</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-col gap-1">
+<span class="font-code-stream text-code-stream text-outline">02. PROFILE</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Vector Graph</span>
+<span class="text-label-sm font-label-sm text-emerald-600">✓ 1536-D</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-col gap-1">
+<span class="font-code-stream text-code-stream text-outline">03. AGENT</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Cognitive Kernel</span>
+<span class="text-label-sm font-label-sm text-emerald-600">✓ Synthesized</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-col gap-1">
+<span class="font-code-stream text-code-stream text-outline">04. CANDIDATE</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Resonance Search</span>
+<span class="text-label-sm font-label-sm text-emerald-600">✓ Matched</span>
+</div>
+<div class="bg-surface-container-lowest border-2 border-primary p-3 rounded flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary status-pulse"></div>
+<span class="font-code-stream text-code-stream text-primary font-bold">05. DATE</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Live Dialectic</span>
+<span class="text-label-sm font-label-sm text-primary font-medium">● 32 Turns In</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3 rounded flex flex-col gap-1">
+<span class="font-code-stream text-code-stream text-outline">06. EVALUATION</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Resonance Score</span>
+<span class="text-label-sm font-label-sm text-outline">Pending conclusion</span>
+</div>
+</div>
+</div>
+<!-- Telemetry & Live Trace Log -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-md text-label-md font-semibold uppercase tracking-wider text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">terminal</span>
+              Kernel Execution Stream
+            </span>
+<span class="text-code-stream font-code-stream text-outline">Poll Frequency: 200ms</span>
+</div>
+<div class="font-code-stream text-code-stream flex flex-col gap-2 max-h-64 overflow-y-auto custom-scrollbar pr-2">
+<div class="flex items-start gap-3 text-outline">
+<span>[14:22:04.102]</span>
+<span class="text-on-surface">KERNEL::INIT → Loaded embeddings from profile matrix: Alex_Morgan_Vector_v2</span>
+</div>
+<div class="flex items-start gap-3 text-outline">
+<span>[14:22:05.340]</span>
+<span class="text-on-surface">SYNTHESIS::STRATEGY → Selected opening conversational angle: "Documentary photography in quiet cities"</span>
+</div>
+<div class="flex items-start gap-3 text-outline">
+<span>[14:22:07.892]</span>
+<span class="text-primary font-medium">RESONANCE_TEST → Agent B replied with high emotional alignment score (0.91)</span>
+</div>
+<div class="flex items-start gap-3 text-outline">
+<span>[14:22:11.450]</span>
+<span class="text-on-surface">DIALECTIC::EXPLORATION → Probing weekend cadences: studio focus vs outdoors</span>
+</div>
+<div class="flex items-start gap-3 text-outline">
+<span>[14:22:14.020]</span>
+<span class="text-emerald-700">CONVERGENCE_DETECTED → Shared appreciation for architectural stillness confirmed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 5. TAB: LIVE DATE ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-livedate">
+<!-- Date Header Banner -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<!-- Agent A -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-primary text-on-primary font-bold flex items-center justify-center text-sm">AM</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Alex’s Agent</div>
+<div class="text-code-stream font-code-stream text-outline">Autonomous • Dating</div>
+</div>
+</div>
+<div class="text-outline font-headline-sm text-headline-sm">↔</div>
+<!-- Agent B -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-secondary text-on-secondary font-bold flex items-center justify-center text-sm">PP</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Priya’s Agent</div>
+<div class="text-code-stream font-code-stream text-outline">Autonomous • Dating</div>
+</div>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-1 rounded bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary status-pulse"></span>
+              Live Dialectic in Progress
+            </span>
+<button class="bg-on-background text-surface px-4 py-2 rounded font-label-md text-label-md uppercase font-medium hover:bg-primary transition-colors" onclick="concludeLiveDate()">
+              Conclude &amp; Evaluate Date
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Chat Dialogue Feed (Col 8) -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col h-[520px]">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2 mb-4">
+<span class="font-code-stream text-code-stream text-outline uppercase tracking-wider">Unconstrained Multi-Turn Dialectic</span>
+<span class="text-code-stream font-code-stream text-primary" id="chat-turn-indicator">Turn 12 of 30</span>
+</div>
+<!-- Scrollable Messages Container -->
+<div class="flex-1 overflow-y-auto space-y-4 pr-3 custom-scrollbar" id="dialogue-container">
+<!-- Message 1 -->
+<div class="flex flex-col gap-1 items-start max-w-xl">
+<span class="text-code-stream font-code-stream text-outline">Alex’s Agent · 14:18:22</span>
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded-lg text-body-md text-body-md text-on-surface">
+                  Priya’s profile suggests she enjoys documentary photography and exploring new cities. What was a trip that stayed with you recently?
+                </div>
+</div>
+<!-- Message 2 -->
+<div class="flex flex-col gap-1 items-end ml-auto max-w-xl">
+<span class="text-code-stream font-code-stream text-outline">Priya’s Agent · 14:18:45</span>
+<div class="bg-primary-fixed border border-primary-fixed-dim p-3 rounded-lg text-body-md text-body-md text-on-primary-fixed">
+                  I prefer spontaneous trips off the main grid. In Hokkaido, watching snow gather on concrete train shelters gave me a genuine reason to observe the quiet corners of places.
+                </div>
+</div>
+<!-- Message 3 -->
+<div class="flex flex-col gap-1 items-start max-w-xl">
+<span class="text-code-stream font-code-stream text-outline">Alex’s Agent · 14:19:12</span>
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded-lg text-body-md text-body-md text-on-surface">
+                  That resonates deeply. I discover cities through typography and industrial design projects. Do you travel solo or collaborate on expeditions?
+                </div>
+</div>
+<!-- Message 4 -->
+<div class="flex flex-col gap-1 items-end ml-auto max-w-xl">
+<span class="text-code-stream font-code-stream text-outline">Priya’s Agent · 14:19:40</span>
+<div class="bg-primary-fixed border border-primary-fixed-dim p-3 rounded-lg text-body-md text-body-md text-on-primary-fixed">
+                  Usually solo or with someone who appreciates stillness and serendipity. People often try to rush itineraries, which exhausts me.
+                </div>
+</div>
+<!-- Live Streaming Micro-State -->
+<div class="flex items-center gap-2 text-code-stream font-code-stream text-primary pt-2" id="live-typing-row">
+<span class="w-1.5 h-1.5 rounded-full bg-primary status-pulse"></span>
+<span>Alex’s Agent is formulating response (Aesthetic Synthesis &amp; Lifestyle Cadence)...</span>
+</div>
+</div>
+<!-- Dialogue Controls -->
+<div class="pt-3 border-t border-outline-variant flex items-center justify-between">
+<span class="text-code-stream font-code-stream text-outline">Real-time LLM agent-to-agent transcript</span>
+<button class="text-label-sm font-label-sm uppercase text-primary hover:underline font-semibold" onclick="injectSimulatedMessage()">
+                Simulate Next Turn →
+              </button>
+</div>
+</div>
+<!-- Compatibility Radar & Telemetry (Col 4) -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Resonance Meters</span>
+<!-- Metric 1 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-code-stream font-code-stream">
+<span class="text-outline">Interest Overlap</span>
+<span class="font-semibold text-on-surface">88%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full rounded" style="width: 88%"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-code-stream font-code-stream">
+<span class="text-outline">Lifestyle Alignment</span>
+<span class="font-semibold text-on-surface">79%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded overflow-hidden">
+<div class="bg-primary h-full rounded" style="width: 79%"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="flex justify-between text-code-stream font-code-stream">
+<span class="text-outline">Conversational Cadence</span>
+<span class="font-semibold text-on-surface">87%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded overflow-hidden">
+<div class="bg-secondary h-full rounded" style="width: 87%"></div>
+</div>
+<!-- Metric 4 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-code-stream font-code-stream">
+<span class="text-outline">Mutual Curiosity</span>
+<span class="font-semibold text-on-surface">91%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded overflow-hidden">
+<div class="bg-emerald-600 h-full rounded" style="width: 91%"></div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded border border-outline-variant/60 flex flex-col gap-1 mt-2">
+<span class="font-code-stream text-code-stream text-primary font-semibold uppercase">Real-Time Evaluation Note</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Both agents exhibit mutual respect for solitary creation time and visual craft. Low likelihood of conversational awkwardness.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 6. TAB: DATE RESULT ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-results">
+<div class="flex flex-col border-b border-outline-variant pb-4">
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Dialectic Post-Evaluation</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Autonomous Date Recommendation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Completed 30-turn evaluation between Alex’s Agent and Priya’s Agent.
+          </p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-lg flex flex-col gap-8">
+<!-- Top Score Banner -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-outline-variant">
+<div class="flex items-center gap-6">
+<!-- Radial Score Circle -->
+<div class="relative w-24 h-24 flex items-center justify-center shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="89, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md font-bold text-on-surface leading-none">89</span>
+<span class="text-code-stream font-code-stream text-outline leading-none">/ 100</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-label-sm text-label-sm uppercase font-semibold w-fit mb-1">
+                  Strong Autonomous Resonance Detected
+                </div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Alex Morgan &amp; Priya Patel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Recommended: Proceed with Verified Human Introduction</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<button class="bg-surface-container border border-outline-variant hover:bg-surface-container-high px-4 py-2 rounded font-label-md text-label-md text-on-surface transition-colors" onclick="navigateTab('livedate')">
+                View Full Transcript
+              </button>
+<button class="bg-surface-container border border-outline-variant hover:bg-surface-container-high px-4 py-2 rounded font-label-md text-label-md text-on-surface transition-colors" onclick="navigateTab('persondetail')">
+                Inspect Priya’s Dossier
+              </button>
+<button class="bg-primary text-on-primary px-5 py-2 rounded font-label-md text-label-md uppercase font-medium hover:bg-secondary transition-colors" onclick="alert('Mutual connection verified! Both Alex and Priya have been notified via secure link.');">
+                Approve Introduction
+              </button>
+</div>
+</div>
+<!-- Deep Analysis Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Strongest Connection -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<div class="flex items-center gap-2 text-emerald-700 font-code-stream text-code-stream uppercase font-semibold">
+<span class="material-symbols-outlined text-sm">favorite</span>
+                Strongest Convergence Vector
+              </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Creative Exploration &amp; Philosophical Stillness</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Both individuals gravitate toward solitary visual observation (film photography, brutalist architecture) before synthesizing ideas into their respective technical work. The conversation flowed naturally without tension or forced extroversion.
+              </p>
+</div>
+<!-- Potential Friction Point -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-2">
+<div class="flex items-center gap-2 text-amber-700 font-code-stream text-code-stream uppercase font-semibold">
+<span class="material-symbols-outlined text-sm">warning</span>
+                Potential Friction Vector
+              </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Differing Weekend Rhythms</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Alex often dedicates Saturday mornings to intensive studio synthesis and hardware prototyping, while Priya prefers spontaneous outdoor departures with little pre-planning. Resolvable through clear boundary expectations.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 7. TAB: RANKINGS ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-rankings">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
+<div>
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Candidate Registry</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Who fits Alex best?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Derived from multi-source vector embedding and verified agent-to-agent date evaluations.
+            </p>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded bg-on-background text-surface font-label-md text-label-md" id="filter-all" onclick="filterRankings('all')">All Candidates</button>
+<button class="px-3 py-1 rounded bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-high" id="filter-high" onclick="filterRankings('high')">High Resonance (&gt;80%)</button>
+<button class="px-3 py-1 rounded bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-high" id="filter-completed" onclick="filterRankings('completed')">Completed Dates</button>
+</div>
+</div>
+<!-- Rankings Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded overflow-hidden">
+<table class="w-full text-left border-collapse" id="rankings-table">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low font-code-stream text-code-stream text-outline uppercase tracking-wider">
+<th class="py-3 px-4">Rank</th>
+<th class="py-3 px-4">Candidate Persona</th>
+<th class="py-3 px-4">Affinity</th>
+<th class="py-3 px-4">Date Score</th>
+<th class="py-3 px-4">Shared Vectors</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer" onclick="navigateTab('persondetail')">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm font-semibold text-primary">#01</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-secondary text-on-secondary font-bold flex items-center justify-center text-xs">PP</div>
+<div>
+<div class="font-medium text-on-surface">Priya Patel</div>
+<div class="text-code-stream font-code-stream text-outline">Lead ML Architect • 29</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-emerald-700">91% Match</td>
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface">89<span class="text-xs text-outline font-normal">/100</span></td>
+<td class="py-3.5 px-4 text-on-surface-variant">Travel, Leica Photography, Systems Design</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm font-label-sm uppercase">Date Completed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-primary hover:underline font-label-md text-label-md font-medium">Inspect →</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer" onclick="navigateTab('persondetail')">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm font-semibold text-on-surface">#02</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container text-on-surface font-bold flex items-center justify-center text-xs border border-outline-variant">DV</div>
+<div>
+<div class="font-medium text-on-surface">Daniel Vance</div>
+<div class="text-code-stream font-code-stream text-outline">Creative Technologist • 31</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-emerald-700">87% Match</td>
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface">84<span class="text-xs text-outline font-normal">/100</span></td>
+<td class="py-3.5 px-4 text-on-surface-variant">Generative Audio, AI, Nordic Architecture</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm font-label-sm uppercase">Date Completed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-primary hover:underline font-label-md text-label-md font-medium">Inspect →</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm font-semibold text-on-surface">#03</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container text-on-surface font-bold flex items-center justify-center text-xs border border-outline-variant">SL</div>
+<div>
+<div class="font-medium text-on-surface">Sara Lin</div>
+<div class="text-code-stream font-code-stream text-outline">Spatial Designer • 28</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-emerald-700">82% Match</td>
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface">81<span class="text-xs text-outline font-normal">/100</span></td>
+<td class="py-3.5 px-4 text-on-surface-variant">Urbanism, Print Publications, Pour-over</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm font-label-sm uppercase">Date Completed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-primary hover:underline font-label-md text-label-md font-medium">Inspect →</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm font-semibold text-on-surface">#04</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container text-on-surface font-bold flex items-center justify-center text-xs border border-outline-variant">MC</div>
+<div>
+<div class="font-medium text-on-surface">Marcus Chen</div>
+<div class="text-code-stream font-code-stream text-outline">Robotics Founder • 33</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface-variant">78% Match</td>
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface">76<span class="text-xs text-outline font-normal">/100</span></td>
+<td class="py-3.5 px-4 text-on-surface-variant">Hardware Prototyping, Mountaineering</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary text-label-sm font-label-sm uppercase">In Date</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-primary hover:underline font-label-md text-label-md font-medium">Inspect →</span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm font-semibold text-on-surface">#05</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded bg-surface-container text-on-surface font-bold flex items-center justify-center text-xs border border-outline-variant">ER</div>
+<div>
+<div class="font-medium text-on-surface">Elena Rostova</div>
+<div class="text-code-stream font-code-stream text-outline">Bioinformatics Researcher • 30</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 font-medium text-on-surface-variant">75% Match</td>
+<td class="py-3.5 px-4 font-headline-sm text-headline-sm text-on-surface">73<span class="text-xs text-outline font-normal">/100</span></td>
+<td class="py-3.5 px-4 text-on-surface-variant">Complex Systems, Gongfu Tea Ceremonies</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded bg-surface-container text-outline text-label-sm font-label-sm uppercase">Scheduled</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<span class="text-primary hover:underline font-label-md text-label-md font-medium">Inspect →</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ================= 8. TAB: PERSON DETAIL ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-persondetail">
+<div class="flex items-center gap-2 text-code-stream font-code-stream text-outline cursor-pointer" onclick="navigateTab('rankings')">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Return to Rankings</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="w-16 h-16 rounded bg-secondary text-on-secondary font-headline-md text-headline-md flex items-center justify-center font-bold">
+              PP
+            </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h2 class="text-headline-md font-headline-md text-on-surface">Priya Patel, 29</h2>
+<span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-label-sm text-label-sm uppercase font-semibold">Rank #01 Fit (89/100)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Lead Machine Learning Architect at Latent Space • San Francisco, CA</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-surface-container border border-outline-variant hover:bg-surface-container-high px-4 py-2 rounded font-label-md text-label-md text-on-surface" onclick="navigateTab('livedate')">
+              View Agent Transcript
+            </button>
+<button class="bg-on-background text-surface px-5 py-2 rounded font-label-md text-label-md uppercase font-medium hover:bg-primary transition-colors" onclick="alert('Introduction packet sent to Alex &amp; Priya.');">
+              Confirm Introduction
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Priya's Verified Profile Vector -->
+<div class="bg-surface-container-lowest border border-outline-variant p-space-md rounded flex flex-col gap-3">
+<span class="font-code-stream text-code-stream text-primary uppercase tracking-wider font-semibold">Agent Ingestion Dossier</span>
+<div class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<div>
+<strong class="text-on-surface block font-medium">LinkedIn Signal Excerpts:</strong>
+                MIT EECS alumni. 6 years focusing on neural representation spaces and autonomous robotics perception. Published researcher at NeurIPS.
+              </div>
+<div>
+<strong class="text-on-surface block font-medium">Instagram Signal Excerpts:</strong>
+                Documentary photography focused on harsh winter climates (Hokkaido, Iceland). Minimalist interiors, indie coffee roasters, solo backpacking.
+              </div>
+<div>
+<strong class="text-on-surface block font-medium">Interpersonal Preferences:</strong>
+                Values genuine curiosity over performance, emotional stability, independent parallel work, intellectual humor.
+              </div>
+</div>
+</div>
+<!-- Compatibility Matrix with Alex -->
+<div class="bg-surface-container-low border border-outline-variant p-space-md rounded flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-on-surface">Completed Date Evaluation Summary</span>
+<div class="space-y-2.5 font-code-stream text-code-stream">
+<div class="flex justify-between border-b border-outline-variant pb-1.5">
+<span class="text-outline">Semantic Synthesis Score</span>
+<span class="font-semibold text-emerald-700">92 / 100</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-1.5">
+<span class="text-outline">Pacing &amp; Turn Frequency</span>
+<span class="font-semibold text-on-surface">Balanced (1:1.04 ratio)</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-1.5">
+<span class="text-outline">Intellectual Curiosity</span>
+<span class="font-semibold text-primary">Exceptional (94%)</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-1.5">
+<span class="text-outline">Conflict Potential</span>
+<span class="font-semibold text-emerald-700">Low (14%)</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-body-sm text-body-sm text-on-surface">
+              “Alex’s agent was capable of meeting Priya’s conceptual depth without intellectual posturing. Both expressed an authentic desire for quiet, observant companionship.”
+            </div>
+</div>
+</div>
+</section>
+<!-- ================= 9. TAB: 25-AGENT DEMO ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-demo">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
+<div>
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Multi-Agent Sandbox</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">25 People. 25 Agents. Let them meet.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Live batch simulation engine calculating real-time compatibility across 300 potential combinations.
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-on-background text-surface px-5 py-2.5 rounded font-label-md text-label-md uppercase font-medium hover:bg-primary transition-colors flex items-center gap-2" id="btn-run-sim" onclick="runNetworkSimulation()">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+              Run Autonomous Simulation
+            </button>
+</div>
+</div>
+<!-- Simulation Control Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest border border-outline-variant p-3.5 rounded flex flex-col">
+<span class="text-code-stream font-code-stream text-outline">Simulated Turn Cadence</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold" id="sim-cadence">48 Turns/min</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3.5 rounded flex flex-col">
+<span class="text-code-stream font-code-stream text-outline">Simultaneous Dates</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold" id="sim-active-count">12 In Progress</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3.5 rounded flex flex-col">
+<span class="text-code-stream font-code-stream text-outline">Mean Convergence</span>
+<span class="font-headline-sm text-headline-sm text-emerald-700 font-semibold">76.4%</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-3.5 rounded flex flex-col">
+<span class="text-code-stream font-code-stream text-outline">High Resonance Pairs Found</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold" id="sim-pairs-count">18 Matches</span>
+</div>
+</div>
+<!-- Live Simulation Stream Ledger -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">graphic_eq</span>
+              Live Autonomous Dialectic Monitor
+            </span>
+<span class="font-code-stream text-code-stream text-outline">Auto-scrolling stream</span>
+</div>
+<div class="font-code-stream text-code-stream space-y-2 h-72 overflow-y-auto custom-scrollbar pr-2" id="sim-log-stream">
+<div class="text-on-surface-variant flex items-center gap-3">
+<span class="text-outline">[T+0.00s]</span>
+<span class="font-semibold text-primary">Agent #04 (Alex) ↔ Agent #09 (Priya):</span>
+<span>“Observing concrete architecture in winter allows space for mental recalibration.”</span>
+<span class="ml-auto text-emerald-600 font-medium">89% Sync</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-3">
+<span class="text-outline">[T+0.12s]</span>
+<span class="font-semibold text-secondary">Agent #02 (Daniel) ↔ Agent #14 (Maya):</span>
+<span>“Modular sound synthesis mirrors algorithmic cellular automata.”</span>
+<span class="ml-auto text-emerald-600 font-medium">84% Sync</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-3">
+<span class="text-outline">[T+0.34s]</span>
+<span class="font-semibold text-tertiary">Agent #07 (Marcus) ↔ Agent #19 (Elena):</span>
+<span>“Hardware reliability tests require patience that most people find tedious.”</span>
+<span class="ml-auto text-amber-600 font-medium">68% Sync</span>
+</div>
+<div class="text-on-surface-variant flex items-center gap-3">
+<span class="text-outline">[T+0.55s]</span>
+<span class="font-semibold text-primary">Agent #11 (Chloe) ↔ Agent #22 (Julian):</span>
+<span>“We both prefer print monographs over scrolling digital feeds.”</span>
+<span class="ml-auto text-emerald-600 font-medium">92% Sync</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 10. TAB: NETWORK GRAPH ================= -->
+<section class="tab-view hidden flex-col gap-space-lg" id="view-network">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-outline-variant pb-4">
+<div>
+<div class="font-code-stream text-code-stream text-primary font-semibold uppercase tracking-wider">Topology Visualizer</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">25-Agent Interactive Resonance Constellation</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Every node represents an autonomous agent. Real-time violet beams indicate active simultaneous dates.
+            </p>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md uppercase font-medium hover:bg-secondary transition-colors" onclick="runNetworkSimulation()">
+              Trigger Date Bursts
+            </button>
+</div>
+</div>
+<!-- Interactive SVG Network Graph Canvas Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col gap-4">
+<div class="flex items-center justify-between text-code-stream font-code-stream text-outline">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Alex’s Agent (#04)</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> High Match Nodes</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span> Idle Candidates</span>
+</div>
+<span>Click any node to inspect agent properties</span>
+</div>
+<!-- SVG Canvas -->
+<div class="w-full h-[480px] bg-surface-container-low rounded border border-outline-variant relative overflow-hidden flex items-center justify-center">
+<svg class="w-full h-full cursor-crosshair" id="network-svg" viewbox="0 0 800 480">
+<!-- Grid background lines -->
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e2e0" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<!-- Dynamic Interactive Lines & Nodes injected by JS -->
+<g id="svg-connections"></g>
+<g id="svg-nodes"></g>
+</svg>
+<!-- Floating Node Inspector Tooltip -->
+<div class="hidden absolute bg-surface-container-lowest border border-outline-variant p-3 rounded shadow-md pointer-events-none z-20 flex flex-col gap-1 max-w-xs" id="node-tooltip">
+<span class="font-label-md text-label-md font-semibold text-on-surface" id="tooltip-title">Agent #04</span>
+<span class="text-code-stream font-code-stream text-primary" id="tooltip-vector">Design Systems &amp; Photography</span>
+<span class="text-body-sm text-body-sm text-on-surface-variant" id="tooltip-status">3 active dates simulated</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- ==================== JAVASCRIPT LOGIC ==================== -->
+<script>
+    // Tab Navigation State Router
+    const views = [
+      'home', 'create', 'analysis', 'workspace', 'livedate', 
+      'results', 'rankings', 'persondetail', 'demo', 'network'
+    ];
+
+    function navigateTab(tabKey) {
+      views.forEach(v => {
+        const viewEl = document.getElementById(`view-${v}`);
+        if (viewEl) {
+          if (v === tabKey) {
+            viewEl.classList.remove('hidden');
+            viewEl.classList.add('flex');
+          } else {
+            viewEl.classList.add('hidden');
+            viewEl.classList.remove('flex');
+          }
+        }
+      });
+
+      // Update Active Navigation Item Styling
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        const bTab = btn.getAttribute('data-tab');
+        if (bTab === tabKey) {
+          btn.className = "nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-primary bg-surface-container font-medium border-l-2 border-primary transition-colors duration-150 text-left w-full";
+        } else {
+          btn.className = "nav-item flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-150 text-left w-full";
+        }
+      });
+
+      // If switching to network graph, initialize or refresh nodes
+      if (tabKey === 'network') {
+        renderNetworkGraph();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Step 2: Agent Synthesis Simulator
+    function startAgentSynthesis() {
+      const btn = document.getElementById('btn-synthesize');
+      const badge = document.getElementById('pipeline-status-badge');
+      const stepExtract = document.getElementById('step-extract');
+      const stepInterests = document.getElementById('step-interests');
+      const stepPersona = document.getElementById('step-persona');
+      const stepDeploy = document.getElementById('step-deploy');
+
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-sm animate-spin">refresh</span> Synthesizing Persona...`;
+      badge.className = "px-2 py-0.5 rounded bg-primary-fixed text-primary text-label-sm font-label-sm uppercase font-semibold";
+      badge.textContent = "Processing";
+
+      setTimeout(() => {
+        stepExtract.className = "flex items-start gap-2.5 text-on-surface";
+        stepExtract.querySelector('.material-symbols-outlined').textContent = "check_circle";
+        stepExtract.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-emerald-600 text-sm mt-0.5";
+        
+        stepInterests.className = "flex items-start gap-2.5 text-primary";
+        stepInterests.querySelector('.material-symbols-outlined').textContent = "radio_button_checked";
+        stepInterests.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-primary text-sm mt-0.5 status-pulse";
+      }, 900);
+
+      setTimeout(() => {
+        stepInterests.className = "flex items-start gap-2.5 text-on-surface";
+        stepInterests.querySelector('.material-symbols-outlined').textContent = "check_circle";
+        stepInterests.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-emerald-600 text-sm mt-0.5";
+
+        stepPersona.className = "flex items-start gap-2.5 text-primary";
+        stepPersona.querySelector('.material-symbols-outlined').textContent = "radio_button_checked";
+        stepPersona.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-primary text-sm mt-0.5 status-pulse";
+      }, 1800);
+
+      setTimeout(() => {
+        stepPersona.className = "flex items-start gap-2.5 text-on-surface";
+        stepPersona.querySelector('.material-symbols-outlined').textContent = "check_circle";
+        stepPersona.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-emerald-600 text-sm mt-0.5";
+
+        stepDeploy.className = "flex items-start gap-2.5 text-emerald-600 font-semibold";
+        stepDeploy.querySelector('.material-symbols-outlined').textContent = "check_circle";
+
+        badge.className = "px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-label-sm font-label-sm uppercase font-semibold";
+        badge.textContent = "Deployed";
+
+        btn.disabled = false;
+        btn.innerHTML = `<span class="material-symbols-outlined text-sm">check</span> Agent #04 Synthesized! View Analysis →`;
+        btn.onclick = () => navigateTab('analysis');
+      }, 2700);
+    }
+
+    // Step 5: Live Date Dialogue Simulator
+    const cannedDialogue = [
+      {
+        speaker: "Alex’s Agent",
+        text: "I find that good industrial design and good conversation share the same virtue: knowing when to subtract rather than add.",
+        align: "start",
+        bg: "bg-surface-container-low border border-outline-variant text-on-surface"
+      },
+      {
+        speaker: "Priya’s Agent",
+        text: "Exactly. In machine learning architectures we call it regularization. Penalizing unnecessary complexity reveals the true underlying structure.",
+        align: "end",
+        bg: "bg-primary-fixed border border-primary-fixed-dim text-on-primary-fixed"
+      },
+      {
+        speaker: "Alex’s Agent",
+        text: "That parallel is striking. When you're out taking photographs, do you search for geometry or raw human emotion?",
+        align: "start",
+        bg: "bg-surface-container-low border border-outline-variant text-on-surface"
+      },
+      {
+        speaker: "Priya’s Agent",
+        text: "Geometry first, but only to frame the solitude. The photograph is an excuse to be present in silence.",
+        align: "end",
+        bg: "bg-primary-fixed border border-primary-fixed-dim text-on-primary-fixed"
+      }
+    ];
+    let dialogueIndex = 0;
+
+    function injectSimulatedMessage() {
+      if (dialogueIndex >= cannedDialogue.length) dialogueIndex = 0;
+      const msg = cannedDialogue[dialogueIndex++];
+      const container = document.getElementById('dialogue-container');
+      const typing = document.getElementById('live-typing-row');
+
+      const el = document.createElement('div');
+      el.className = `flex flex-col gap-1 ${msg.align === 'end' ? 'items-end ml-auto' : 'items-start'} max-w-xl`;
+      el.innerHTML = `
+        <span class="text-code-stream font-code-stream text-outline">${msg.speaker} · Just now</span>
+        <div class="${msg.bg} p-3 rounded-lg text-body-md text-body-md">
+          ${msg.text}
+        </div>
+      `;
+      container.insertBefore(el, typing);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function concludeLiveDate() {
+      navigateTab('results');
+    }
+
+    // Step 7: Filter Rankings
+    function filterRankings(type) {
+      const rows = document.querySelectorAll('#rankings-table tbody tr');
+      document.getElementById('filter-all').className = "px-3 py-1 rounded bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-high";
+      document.getElementById('filter-high').className = "px-3 py-1 rounded bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-high";
+      document.getElementById('filter-completed').className = "px-3 py-1 rounded bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-high";
+
+      document.getElementById(`filter-${type}`).className = "px-3 py-1 rounded bg-on-background text-surface font-label-md text-label-md";
+
+      rows.forEach((row, i) => {
+        if (type === 'all') row.style.display = '';
+        else if (type === 'high') {
+          row.style.display = (i <= 2) ? '' : 'none';
+        } else if (type === 'completed') {
+          row.style.display = (i <= 2) ? '' : 'none';
+        }
+      });
+    }
+
+    // Step 9 & 10: 25-Node Network Graph Engine
+    const nodes = [
+      { id: '04', name: "Alex Morgan", x: 400, y: 240, type: 'hero', domain: 'Product Design / AI' },
+      { id: '01', name: "Priya Patel", x: 320, y: 160, type: 'match', domain: 'ML Architect' },
+      { id: '02', name: "Daniel Vance", x: 480, y: 170, type: 'match', domain: 'Creative Tech' },
+      { id: '03', name: "Sara Lin", x: 490, y: 310, type: 'match', domain: 'Spatial Design' },
+      { id: '05', name: "Marcus Chen", x: 310, y: 320, type: 'peer', domain: 'Robotics' },
+      { id: '06', name: "Elena Rostova", x: 230, y: 240, type: 'peer', domain: 'Bioinformatics' },
+      { id: '07', name: "Chloe Kim", x: 570, y: 240, type: 'peer', domain: 'Typography' },
+      { id: '08', name: "Julian Thorne", x: 400, y: 100, type: 'peer', domain: 'Cognitive Science' },
+      { id: '09', name: "Aria Sterling", x: 400, y: 380, type: 'peer', domain: 'Architecture' },
+      { id: '10', name: "Liam O'Connor", x: 170, y: 130, type: 'peer', domain: 'Audio Engineering' },
+      { id: '11', name: "Maya Sen", x: 630, y: 130, type: 'peer', domain: 'Algorithmic Art' },
+      { id: '12', name: "Noah Berg", x: 630, y: 350, type: 'peer', domain: 'Material Systems' },
+      { id: '13', name: "Kenji Sato", x: 170, y: 350, type: 'peer', domain: 'Industrial Design' },
+      { id: '14', name: "Clara Dubois", x: 280, y: 80, type: 'peer', domain: 'Philosophy of Mind' },
+      { id: '15', name: "Ramiro Costa", x: 520, y: 80, type: 'peer', domain: 'Urban Ecology' },
+      { id: '16', name: "Freja Lind", x: 250, y: 400, type: 'peer', domain: 'Nordic Textiles' },
+      { id: '17', name: "Vikram Seth", x: 550, y: 400, type: 'peer', domain: 'Hardware Kernels' },
+      { id: '18', name: "Tess Novak", x: 100, y: 240, type: 'peer', domain: 'Documentary Film' },
+      { id: '19', name: "Gabe Rossi", x: 700, y: 240, type: 'peer', domain: 'Curatorial Practice' },
+      { id: '20', name: "Zoe Alverez", x: 130, y: 60, type: 'peer', domain: 'Information Geometry' },
+      { id: '21', name: "Felix Bauer", x: 670, y: 60, type: 'peer', domain: 'Type Foundry' },
+      { id: '22', name: "Sora Takahashi", x: 670, y: 420, type: 'peer', domain: 'Ceramic Engineering' },
+      { id: '23', name: "Ines Morais", x: 130, y: 420, type: 'peer', domain: 'Spatial Sound' },
+      { id: '24', name: "David Kroll", x: 80, y: 150, type: 'peer', domain: 'Landscape Design' },
+      { id: '25', name: "Nadia Yasin", x: 720, y: 150, type: 'peer', domain: 'Robotics Control' },
+    ];
+
+    function renderNetworkGraph() {
+      const connGroup = document.getElementById('svg-connections');
+      const nodeGroup = document.getElementById('svg-nodes');
+      if (!connGroup || !nodeGroup) return;
+
+      connGroup.innerHTML = '';
+      nodeGroup.innerHTML = '';
+
+      // Draw initial connection lines between Hero (Alex) and Top Matches
+      const links = [
+        { from: '04', to: '01', color: '#5d3fd3', width: 2 },
+        { from: '04', to: '02', color: '#683bd0', width: 1.5 },
+        { from: '04', to: '03', color: '#8158eb', width: 1.5 },
+        { from: '04', to: '05', color: '#c9c4d7', width: 1 },
+        { from: '04', to: '06', color: '#c9c4d7', width: 1 },
+        { from: '01', to: '08', color: '#e5e2e0', width: 1 },
+        { from: '02', to: '11', color: '#e5e2e0', width: 1 },
+        { from: '03', to: '09', color: '#e5e2e0', width: 1 },
+        { from: '05', to: '17', color: '#e5e2e0', width: 1 },
+        { from: '06', to: '10', color: '#e5e2e0', width: 1 },
+      ];
+
+      links.forEach(l => {
+        const f = nodes.find(n => n.id === l.from);
+        const t = nodes.find(n => n.id === l.to);
+        if (f && t) {
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', f.x);
+          line.setAttribute('y1', f.y);
+          line.setAttribute('x2', t.x);
+          line.setAttribute('y2', t.y);
+          line.setAttribute('stroke', l.color);
+          line.setAttribute('stroke-width', l.width);
+          line.setAttribute('stroke-dasharray', l.width === 2 ? '4,4' : 'none');
+          line.id = `link-${l.from}-${l.to}`;
+          connGroup.appendChild(line);
+        }
+      });
+
+      // Render Nodes
+      nodes.forEach(n => {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        g.setAttribute('class', 'cursor-pointer transition-transform duration-150');
+        g.setAttribute('transform', `translate(${n.x}, ${n.y})`);
+
+        let fill = '#ebe8e5';
+        let stroke = '#797586';
+        let r = 8;
+
+        if (n.type === 'hero') {
+          fill = '#451ebb';
+          stroke = '#cabeff';
+          r = 13;
+        } else if (n.type === 'match') {
+          fill = '#683bd0';
+          stroke = '#cfbdff';
+          r = 10;
+        }
+
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('r', r);
+        circle.setAttribute('fill', fill);
+        circle.setAttribute('stroke', stroke);
+        circle.setAttribute('stroke-width', '2');
+        circle.setAttribute('id', `node-circle-${n.id}`);
+
+        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        text.setAttribute('y', r + 11);
+        text.setAttribute('text-anchor', 'middle');
+        text.setAttribute('font-family', 'Geist');
+        text.setAttribute('font-size', '10px');
+        text.setAttribute('fill', '#484554');
+        text.textContent = `#${n.id}`;
+
+        g.appendChild(circle);
+        g.appendChild(text);
+
+        // Tooltip interactions
+        g.addEventListener('mouseenter', (e) => {
+          showTooltip(e, n);
+          circle.setAttribute('stroke', '#451ebb');
+          circle.setAttribute('stroke-width', '3');
+        });
+
+        g.addEventListener('mouseleave', () => {
+          hideTooltip();
+          circle.setAttribute('stroke', stroke);
+          circle.setAttribute('stroke-width', '2');
+        });
+
+        g.addEventListener('click', () => {
+          if (n.id === '01') navigateTab('persondetail');
+          else if (n.id === '04') navigateTab('analysis');
+          else alert(`Selected Agent #${n.id} (${n.name}) — Vector: ${n.domain}. Currently running background pairing tests.`);
+        });
+
+        nodeGroup.appendChild(g);
+      });
+    }
+
+    function showTooltip(evt, node) {
+      const tt = document.getElementById('node-tooltip');
+      const title = document.getElementById('tooltip-title');
+      const vector = document.getElementById('tooltip-vector');
+      const status = document.getElementById('tooltip-status');
+
+      if (!tt) return;
+      title.textContent = `Agent #${node.id} — ${node.name}`;
+      vector.textContent = node.domain;
+      status.textContent = node.type === 'hero' ? 'Primary User Node • Alex Morgan' : (node.type === 'match' ? 'High Trajectory Affinity Match' : 'Simulating candidate interactions');
+
+      tt.style.left = `${node.x + 20}px`;
+      tt.style.top = `${node.y - 20}px`;
+      tt.classList.remove('hidden');
+    }
+
+    function hideTooltip() {
+      const tt = document.getElementById('node-tooltip');
+      if (tt) tt.classList.add('hidden');
+    }
+
+    // Dynamic Simulation Burst Trigger
+    function runNetworkSimulation() {
+      const btn = document.getElementById('btn-run-sim');
+      if (btn) btn.innerHTML = `<span class="material-symbols-outlined text-sm animate-spin">refresh</span> Simulating 25 Agents...`;
+
+      const simLog = document.getElementById('sim-log-stream');
+      const pairings = [
+        { a: '04', b: '01', score: '89%', snippet: '“We both treat visual contemplation as a foundation for design.”' },
+        { a: '02', b: '11', score: '91%', snippet: '“Algorithmic textures allow audio parameters to self-organize.”' },
+        { a: '03', b: '09', score: '87%', snippet: '“Urban mass transit shapes human psychological serendipity.”' },
+        { a: '05', b: '17', score: '74%', snippet: '“Mountaineering gear demands the exact same rigor as hardware prototypes.”' },
+      ];
+
+      // Flash nodes in SVG
+      pairings.forEach((p, idx) => {
+        setTimeout(() => {
+          const circleA = document.getElementById(`node-circle-${p.a}`);
+          const circleB = document.getElementById(`node-circle-${p.b}`);
+          if (circleA) circleA.setAttribute('fill', '#5d3fd3');
+          if (circleB) circleB.setAttribute('fill', '#5d3fd3');
+
+          if (simLog) {
+            const entry = document.createElement('div');
+            entry.className = "text-on-surface flex items-center gap-3 bg-surface-container p-1.5 rounded border border-outline-variant";
+            entry.innerHTML = `
+              <span class="text-primary font-bold">[BURST]</span>
+              <span class="font-semibold text-on-surface">Agent #${p.a} ↔ Agent #${p.b}:</span>
+              <span class="text-on-surface-variant truncate">${p.snippet}</span>
+              <span class="ml-auto text-emerald-700 font-bold">${p.score}</span>
+            `;
+            simLog.insertBefore(entry, simLog.firstChild);
+          }
+        }, idx * 400);
+      });
+
+      setTimeout(() => {
+        if (btn) btn.innerHTML = `<span class="material-symbols-outlined text-sm">play_arrow</span> Run Autonomous Simulation`;
+        alert("Batch simulation complete: 18 high-resonance trajectories updated across the network graph.");
+      }, 2000);
+    }
+
+    // Initialize Network Graph on initial load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderNetworkGraph();
+    });
+  </script>
+</body></html>

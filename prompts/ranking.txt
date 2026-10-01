@@ -1,0 +1,24 @@
+Rank candidate matches for {person_name} based on their structured profiles and simulated date outcomes.
+
+For each candidate, compute the composite score (0-100) using:
+- Interest compatibility (25%)
+- Lifestyle compatibility (20%)
+- Communication compatibility (20%)
+- Explicit preference alignment (20%)
+- Simulated date interaction quality (15%)
+
+Return valid JSON matching this schema:
+{
+  "person_id": "{person_id}",
+  "rankings": [
+    {
+      "candidate_id": "string",
+      "candidate_name": "string",
+      "rank": 1,
+      "composite_score": 88.5,
+      "date_score": 85.0,
+      "shared_tags": ["string"],
+      "match_rationale": "string"
+    }
+  ]
+}

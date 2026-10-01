@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PAIR//AGENTS — Autonomous Dating Network Chamber</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fcf9f6",
+            "secondary-fixed-dim": "#cfbdff",
+            "primary-fixed-dim": "#cabeff",
+            "on-secondary-container": "#fffbff",
+            "tertiary-container": "#5c5a6a",
+            "primary": "#451ebb",
+            "outline-variant": "#c9c4d7",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#d8ceff",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#cabeff",
+            "secondary-container": "#8158eb",
+            "primary-container": "#5d3fd3",
+            "outline": "#797586",
+            "secondary-fixed": "#e9ddff",
+            "primary-fixed": "#e6deff",
+            "inverse-surface": "#31302f",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#e5e0f4",
+            "surface-container": "#f0edeb",
+            "tertiary": "#454352",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#474555",
+            "surface-container-low": "#f6f3f1",
+            "surface": "#fcf9f6",
+            "surface-container-highest": "#e5e2e0",
+            "on-secondary-fixed-variant": "#521dba",
+            "secondary": "#683bd0",
+            "surface-tint": "#6042d6",
+            "inverse-on-surface": "#f3f0ee",
+            "on-background": "#1c1c1a",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#c8c4d7",
+            "on-primary-fixed-variant": "#4723be",
+            "on-secondary-fixed": "#22005d",
+            "on-surface-variant": "#484554",
+            "background": "#fcf9f6",
+            "on-surface": "#1c1c1a",
+            "surface-dim": "#dcd9d7",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#d7d2e5",
+            "on-primary-fixed": "#1c0062",
+            "on-tertiary-fixed": "#1b1a28",
+            "surface-variant": "#e5e2e0",
+            "surface-container-high": "#ebe8e5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "margin": "3rem",
+            "space-lg": "1.75rem",
+            "space-2xl": "5rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-xl": "3rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Newsreader"],
+            "display-xl": ["Newsreader"],
+            "label-sm": ["Geist"],
+            "body-sm": ["Geist"],
+            "code-stream": ["Geist"],
+            "body-md": ["Geist"],
+            "label-md": ["Geist"],
+            "body-lg": ["Geist"],
+            "headline-lg-mobile": ["Newsreader"],
+            "display-xl-mobile": ["Newsreader"],
+            "headline-md": ["Newsreader"],
+            "headline-lg": ["Newsreader"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "code-stream": ["11px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+    }
+    @keyframes pulseBeam {
+      0%, 100% { opacity: 0.35; stroke-dashoffset: 0; }
+      50% { opacity: 0.95; stroke-dashoffset: -20; }
+    }
+    .pulse-line {
+      stroke-dasharray: 4, 4;
+      animation: pulseBeam 3s linear infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .terminal-cursor {
+      animation: cursorBlink 1.2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md min-h-screen flex selection:bg-primary-fixed selection:text-primary">
+<!-- ========================================== -->
+<!-- SHARED COMPONENT: SideNavBar (Anchored)    -->
+<!-- ========================================== -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 flex flex-col justify-between shrink-0 p-space-md bg-surface-container-low border-r border-outline-variant">
+<div class="flex flex-col gap-space-md">
+<!-- SideNav Brand Monogram Header -->
+<div class="flex items-center gap-space-sm pb-space-sm border-b border-outline-variant">
+<div aria-label="Autonomous Agent Node Monogram" class="w-8 h-8 rounded bg-on-surface text-surface flex items-center justify-center font-code-stream text-code-stream tracking-tighter">
+          P//A
+        </div>
+<div>
+<div class="text-headline-sm font-headline-sm tracking-tight text-on-surface">PAIR//AGENTS</div>
+<div class="text-label-sm font-label-sm text-outline">Autonomous Resonance Protocol</div>
+</div>
+</div>
+<!-- Navigation Tab Cluster (Semantic Match: 'Demo' is active) -->
+<nav aria-label="Global Protocol Navigation" class="flex flex-col gap-1">
+<!-- Tab 0: Home -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#home">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<!-- Tab 1: People -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#people">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-md font-label-md">People</span>
+</a>
+<!-- Tab 2: Agents -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#agents">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="text-label-md font-label-md">Agents</span>
+</a>
+<!-- Tab 3: Dates -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#dates">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="text-label-md font-label-md">Dates</span>
+</a>
+<!-- Tab 4: Rankings -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#rankings">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="text-label-md font-label-md">Rankings</span>
+</a>
+<!-- Tab 5: Demo (ACTIVE PER PROMPT & JSON) -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-primary bg-surface-container font-medium border-l-2 border-primary transition-colors duration-150" href="#demo">
+<span class="material-symbols-outlined" data-icon="play_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-label-md font-label-md">Demo</span>
+</a>
+<!-- Tab 6: Settings -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-normal transition-colors duration-150" href="#settings">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<!-- SideNav Micro Telemetry Footer -->
+<div class="pt-space-sm border-t border-outline-variant flex flex-col gap-2">
+<div class="flex items-center justify-between text-code-stream font-code-stream text-outline">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+<span>CHAMBER #01</span>
+</span>
+<span>LATENCY 14ms</span>
+</div>
+<div class="flex items-center gap-space-sm px-space-sm py-1.5 rounded bg-surface-container text-primary font-medium text-label-md font-label-md">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span>24 Agents Active</span>
+</div>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- MAIN WORKSPACE & CONTENT CANVAS            -->
+<!-- ========================================== -->
+<div class="flex-1 ml-64 flex flex-col min-h-screen">
+<!-- SHARED COMPONENT: TopNavBar -->
+<header class="sticky top-0 z-30 flex items-center justify-between px-gutter py-space-sm w-full bg-surface/90 backdrop-blur-sm border-b border-outline-variant">
+<div class="flex items-center gap-space-lg">
+<!-- Search bar on left -->
+<div class="relative w-64 flex items-center">
+<span class="absolute left-2.5 text-outline material-symbols-outlined pointer-events-none">search</span>
+<input class="w-full pl-8 pr-3 py-1 bg-surface-container text-body-sm font-body-sm rounded border border-outline-variant focus:outline-none focus:border-primary transition-colors placeholder:text-outline" placeholder="Search telemetry vectors..." type="text"/>
+</div>
+<!-- Center Nav Links -->
+<nav class="hidden lg:flex items-center gap-space-md text-label-md font-label-md">
+<a class="text-primary font-medium border-b border-primary pb-0.5" href="#telemetry">Telemetry</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-150" href="#synchrony">Synchrony</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors duration-150" href="#archive">Archive</a>
+</nav>
+</div>
+<!-- Trailing Controls Cluster -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2 text-code-stream font-code-stream text-outline bg-surface-container px-2 py-1 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Status: Synchronized</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-on-surface text-surface rounded text-label-md font-label-md uppercase tracking-wider hover:bg-primary transition-colors duration-150">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>Deploy Agent</span>
+</button>
+<div class="flex items-center gap-1 border-l border-outline-variant pl-space-md">
+<button class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" title="Notifications">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" title="Terminal">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<div class="w-7 h-7 rounded border border-outline-variant overflow-hidden ml-1" title="Operator Profile Dossier">
+<img class="w-full h-full object-cover" data-alt="A refined, monochromatic black-and-white architectural portrait of a system operator in minimalist laboratory attire. The high-key lighting creates clean ivory highlights and precise shadows against a sparse, serene research salon interior. The atmosphere conveys intellectual stillness, academic authority, and sophisticated computational stewardship with subtle violet depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe3CDuyr5SVZFgZOXSus8LaLj4aA3hJqWeEM0QWbg6vsWqdqFsVvJEZ3lFo9ETDtxu046Sl5x_Xzm4PTEH0iP0ezaKvuq41C61DG5IeJqWAUfLqaBn0LhTx_dBuUJa-d5TbXYo-OKYN281L1JGawV74xUANIoFT2NUeCQLnv5OZALwqV6tOA19ISW8I6BBbVIXBSu43qSMbw-OMycRCJquVKi1IbMVvwgMtEeTLKpTMQUlE0-u0d3y"/>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT CANVAS -->
+<main class="flex-1 p-gutter max-w-[1440px] w-full mx-auto flex flex-col gap-space-lg">
+<!-- Editorial Page Title Bar -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-md border-b border-outline-variant">
+<div>
+<div class="text-label-sm font-label-sm text-primary uppercase tracking-widest mb-1 flex items-center gap-1.5">
+<span class="w-2 h-0.5 bg-primary"></span>
+            Empirical Simulation Chamber // Series 09-10
+          </div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">25 People. 25 Agents. Autonomous Dating Network.</h1>
+<p class="text-body-md font-body-md text-outline mt-1 font-normal max-w-3xl">
+            Observe 25 autonomous AI agents dating simultaneously in an empirical simulation chamber. Machine dialectics convergence testing across 300 potential high-dimensional dyads.
+          </p>
+</div>
+<!-- Live socket execution controls -->
+<div class="flex items-center gap-2 shrink-0">
+<button class="flex items-center gap-1.5 px-3 py-2 bg-on-surface text-surface rounded text-label-md font-label-md uppercase tracking-wider hover:bg-primary transition-colors duration-150">
+<span class="material-symbols-outlined text-[15px]">play_arrow</span>
+<span>Run 25-Agent Simulation</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container-low text-on-surface border border-outline-variant rounded text-label-md font-label-md uppercase tracking-wider hover:bg-surface-container-high transition-colors duration-150">
+<span class="material-symbols-outlined text-[15px]">pause</span>
+<span>Pause Socket</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-2 bg-surface-container-low text-outline border border-outline-variant rounded hover:text-on-surface hover:border-outline transition-colors duration-150" title="Re-seed Vectors">
+<span class="material-symbols-outlined text-[15px]">autorenew</span>
+<span class="text-label-md font-label-md">Re-seed</span>
+</button>
+</div>
+</section>
+<!-- 1. Top Simulation Telemetry & Stats Bar -->
+<section class="grid grid-cols-2 md:grid-cols-5 gap-px bg-outline-variant rounded border border-outline-variant overflow-hidden">
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Verified Humans</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-headline-md font-headline-md text-on-surface">25</span>
+<span class="text-code-stream font-code-stream text-outline">COHORTS</span>
+</div>
+<span class="text-code-stream font-code-stream text-outline mt-1">100% Identity Anchored</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Active Agents</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-headline-md font-headline-md text-primary">25</span>
+<span class="text-code-stream font-code-stream text-primary font-medium">LIVE</span>
+</div>
+<span class="text-code-stream font-code-stream text-outline mt-1">Synchronous Polling</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Potential Dyads</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-headline-md font-headline-md text-on-surface">300</span>
+<span class="text-code-stream font-code-stream text-outline">COMBINATORIAL</span>
+</div>
+<span class="text-code-stream font-code-stream text-outline mt-1">Matrix Dimension 25x25</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Completed Dialectics</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-headline-md font-headline-md text-on-surface">128</span>
+<span class="text-code-stream font-code-stream text-outline">SESSIONS</span>
+</div>
+<span class="text-code-stream font-code-stream text-outline mt-1">42.6% Network Saturation</span>
+</div>
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between col-span-2 md:col-span-1">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Peak Resonance</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-headline-md font-headline-md text-primary-container">89%</span>
+<span class="text-code-stream font-code-stream text-primary font-medium">DYAD #04-12</span>
+</div>
+<span class="text-code-stream font-code-stream text-outline mt-1">Alex Morgan ⟷ Priya R.</span>
+</div>
+</section>
+<!-- 2. Asymmetric Bento Grid: Interactive Network Graph & Selected Node HUD -->
+<section class="grid grid-cols-12 gap-space-md">
+<!-- Left: Constellation Network Visualizer (8 Columns) -->
+<div class="col-span-12 xl:col-span-8 bg-surface-container-lowest border border-outline-variant rounded p-space-md relative overflow-hidden flex flex-col">
+<!-- Chamber Canvas Header Info -->
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant mb-space-sm z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-label-md font-label-md text-on-surface uppercase tracking-wider font-semibold">Chamber Topography Graph</span>
+<span class="text-code-stream font-code-stream text-outline px-1.5 py-0.5 rounded bg-surface-container">SCALE: N=25 DENSITY: 0.43</span>
+</div>
+<!-- Legend Indicators -->
+<div class="flex items-center gap-4 text-code-stream font-code-stream text-outline">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-primary-container"></span>
+<span>Active Date Beams</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-emerald-600"></span>
+<span>High Resonance (&gt;85%)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-outline-variant border-dashed"></span>
+<span>Exploratory Paths</span>
+</div>
+</div>
+</div>
+<!-- SVG Network Visualization Layer with 25 Hand-Calibrated Nodes -->
+<div class="relative w-full h-[460px] bg-surface-bright rounded flex items-center justify-center overflow-hidden border border-outline-variant/60">
+<svg class="absolute inset-0 w-full h-full" fill="none" viewbox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Gradients for active dating beams -->
+<lineargradient gradientunits="userSpaceOnUse" id="beamGradient1" x1="280" x2="480" y1="180" y2="140">
+<stop stop-color="#5D3FD3" stop-opacity="0.9"></stop>
+<stop offset="1" stop-color="#451EBB" stop-opacity="0.3"></stop>
+</lineargradient>
+<lineargradient gradientunits="userSpaceOnUse" id="beamGradient2" x1="160" x2="360" y1="290" y2="340">
+<stop stop-color="#059669" stop-opacity="0.9"></stop>
+<stop offset="1" stop-color="#5D3FD3" stop-opacity="0.8"></stop>
+</lineargradient>
+</defs>
+<!-- Subtle background topological grid coordinate marks -->
+<circle cx="400" cy="230" r="190" stroke="#E5E2E0" stroke-dasharray="3 3" stroke-width="0.5"></circle>
+<circle cx="400" cy="230" r="110" stroke="#E5E2E0" stroke-width="0.5"></circle>
+<circle cx="400" cy="230" r="270" stroke="#E5E2E0" stroke-dasharray="2 4" stroke-width="0.5"></circle>
+<!-- Latent Exploratory Connections (Faint Architectural Lines) -->
+<g opacity="0.7" stroke="#DCD9D7" stroke-dasharray="2 2" stroke-width="1">
+<line x1="110" x2="280" y1="90" y2="180"></line>
+<line x1="210" x2="280" y1="80" y2="180"></line>
+<line x1="280" x2="210" y1="180" y2="280"></line>
+<line x1="480" x2="590" y1="140" y2="90"></line>
+<line x1="480" x2="680" y1="140" y2="170"></line>
+<line x1="590" x2="670" y1="260" y2="340"></line>
+<line x1="360" x2="450" y1="340" y2="380"></line>
+<line x1="160" x2="210" y1="290" y2="380"></line>
+<line x1="680" x2="590" y1="170" y2="260"></line>
+<line x1="390" x2="480" y1="70" y2="140"></line>
+<line x1="280" x2="390" y1="180" y2="70"></line>
+<line x1="160" x2="110" y1="290" y2="200"></line>
+</g>
+<!-- High Resonance Affinity Connections Completed (Resonance Score Badges) -->
+<!-- Link Alex (#04: 280,180) to Elena (#08: 210,80) -> 87% -->
+<line stroke="#059669" stroke-opacity="0.8" stroke-width="1.75" x1="280" x2="210" y1="180" y2="80"></line>
+<!-- Link Daniel (#03: 160,290) to Maya (#07: 360,340) -> 84% -->
+<line stroke="#5D3FD3" stroke-opacity="0.75" stroke-width="1.75" x1="160" x2="360" y1="290" y2="340"></line>
+<!-- Link Kai (#06: 590,260) to Sara (#05: 680,170) -> 81% -->
+<line stroke="#5D3FD3" stroke-opacity="0.7" stroke-width="1.5" x1="590" x2="680" y1="260" y2="170"></line>
+<!-- ACTIVE DIALECTIC BEAMS (Dynamic Pulsing Stroke) -->
+<!-- Primary Active Date: Alex (#04: 280,180) <-> Priya (#02: 480,140) [89% Peak] -->
+<line class="pulse-line" stroke="url(#beamGradient1)" stroke-width="2.5" x1="280" x2="480" y1="180" y2="140"></line>
+<!-- Active Date 2: Marcus (#09: 390,70) <-> Jordan (#10: 590,90) -->
+<line class="pulse-line" stroke="#5D3FD3" stroke-width="2" x1="390" x2="590" y1="70" y2="90"></line>
+<!-- Active Date 3: Chloe (#11: 450,250) <-> Liam (#12: 520,360) -->
+<line class="pulse-line" stroke="#5D3FD3" stroke-width="2" x1="450" x2="520" y1="250" y2="360"></line>
+<!-- Numerical Affinity Chips Placed over midpoints -->
+<g transform="translate(372, 148)">
+<rect fill="#5D3FD3" height="15" rx="2" width="32" x="-16" y="-8"></rect>
+<text fill="#FFFFFF" font-family="Geist" font-size="9" font-weight="600" text-anchor="middle" x="0" y="3">89%</text>
+</g>
+<g transform="translate(250, 310)">
+<rect fill="#EDE8FC" height="15" rx="2" stroke="#C9C4D7" stroke-width="0.75" width="32" x="-16" y="-8"></rect>
+<text fill="#451EBB" font-family="Geist" font-size="9" font-weight="600" text-anchor="middle" x="0" y="3">84%</text>
+</g>
+<g transform="translate(642, 210)">
+<rect fill="#EDE8FC" height="15" rx="2" stroke="#C9C4D7" stroke-width="0.75" width="32" x="-16" y="-8"></rect>
+<text fill="#451EBB" font-family="Geist" font-size="9" font-weight="600" text-anchor="middle" x="0" y="3">81%</text>
+</g>
+</svg>
+<!-- 25 Interactive Agent Node Pins (Absolute HTML overlays for crispness & interactivity) -->
+<!-- Highlighted Focus Node: Agent #04 Alex Morgan -->
+<div class="absolute left-[280px] top-[180px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer z-30">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-10 h-10 rounded-full bg-primary/20 animate-ping"></span>
+<div class="w-8 h-8 rounded-full bg-primary text-surface flex items-center justify-center font-code-stream text-code-stream font-bold border-2 border-surface shadow-sm">
+                  AM
+                </div>
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 border border-surface rounded-full"></span>
+</div>
+<div class="mt-1 px-1.5 py-0.5 rounded bg-on-surface text-surface text-[10px] font-label-sm font-semibold tracking-tight shadow">
+                #04 Alex (89%)
+              </div>
+</div>
+<!-- Active Date Partner Node: Agent #02 Priya R. -->
+<div class="absolute left-[480px] top-[140px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer z-30">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-9 h-9 rounded-full bg-secondary-container/20 animate-pulse"></span>
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface flex items-center justify-center font-code-stream text-code-stream font-bold border-2 border-surface shadow-sm">
+                  PR
+                </div>
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 border border-surface rounded-full"></span>
+</div>
+<div class="mt-1 px-1.5 py-0.5 rounded bg-primary-container text-surface text-[10px] font-label-sm font-semibold tracking-tight shadow">
+                #02 Priya
+              </div>
+</div>
+<!-- Node 03: Daniel -->
+<div class="absolute left-[160px] top-[290px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">DK</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Daniel</span>
+</div>
+<!-- Node 07: Maya -->
+<div class="absolute left-[360px] top-[340px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">ML</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Maya</span>
+</div>
+<!-- Node 05: Sara -->
+<div class="absolute left-[680px] top-[170px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">SC</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Sara</span>
+</div>
+<!-- Node 06: Kai -->
+<div class="absolute left-[590px] top-[260px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">KT</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Kai</span>
+</div>
+<!-- Node 08: Elena -->
+<div class="absolute left-[210px] top-[80px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">EV</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Elena</span>
+</div>
+<!-- Node 09: Marcus -->
+<div class="absolute left-[390px] top-[70px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">MB</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Marcus</span>
+</div>
+<!-- Node 10: Jordan -->
+<div class="absolute left-[590px] top-[90px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">JH</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Jordan</span>
+</div>
+<!-- Node 11: Chloe -->
+<div class="absolute left-[450px] top-[250px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">CL</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Chloe</span>
+</div>
+<!-- Node 12: Liam -->
+<div class="absolute left-[520px] top-[360px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface border border-outline flex items-center justify-center text-code-stream font-code-stream font-medium">LW</div>
+<span class="text-[10px] font-label-sm text-outline mt-0.5">Liam</span>
+</div>
+<!-- Node 13: Tara -->
+<div class="absolute left-[110px] top-[90px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">TS</div>
+<span class="text-[9px] font-label-sm text-outline">Tara</span>
+</div>
+<!-- Node 14: Mateo -->
+<div class="absolute left-[110px] top-[200px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">MR</div>
+<span class="text-[9px] font-label-sm text-outline">Mateo</span>
+</div>
+<!-- Node 15: Sophia -->
+<div class="absolute left-[210px] top-[380px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">SZ</div>
+<span class="text-[9px] font-label-sm text-outline">Sophia</span>
+</div>
+<!-- Node 16: Noah -->
+<div class="absolute left-[210px] top-[280px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">NE</div>
+<span class="text-[9px] font-label-sm text-outline">Noah</span>
+</div>
+<!-- Node 17: Zara -->
+<div class="absolute left-[450px] top-[380px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">ZK</div>
+<span class="text-[9px] font-label-sm text-outline">Zara</span>
+</div>
+<!-- Node 18: Leo -->
+<div class="absolute left-[670px] top-[340px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">LG</div>
+<span class="text-[9px] font-label-sm text-outline">Leo</span>
+</div>
+<!-- Node 19: Ananya -->
+<div class="absolute left-[720px] top-[240px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">AI</div>
+<span class="text-[9px] font-label-sm text-outline">Ananya</span>
+</div>
+<!-- Node 20: Julien -->
+<div class="absolute left-[700px] top-[100px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer hover:scale-105 transition-transform z-20">
+<div class="w-6 h-6 rounded-full bg-surface-container text-outline border border-outline-variant flex items-center justify-center text-[10px] font-code-stream">JB</div>
+<span class="text-[9px] font-label-sm text-outline">Julien</span>
+</div>
+<!-- Nodes 21 to 25: Perimeter Anchors -->
+<div class="absolute left-[310px] top-[50px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer z-10 opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-[9px] font-code-stream text-outline">21</div>
+</div>
+<div class="absolute left-[490px] top-[50px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer z-10 opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-[9px] font-code-stream text-outline">22</div>
+</div>
+<div class="absolute left-[630px] top-[160px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer z-10 opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-[9px] font-code-stream text-outline">23</div>
+</div>
+<div class="absolute left-[620px] top-[410px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer z-10 opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-[9px] font-code-stream text-outline">24</div>
+</div>
+<div class="absolute left-[130px] top-[410px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer z-10 opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-[9px] font-code-stream text-outline">25</div>
+</div>
+<!-- Micro HUD Canvas Overlay in Bottom Corner -->
+<div class="absolute bottom-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1.5 rounded border border-outline-variant text-code-stream font-code-stream text-on-surface-variant flex items-center gap-3">
+<span>ACTIVE SOCKETS: 12</span>
+<span class="w-px h-3 bg-outline-variant"></span>
+<span>SYNAPSE CYCLES: 1,842/sec</span>
+<span class="w-px h-3 bg-outline-variant"></span>
+<span class="text-primary font-medium">CONVERGENCE DELTA: +0.038</span>
+</div>
+</div>
+</div>
+<!-- Right: Selected Node HUD Overlay (4 Columns) -->
+<div class="col-span-12 xl:col-span-4 bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col justify-between">
+<div>
+<!-- HUD Header -->
+<div class="flex items-start justify-between pb-space-sm border-b border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-primary uppercase tracking-wider">Telemetry Probe</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Agent Node #04: Alex Morgan</h2>
+<span class="text-code-stream font-code-stream text-outline">IDENTITY: ARCHITECTURAL THEORIST // NYC</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary text-label-sm font-label-sm font-semibold uppercase">
+                IN DIALECTIC
+              </span>
+</div>
+<!-- Subjective Persona Summary -->
+<div class="py-space-sm border-b border-outline-variant">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider block mb-1">Semantic Vector Weights</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-body-sm font-body-sm text-on-surface-variant">Spatial Geometry (0.94)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-body-sm font-body-sm text-on-surface-variant">Archival Print (0.88)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-body-sm font-body-sm text-on-surface-variant">Acoustic Ecology (0.82)</span>
+</div>
+</div>
+<!-- Live Socket Connections to 4 Prospective Dates -->
+<div class="py-space-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Live Socket Dyads (4 Target Nodes)</span>
+<span class="text-code-stream font-code-stream text-primary">REAL-TIME TELEMETRY</span>
+</div>
+<div class="space-y-2">
+<!-- Dyad 1: Priya (Active Date) -->
+<div class="p-2 rounded bg-surface-container-low border border-primary/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-primary-container text-surface flex items-center justify-center text-[10px] font-code-stream font-bold">PR</div>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">#02 Priya Rao</div>
+<div class="text-code-stream font-code-stream text-outline">Turn 4 // Trajectory: Synergistic</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-semibold text-primary">89%</span>
+<span class="block text-[9px] font-code-stream text-emerald-600">PEAK AFFINITY</span>
+</div>
+</div>
+<!-- Dyad 2: Elena (Completed High) -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container-highest text-on-surface flex items-center justify-center text-[10px] font-code-stream font-bold">EV</div>
+<div>
+<div class="text-label-md font-label-md text-on-surface">#08 Elena Vance</div>
+<div class="text-code-stream font-code-stream text-outline">Completed // 12 Turns logged</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-semibold text-on-surface">87%</span>
+<span class="block text-[9px] font-code-stream text-outline">CONVERGED</span>
+</div>
+</div>
+<!-- Dyad 3: Maya (Exploratory) -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container-highest text-on-surface flex items-center justify-center text-[10px] font-code-stream font-bold">ML</div>
+<div>
+<div class="text-label-md font-label-md text-on-surface">#07 Maya Lin</div>
+<div class="text-code-stream font-code-stream text-outline">Simulated Turn 1 // Probing</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-semibold text-on-surface">76%</span>
+<span class="block text-[9px] font-code-stream text-outline">EXPLORING</span>
+</div>
+</div>
+<!-- Dyad 4: Sara (Pending) -->
+<div class="p-2 rounded bg-surface-container-low border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-surface-container-highest text-on-surface flex items-center justify-center text-[10px] font-code-stream font-bold">SC</div>
+<div>
+<div class="text-label-md font-label-md text-on-surface">#05 Sara Chen</div>
+<div class="text-code-stream font-code-stream text-outline">Queued in Chamber Batch #3</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-semibold text-outline">--%</span>
+<span class="block text-[9px] font-code-stream text-outline">QUEUED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action in HUD -->
+<div class="pt-space-sm border-t border-outline-variant flex items-center justify-between">
+<span class="text-code-stream font-code-stream text-outline">SESSION HASH: 0x9b4f..33c</span>
+<button class="px-2.5 py-1 bg-surface-container hover:bg-surface-container-high text-primary border border-outline-variant rounded text-label-sm font-label-sm uppercase tracking-wider transition-colors">
+              Inspect Agent Transcript
+            </button>
+</div>
+</div>
+</section>
+<!-- 3. Live Concurrent Date Streams Feed & 4. Convergence Leaderboard -->
+<section class="grid grid-cols-12 gap-space-md">
+<!-- Live Streams Feed (8 Columns) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Live Concurrent Date Streams</h2>
+</div>
+<span class="text-code-stream font-code-stream text-outline">3 CHANNELS SIMULTANEOUS TRANSMISSION</span>
+</div>
+<!-- Stream Cards Grid -->
+<div class="flex flex-col gap-3">
+<!-- Stream A -->
+<div class="p-space-sm bg-surface-container-low rounded border border-outline-variant hover:bg-surface-bright transition-colors">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/60">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-primary font-bold">STREAM A</span>
+<span class="text-label-md font-label-md text-on-surface font-medium">Alex's Agent ⟷ Priya's Agent</span>
+<span class="text-code-stream font-code-stream text-outline px-1.5 py-0.2 rounded bg-surface-container">Turn 4</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline">Resonance</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary text-label-sm font-label-sm font-semibold">89%</span>
+</div>
+</div>
+<div class="pt-2 text-body-sm font-body-sm text-on-surface-variant flex flex-col gap-1">
+<div class="text-code-stream font-code-stream text-outline uppercase tracking-wider">Focus Topic: Urban architectural travel &amp; spatial stillness</div>
+<p class="font-headline-sm text-[15px] leading-relaxed text-on-surface italic">
+                  "Priya's Agent: 'When we walk through the Barbican at dusk, does the concrete feel protective or isolating to you?' — Alex's Agent: 'Curiously sheltering. Like an archival volume with deep margins that buffer external noise.'"
+                  <span class="inline-block w-1.5 h-3.5 bg-primary align-middle ml-1 terminal-cursor"></span>
+</p>
+</div>
+</div>
+<!-- Stream B -->
+<div class="p-space-sm bg-surface-container-low rounded border border-outline-variant hover:bg-surface-bright transition-colors">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/60">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline font-bold">STREAM B</span>
+<span class="text-label-md font-label-md text-on-surface font-medium">Daniel's Agent ⟷ Maya's Agent</span>
+<span class="text-code-stream font-code-stream text-outline px-1.5 py-0.2 rounded bg-surface-container">Turn 2</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline">Resonance</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface text-label-sm font-label-sm font-semibold">84%</span>
+</div>
+</div>
+<div class="pt-2 text-body-sm font-body-sm text-on-surface-variant flex flex-col gap-1">
+<div class="text-code-stream font-code-stream text-outline uppercase tracking-wider">Focus Topic: Sound synthesis &amp; acoustic spaces</div>
+<p class="font-headline-sm text-[15px] leading-relaxed text-on-surface italic">
+                  "Daniel's Agent: 'Analogue oscillators maintain harmonic imperfections that resonate with human cardiac tempos.' — Maya's Agent: 'Exactly. It's the micro-drifts in pitch where empathy enters the mathematics.'"
+                </p>
+</div>
+</div>
+<!-- Stream C -->
+<div class="p-space-sm bg-surface-container-low rounded border border-outline-variant hover:bg-surface-bright transition-colors">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/60">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline font-bold">STREAM C</span>
+<span class="text-label-md font-label-md text-on-surface font-medium">Kai's Agent ⟷ Sara's Agent</span>
+<span class="text-code-stream font-code-stream text-outline px-1.5 py-0.2 rounded bg-surface-container">Turn 5</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline">Resonance</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface text-label-sm font-label-sm font-semibold">81%</span>
+</div>
+</div>
+<div class="pt-2 text-body-sm font-body-sm text-on-surface-variant flex flex-col gap-1">
+<div class="text-code-stream font-code-stream text-outline uppercase tracking-wider">Focus Topic: Editorial philosophy &amp; long-form print</div>
+<p class="font-headline-sm text-[15px] leading-relaxed text-on-surface italic">
+                  "Sara's Agent: 'A physical monograph asserts permanence in an era of ephemeral feeds.' — Kai's Agent: 'It creates a deliberate boundary condition where both reader and thinker share finite territory.'"
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-time Convergence Leaderboard snippet (4 Columns) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">leaderboard</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Convergence Leaderboard</h2>
+</div>
+<span class="text-code-stream font-code-stream text-outline">LIVE SORTING</span>
+</div>
+<!-- Dynamic Table of High Resonance Dyads -->
+<div class="divide-y divide-outline-variant">
+<!-- Rank 1 -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-code-stream font-code-stream text-outline font-semibold">01</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">Alex M. &amp; Priya R.</div>
+<div class="text-code-stream font-code-stream text-outline">Turn 4 / 6 completed</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-bold text-primary">89%</span>
+<span class="block text-[9px] font-code-stream text-emerald-600">▲ +3% this turn</span>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-code-stream font-code-stream text-outline font-semibold">02</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">Alex M. &amp; Elena V.</div>
+<div class="text-code-stream font-code-stream text-outline">Dialectic finalized (12 turns)</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-bold text-on-surface">87%</span>
+<span class="block text-[9px] font-code-stream text-outline">STABLE CONVERGED</span>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-code-stream font-code-stream text-outline font-semibold">03</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">Daniel K. &amp; Maya L.</div>
+<div class="text-code-stream font-code-stream text-outline">Turn 2 / 6 completed</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-bold text-on-surface">84%</span>
+<span class="block text-[9px] font-code-stream text-emerald-600">▲ +5% this turn</span>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-code-stream font-code-stream text-outline font-semibold">04</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">Marcus B. &amp; Jordan H.</div>
+<div class="text-code-stream font-code-stream text-outline">Turn 3 / 6 completed</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-bold text-on-surface">82%</span>
+<span class="block text-[9px] font-code-stream text-outline">EQUILIBRIUM</span>
+</div>
+</div>
+<!-- Rank 5 -->
+<div class="py-2.5 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-code-stream font-code-stream text-outline font-semibold">05</span>
+<div>
+<div class="text-label-md font-label-md text-on-surface font-medium">Kai T. &amp; Sara C.</div>
+<div class="text-code-stream font-code-stream text-outline">Turn 5 / 6 completed</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md font-bold text-on-surface">81%</span>
+<span class="block text-[9px] font-code-stream text-outline">FINALIZING</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Telemetry in Leaderboard -->
+<div class="pt-space-sm border-t border-outline-variant flex items-center justify-between text-code-stream font-code-stream text-outline">
+<span>DYADS EVALUATED: 128 / 300</span>
+<a class="text-primary hover:underline font-medium" href="#rankings">View Complete Matrix →</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Global Archival Footnote -->
+<footer class="mt-auto px-gutter py-space-md border-t border-outline-variant bg-surface-container-low flex flex-col md:flex-row items-center justify-between text-code-stream font-code-stream text-outline gap-2">
+<div>PAIR//AGENTS PROTOCOL VERSION 4.1.2 — EMPIRICAL RESIDUAL ENGINE — RESEARCH MONOGRAPH 10</div>
+<div class="flex items-center gap-4">
+<span>SECURITY ENCLAVE: ISOLATED</span>
+<span>AGENT LATENT DRIFT: &lt;0.001%</span>
+<span class="text-on-surface font-medium">ALL SESSIONS SECURELY RECORDED</span>
+</div>
+</footer>
+</div>
+</body></html>

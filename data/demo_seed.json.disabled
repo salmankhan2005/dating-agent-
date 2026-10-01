@@ -1,0 +1,675 @@
+[
+  {
+    "id": "person-01",
+    "name": "Alex Morgan",
+    "headline": "Lead Product Designer & Spatial Computing Researcher",
+    "linkedin_url": "https://www.linkedin.com/in/alexmorgan-design",
+    "instagram_url": "https://www.instagram.com/alexmorgan.studio",
+    "cached_linkedin_content": "Lead Product Designer specializing in generative UI systems, design tool architecture, and spatial interaction models. Previously Senior Interaction Designer at Figma ecosystem partner. MS in Human-Computer Interaction from Stanford University. Publications on minimal typography and cognitive ergonomics in digital workspaces.",
+    "cached_instagram_content": "Monochrome architectural studies • 35mm film photography • Pour-over coffee brewing • Weekend road trips along the Pacific Northwest coast • Reading Dieter Rams, Donald Norman, and architectural theory • Warm minimalist interiors.",
+    "profile": {
+      "professional_summary": "Lead Product Designer and HCI researcher focusing on minimal typography, design systems, and generative human-AI interfaces.",
+      "needs": ["Deep intellectual connection", "Appreciation for quiet design craft", "Calm and intentional daily cadence"],
+      "hobbies": ["35mm Film Photography", "Specialty Coffee Roasting", "Brutalist Architecture Tours", "Rare Book Collecting"],
+      "interests": ["Spatial Computing", "Minimalism", "Aesthetic Philosophy", "Typography", "Japanese Ceramics"],
+      "lifestyle_signals": ["Early riser", "Intentional solitude and focus blocks", "Hybrid studio work", "Spontaneous coastal road trips"],
+      "communication_style": "Reflective, precise, inquisitive with high signal-to-noise ratio",
+      "explicit_preferences": ["Prefers quiet listening over loud venues", "Values non-reactive intellectual debate", "Enjoys exploring obscure bookstores"],
+      "conversation_topics": ["Architectural rhythm in urban spaces", "Analog film processing", "The ergonomics of modern tools", "Nordic and Japanese design philosophies"],
+      "positive_compatibility_signals": ["Strong resonance with visual artists and designers", "Mutual appreciation for thoughtful stillness", "Shared love for analog hobbies"],
+      "potential_incompatibility_signals": ["High sensitivity to chaotic or noisy environments", "Low interest in hype-driven social gatherings"],
+      "evidence_notes": [
+        "LinkedIn confirms 8+ years leading design systems and Stanford HCI degree.",
+        "Instagram corpus highlights monochrome 35mm photography, coffee equipment, and architectural exhibits."
+      ],
+      "agent_summary": "An articulate and thoughtful design architect who balances technical precision with tactile, analog passions like film photography and specialty coffee."
+    }
+  },
+  {
+    "id": "person-02",
+    "name": "Priya Patel",
+    "headline": "Architectural Photographer & Spatial Theorist",
+    "linkedin_url": "https://www.linkedin.com/in/priyapatel-photo",
+    "instagram_url": "https://www.instagram.com/priyapatel.frames",
+    "cached_linkedin_content": "Architectural photographer and spatial theorist documenting brutalist and contemporary cultural institutions. Contributing photographer for Architectural Digest and Dezeen. B.Arch from Cooper Union. Adjunct lecturer on visual sociology and built environments.",
+    "cached_instagram_content": "Shadows and concrete • Medium format Hasselblad captures • London, Berlin, and Kyoto journeys • Filter coffee & matchas • Mid-century furniture restoration • Gallery visits on rainy afternoons.",
+    "profile": {
+      "professional_summary": "Cooper Union trained architect turned fine-art architectural photographer documenting cultural institutions and spatial sociology.",
+      "needs": ["Shared aesthetic sensibility", "Curiosity about spatial culture", "Patience for long visual observations"],
+      "hobbies": ["Medium Format Photography", "Mid-Century Furniture Restoration", "Urban Walking Tours", "Ceramics"],
+      "interests": ["Brutalism", "Urban Sociology", "Documentary Film", "Contemporary Art", "Kyoto Tea Traditions"],
+      "lifestyle_signals": ["Slow travel philosophy", "Spontaneous explorations within chosen cities", "Gallery afternoons", "Film developing in darkroom"],
+      "communication_style": "Observant, poetic, nuanced, comfortable with shared silence",
+      "explicit_preferences": ["Prefers walking cities on foot without rigid itineraries", "Enjoys quiet tea houses and listening bars"],
+      "conversation_topics": ["Light and shadow across brutalist structures", "The cadence of walking cities", "Darkroom chemistry", "Restoring teak wood"],
+      "positive_compatibility_signals": ["High visual and design synergy", "Complementary pace of living", "Curiosity about human spaces"],
+      "potential_incompatibility_signals": ["Strict rigid schedules cause friction", "Frustrated by rushed sightseeing"],
+      "evidence_notes": [
+        "LinkedIn validates Cooper Union architectural degree and editorial photo clients.",
+        "Instagram feed features medium format architectural captures, darkroom setups, and Japanese teaware."
+      ],
+      "agent_summary": "A visually sensitive and observant spatial photographer with deep grounding in architecture, slow travel, and tactile craftsmanship."
+    }
+  },
+  {
+    "id": "person-03",
+    "name": "Daniel Chen",
+    "headline": "Founding AI Engineer & Electronic Music Producer",
+    "linkedin_url": "https://www.linkedin.com/in/danielchen-ml",
+    "instagram_url": "https://www.instagram.com/dchen.sound",
+    "cached_linkedin_content": "Machine Learning Engineer specializing in distributed inference and neural audio synthesis. Former Research Engineer at Anthropic ecosystem lab. BS/MS in Computer Science from UC Berkeley. Open-source contributor to generative audio models.",
+    "cached_instagram_content": "Modular synth patching • Eurorack wire nests • Vinyl record hunting in Tokyo and Berlin • Night cycling along the river • Pour-over station experiments • Cyberpunk neon & raw oscilloscope waveforms.",
+    "profile": {
+      "professional_summary": "UC Berkeley ML researcher building generative audio algorithms and modular electronic soundscapes.",
+      "needs": ["Creative energy", "Intellectual sparring on algorithms and sound", "Independence and dedicated flow state"],
+      "hobbies": ["Modular Synthesizers", "Vinyl Record Collecting", "Night Biking", "Espresso Extraction Optimization"],
+      "interests": ["Neural Audio", "Acoustics", "Ambient Techno", "Open-Source Hardware", "Tokyo Electronic Districts"],
+      "lifestyle_signals": ["Night owl creative bursts", "Dedicated studio lab setup", "Spontaneous record shop detours"],
+      "communication_style": "Energetic, analytical, enthusiastic about craft and technical elegance",
+      "explicit_preferences": ["Values creative obsession and technical curiosity", "Loves deep dives into obscure topics"],
+      "conversation_topics": ["Analog synthesizers vs. DSP", "Sound design for physical spaces", "Optimizing workflow ergonomics", "Japanese ambient vinyl"],
+      "positive_compatibility_signals": ["High synergy with creators and deep technical thinkers", "Playful curiosity"],
+      "potential_incompatibility_signals": ["Late-night work schedule may clash with early risers"],
+      "evidence_notes": [
+        "LinkedIn verifies Berkeley CS degree and published neural audio research.",
+        "Instagram showcases Eurorack modular synthesizers, oscilloscope waveforms, and vinyl collections."
+      ],
+      "agent_summary": "An innovative AI researcher and modular synthesizer enthusiast who brings infectious curiosity and auditory craft to every conversation."
+    }
+  },
+  {
+    "id": "person-04",
+    "name": "Elena Rostova",
+    "headline": "Editorial Director & Literary Essayist",
+    "linkedin_url": "https://www.linkedin.com/in/elena-rostova-words",
+    "instagram_url": "https://www.instagram.com/elena.reads",
+    "cached_linkedin_content": "Editorial Director at independent literary press. Published essayist for The Paris Review, Granta, and The New Yorker online. BA in Comparative Literature from Columbia University. Juror for translation awards.",
+    "cached_instagram_content": "Stacks of vintage paperbacks • Coffee on fire escapes • Botanical gardens • Handwritten postcards • Antique fountain pens • Film stills from French New Wave cinema.",
+    "profile": {
+      "professional_summary": "Literary editor and essayist exploring memory, translation, and contemporary cultural essays.",
+      "needs": ["Literary wit", "Thoughtful conversational depth", "Shared love for quiet spaces and books"],
+      "hobbies": ["Book Collecting", "Fountain Pen Calligraphy", "Botanical Garden Sketching", "French Cinema"],
+      "interests": ["Translated Fiction", "Epistolary Literature", "Print Typography", "Art History", "Old Libraries"],
+      "lifestyle_signals": ["Slow mornings with long-form reading", "Visits to independent bookshops", "Evening walks"],
+      "communication_style": "Articulate, witty, contemplative, rich in metaphor",
+      "explicit_preferences": ["Values expressive writing and genuine conversational warmth", "Dislikes superficial small talk"],
+      "conversation_topics": ["Lost in translation subtleties", "The physical texture of paper", "Favorite historical diaries", "Quiet European cinema"],
+      "positive_compatibility_signals": ["Deep affinity for intellectuals, writers, and artists", "Attentive listening style"],
+      "potential_incompatibility_signals": ["Impatient with purely transactional conversation"],
+      "evidence_notes": [
+        "LinkedIn documents Columbia literary background and published editorial work.",
+        "Instagram highlights book stacks, antique stationery, and quiet cafe reading sessions."
+      ],
+      "agent_summary": "A discerning literary editor and essayist with an eloquent voice, deep curiosity for cultural history, and a passion for tactile print culture."
+    }
+  },
+  {
+    "id": "person-05",
+    "name": "Marcus Vance",
+    "headline": "Urban Ecologist & Sustainable Landscape Architect",
+    "linkedin_url": "https://www.linkedin.com/in/marcus-vance-landscape",
+    "instagram_url": "https://www.instagram.com/marcus.flora",
+    "cached_linkedin_content": "Founder of studio specializing in biophilic civic design and urban micro-forests. Master of Landscape Architecture from Harvard GSD. Fellow of the Landscape Architecture Foundation. Keynote speaker on climate resilience.",
+    "cached_instagram_content": "Native plant nurseries • Field sketches of moss and rock formations • Trail running in mountain mist • Wild foraging and cooking • Wood carving • Timber cabins in the forest.",
+    "profile": {
+      "professional_summary": "Harvard GSD-trained landscape architect designing regenerative urban ecosystems and public biophilic sanctuaries.",
+      "needs": ["Connection to nature", "Active outdoor exploration", "Shared environmental consciousness"],
+      "hobbies": ["Trail Running", "Woodworking", "Wild Mushroom Foraging", "Botanical Illustration"],
+      "interests": ["Biophilic Urbanism", "Native Flora", "Permaculture", "Timber Architecture", "Wilderness Ethics"],
+      "lifestyle_signals": ["Early morning trail runs", "Weekend camping and cabin retreats", "Hands-on crafting"],
+      "communication_style": "Grounded, warm, encouraging, pragmatic yet visionary",
+      "explicit_preferences": ["Loves outdoor adventures and fresh air", "Enjoys home-cooked dinners using fresh herbs"],
+      "conversation_topics": ["Restoring native plant habitats", "Trail running routes and mountain geography", "Crafting furniture from fallen timber", "Sustainable city futures"],
+      "positive_compatibility_signals": ["Inspires healthy outdoor energy", "Deeply grounded and calm presence"],
+      "potential_incompatibility_signals": ["Prefers weekend nature over indoor nightlife"],
+      "evidence_notes": [
+        "LinkedIn details Harvard GSD degree and leadership of sustainable landscape practice.",
+        "Instagram features fieldwork in micro-forests, botanical drawings, and mountain trails."
+      ],
+      "agent_summary": "A grounded and inspiring landscape architect who channels his deep love for living ecosystems into both his professional designs and active outdoor lifestyle."
+    }
+  },
+  {
+    "id": "person-06",
+    "name": "Chloe Dubois",
+    "headline": "Contemporary Art Curator & Ceramicist",
+    "linkedin_url": "https://www.linkedin.com/in/chloe-dubois-curator",
+    "instagram_url": "https://www.instagram.com/chloe.clay",
+    "cached_linkedin_content": "Curator at modern art foundation. Specializes in contemporary sculpture and material research. MA in Curatorial Studies from Royal College of Art, London. Curated international biennale exhibitions.",
+    "cached_instagram_content": "Wheel throwing stoneware • Glaze chemistry test tiles • Studio dust & sunlight • Raw linen aprons • Espresso and croissants • Sculpture garden tours.",
+    "profile": {
+      "professional_summary": "RCA-educated contemporary art curator and practicing ceramic artist exploring clay minerals and spatial sculpture.",
+      "needs": ["Creative resonance", "Respect for craft and handwork", "Cultural dialogue"],
+      "hobbies": ["Ceramics & Wheel Throwing", "Glaze Formulation", "Baking Sourdough", "Visiting Contemporary Biennales"],
+      "interests": ["Sculptural Materials", "Japanese Wabi-Sabi", "Contemporary Installation Art", "Textile Weaving"],
+      "lifestyle_signals": ["Weekend studio throwing sessions", "Gallery openings", "Savoring slow breakfast rituals"],
+      "communication_style": "Expressive, tactile, cultured, warmly perceptive",
+      "explicit_preferences": ["Values artistic dedication and handmade objects", "Enjoys quiet dinners with good wine"],
+      "conversation_topics": ["The chemistry of wood-fired kilns", "Curating immersive art spaces", "The sensory memory of clay", "Sculptural forms in daily life"],
+      "positive_compatibility_signals": ["Rich aesthetic harmony with designers and photographers", "Warm and tactile presence"],
+      "potential_incompatibility_signals": ["May spend long uninterrupted days immersed in pottery studio"],
+      "evidence_notes": [
+        "LinkedIn confirms RCA Curatorial degree and international exhibitions.",
+        "Instagram documents ceramic wheel throwing, glaze test tiles, and studio life."
+      ],
+      "agent_summary": "A sophisticated art curator and ceramicist with a passion for tactile craftsmanship, mineral glazes, and thoughtful material aesthetics."
+    }
+  },
+  {
+    "id": "person-07",
+    "name": "Liam Gallagher",
+    "headline": "Investigative Journalist & Longform Audio Producer",
+    "linkedin_url": "https://www.linkedin.com/in/liam-gallagher-audio",
+    "instagram_url": "https://www.instagram.com/liam.onrecord",
+    "cached_linkedin_content": "Senior investigative reporter and podcast showrunner. Peabody Award recipient. Extensive fieldwork across Latin America and Scandinavia. MS from Columbia Journalism School.",
+    "cached_instagram_content": "Field sound recorder in foggy harbors • Reel-to-reel tape machines • Trench coats & rain • Espresso bars • Notes scribbled in Moleskine notebooks • City nightscapes.",
+    "profile": {
+      "professional_summary": "Peabody Award-winning investigative audio journalist focused on maritime culture, geopolitical stories, and sonic documentaries.",
+      "needs": ["Curiosity about human stories", "Honest and candid dialogue", "Sense of adventurous discovery"],
+      "hobbies": ["Field Audio Recording", "Sailing & Navigation", "Cooking Seafood Stews", "Film Noir Screenings"],
+      "interests": ["Audio Documentaries", "Maritime History", "Acoustic Ecology", "Global Politics", "Vinyl Jazz"],
+      "lifestyle_signals": ["Spontaneous reporting trips", "Deep listening sessions", "Harbor walks on stormy days"],
+      "communication_style": "Inquisitive, storytelling-driven, candid, empathetic listener",
+      "explicit_preferences": ["Values sincerity and genuine depth over curated facades", "Loves hearing people talk about their passions"],
+      "conversation_topics": ["Capturing the ambient sound of harbors", "The ethics of storytelling", "Coastal sailing adventures", "Classic jazz recordings"],
+      "positive_compatibility_signals": ["Exceptional listener who draws out wonderful stories", "Warm and grounded humor"],
+      "potential_incompatibility_signals": ["Frequent travel for investigative field reporting"],
+      "evidence_notes": [
+        "LinkedIn verifies Columbia Journalism degree and Peabody Award for audio reporting.",
+        "Instagram shows field microphones, soundboards, harbor docks, and vintage audio reels."
+      ],
+      "agent_summary": "An intrepid investigative audio journalist with an incredible ear for human nuance, maritime adventures, and compelling narrative craft."
+    }
+  },
+  {
+    "id": "person-08",
+    "name": "Aria Takahashi",
+    "headline": "Robotics Researcher & Origami Mathematician",
+    "linkedin_url": "https://www.linkedin.com/in/aria-takahashi-robotics",
+    "instagram_url": "https://www.instagram.com/aria.folds",
+    "cached_linkedin_content": "Postdoctoral Robotics Researcher at MIT CSAIL developing soft actuators inspired by origami crease patterns. PhD in Mechanical Engineering from University of Tokyo. IEEE Best Paper Award winner.",
+    "cached_instagram_content": "Complex geometric origami folds • Delicate paper sculptures • Robotics testbenches • Matcha whisking • Minimalist Tokyo architecture • High-precision mechanical watches.",
+    "profile": {
+      "professional_summary": "MIT CSAIL robotics scientist using mathematical origami to engineer soft robots and deployable space structures.",
+      "needs": ["Appreciation for precision and mathematical beauty", "Intellectual patience", "Mutual respect for focused research"],
+      "hobbies": ["Mathematical Origami", "Horology & Watchmaking", "Traditional Tea Ceremony", "Bouldering"],
+      "interests": ["Soft Robotics", "Deployable Mechanisms", "Computational Geometry", "Japanese Craft", "Minimalist Hardware"],
+      "lifestyle_signals": ["Early laboratory focus", "Meditative origami folding", "Weekend rock climbing sessions"],
+      "communication_style": "Gentle, precise, analytically playful, exceptionally clear",
+      "explicit_preferences": ["Loves elegant solutions and understated beauty", "Appreciates peaceful environments"],
+      "conversation_topics": ["How paper folds inform space telescope antennas", "The mechanics of mechanical watch escapements", "The meditative flow of tea preparation", "Bouldering problem-solving"],
+      "positive_compatibility_signals": ["Fascinating blend of high-tech robotics and delicate paper art", "Calm and supportive demeanor"],
+      "potential_incompatibility_signals": ["Can get lost in mathematical proofs for hours"],
+      "evidence_notes": [
+        "LinkedIn documents University of Tokyo PhD and MIT CSAIL robotics postdoctoral position.",
+        "Instagram features complex geometric tessellations, soft robot prototypes, and tea ceremony ware."
+      ],
+      "agent_summary": "A brilliant MIT robotics researcher who bridges the gap between ancient paper folding mathematics and cutting-edge soft robotics."
+    }
+  },
+  {
+    "id": "person-09",
+    "name": "Julian Thorne",
+    "headline": "Antiquarian Bookseller & Typography Historian",
+    "linkedin_url": "https://www.linkedin.com/in/julian-thorne-books",
+    "instagram_url": "https://www.instagram.com/thorne.folios",
+    "cached_linkedin_content": "Proprietor of Thorne Rare Books, specializing in 16th-18th century European typography, cartography, and scientific manuscripts. MA in History of the Book from Oxford University. Appraiser for rare manuscript auctions.",
+    "cached_instagram_content": "Hand-set lead letterpress types • Leather-bound folios • Antiquarian bookshop dust & beeswax • Marbled endpapers • Pour-over coffee in copper drippers • Cambridge courtyards.",
+    "profile": {
+      "professional_summary": "Oxford-educated rare book specialist and typography historian preserving centuries-old manuscripts and letterpress printing.",
+      "needs": ["Shared reverence for history and craft", "Quiet intellectual companionship", "Appreciation for the written word"],
+      "hobbies": ["Letterpress Printing", "Bookbinding", "Archival Map Collecting", "Classical Piano"],
+      "interests": ["Early Typography", "History of Paper", "Renaissance Cartography", "Baroque Music", "Archival Preservation"],
+      "lifestyle_signals": ["Hours spent browsing dusty archives", "Classical music playing in study", "Careful manual restoration"],
+      "communication_style": "Eloquent, courteous, scholarly with a dry and gentle wit",
+      "explicit_preferences": ["Prefers cozy candlelit dinners and bookshop talks over loud events", "Values timeless elegance"],
+      "conversation_topics": ["The evolution of typography from Gutenberg to digital fonts", "Hidden marginalia in Renaissance texts", "The smell of centuries-old rag paper", "Letterpress printing techniques"],
+      "positive_compatibility_signals": ["Deeply romantic appreciation for craft and history", "Gentlemanly and attentive conversationalist"],
+      "potential_incompatibility_signals": ["Prefers traditional tactile mediums over hyper-speed digital trends"],
+      "evidence_notes": [
+        "LinkedIn confirms Oxford MA and management of recognized antiquarian book dealership.",
+        "Instagram shows letterpress equipment, rare 17th-century folios, and marbled papers."
+      ],
+      "agent_summary": "A timeless and scholarly rare book dealer whose passion for hand-bound folios, classical music, and typography evokes an enduring literary elegance."
+    }
+  },
+  {
+    "id": "person-10",
+    "name": "Maya Lin-Rodriguez",
+    "headline": "Specialty Coffee Roaster & Agronomy Researcher",
+    "linkedin_url": "https://www.linkedin.com/in/maya-rodriguez-coffee",
+    "instagram_url": "https://www.instagram.com/maya.origin",
+    "cached_linkedin_content": "Head of Coffee Quality & Sourcing. Q-Grader Instructor and Agricultural Science Researcher. MS in Agronomy from UC Davis. Consults on sustainable farm economics across Oaxaca and Ethiopia.",
+    "cached_instagram_content": "Coffee origin cupping tables • Cupping spoons & bean refractometers • Misty highland farms in Central America • Sourdough baking • Ceramic cups & linen shirts • Mountain sunrise runs.",
+    "profile": {
+      "professional_summary": "UC Davis agronomy researcher and licensed Q-Grader building ethical direct-trade coffee supply chains.",
+      "needs": ["Sensory curiosity", "Shared values of fairness and sustainability", "Active outdoor vitality"],
+      "hobbies": ["Coffee Sensory Cupping", "Sourdough Bread Making", "Trail Biking", "Fermentation Experiments"],
+      "interests": ["Agronomy", "Sensory Science", "Sustainable Agriculture", "Ceramic Drinkware", "Latin American Culture"],
+      "lifestyle_signals": ["Sunrise coffee tasting rituals", "Active farm travel seasons", "Warm and welcoming home cooking"],
+      "communication_style": "Vibrant, sensory, grounded, passionate about origin stories",
+      "explicit_preferences": ["Loves cooking from scratch with seasonal ingredients", "Enjoys fresh morning air and good conversation"],
+      "conversation_topics": ["How terroir and elevation shape flavor compounds", "Fermentation science in coffee and sourdough", "Travel stories from highland coffee farms", "Sensory calibration techniques"],
+      "positive_compatibility_signals": ["Infectious passion for flavor and craft", "Warm, open-hearted energy"],
+      "potential_incompatibility_signals": ["Seasonal travel to origin farms during harvest months"],
+      "evidence_notes": [
+        "LinkedIn details UC Davis Agronomy degree and certified Q-Grader instructor credentials.",
+        "Instagram shares sensory cupping tables, highland farm landscapes, and fermentation projects."
+      ],
+      "agent_summary": "A dynamic coffee agronomist and sensory expert who brings earthy warmth, scientific curiosity, and a deep appreciation for origins to every interaction."
+    }
+  },
+  {
+    "id": "person-11",
+    "name": "Kaito Moriyama",
+    "headline": "Spatial Sound Designer & Audio Architect",
+    "linkedin_url": "https://www.linkedin.com/in/kaito-moriyama-audio",
+    "instagram_url": "https://www.instagram.com/kaito.acoustics",
+    "cached_linkedin_content": "Acoustic consultant and spatial sound designer for architectural pavilions and concert halls. M.Eng in Architectural Acoustics from Waseda University. Designed spatial audio installations in Tokyo, Paris, and Venice.",
+    "cached_instagram_content": "Anechoic chamber recordings • Microphones in cedar forests • Minimalist acoustic paneling • Pour-over brew bar • Tokyo jazz kissa corners • Minimalist interior lines.",
+    "profile": {
+      "professional_summary": "Acoustic engineer and spatial sound artist designing peaceful auditory environments for architectural spaces.",
+      "needs": ["Sensitivity to environment and sound", "Patience for subtle sensory experiences", "Shared love for minimalism"],
+      "hobbies": ["Field Sound Recording", "Jazz Kissa Listening", "Brewing Gyokuro Green Tea", "Woodworking"],
+      "interests": ["Acoustic Ecology", "Spatial Audio", "Japanese Tea Culture", "Minimalist Architecture", "Silence in Design"],
+      "lifestyle_signals": ["Attentive to soundscapes", "Visits quiet listening bars", "Early morning walks in nature"],
+      "communication_style": "Soft-spoken, deeply attentive, reflective, thoughtful",
+      "explicit_preferences": ["Values peaceful, low-noise dining spots", "Appreciates people who listen deeply"],
+      "conversation_topics": ["The acoustics of traditional Japanese wooden rooms", "The art of jazz kissa culture", "How natural soundscapes reduce cognitive fatigue", "Precision tea steeping times"],
+      "positive_compatibility_signals": ["Deeply calming presence", "High empathy and acute listening ability"],
+      "potential_incompatibility_signals": ["Easily exhausted by blaring ambient music or chaotic environments"],
+      "evidence_notes": [
+        "LinkedIn verifies Waseda University M.Eng and architectural acoustic portfolio.",
+        "Instagram showcases anechoic chambers, forest microphone arrays, and Tokyo listening bars."
+      ],
+      "agent_summary": "A meditative acoustic architect and spatial sound artist whose deep listening and gentle demeanor create an atmosphere of immediate tranquility."
+    }
+  },
+  {
+    "id": "person-12",
+    "name": "Siddharth Rao",
+    "headline": "Climate Systems Modeler & Alpine Mountaineer",
+    "linkedin_url": "https://www.linkedin.com/in/siddharth-rao-climate",
+    "instagram_url": "https://www.instagram.com/sid.climbs",
+    "cached_linkedin_content": "Computational Climate Scientist modeling cryosphere glacier retreat. PhD in Atmospheric Physics from Oxford University. Author of 12 peer-reviewed Nature and Science papers. Certified alpine mountaineering guide.",
+    "cached_instagram_content": "Crampons on alpine glaciers • Summit sunrises over Mont Blanc • Python code terminals • Camping under star-filled skies • Campfire espresso • Mountain topographic maps.",
+    "profile": {
+      "professional_summary": "Oxford atmospheric physicist modeling glacier physics while actively leading alpine mountaineering expeditions.",
+      "needs": ["Adventure companion", "Scientific curiosity", "Resilience and positive energy under challenge"],
+      "hobbies": ["Alpine Mountaineering", "Ice Climbing", "Astrophotography", "Campfire Cooking"],
+      "interests": ["Cryosphere Science", "Glaciology", "High-Performance Computing", "Topography", "Wilderness Survival"],
+      "lifestyle_signals": ["High physical fitness", "Weekend mountain ascents", "Rigorous intellectual research by day"],
+      "communication_style": "Inspiring, confident, humorous, deeply knowledgeable",
+      "explicit_preferences": ["Loves being outdoors in crisp mountain air", "Values emotional honesty and courage"],
+      "conversation_topics": ["Glacier dynamics and satellite telemetry", "High-altitude climbing expeditions", "Photographing the night sky above the treeline", "The physics of snow crystals"],
+      "positive_compatibility_signals": ["Brings energy, optimism, and steadfast support", "Great storyteller"],
+      "potential_incompatibility_signals": ["Frequently away in remote mountain regions for fieldwork"],
+      "evidence_notes": [
+        "LinkedIn verifies Oxford PhD in Atmospheric Physics and peer-reviewed climate publications.",
+        "Instagram displays summit climbs, glacier fieldwork, and astrophotography."
+      ],
+      "agent_summary": "A charismatic atmospheric physicist and alpine climber who combines cutting-edge computational climate science with high-mountain adventures."
+    },
+    "simulated_top_matches": [
+      {
+        "candidate_id": "person-02",
+        "candidate_name": "Priya Patel",
+        "score": 91.4,
+        "shared_tags": ["Architecture", "Visual Culture", "Slow Travel", "Specialty Coffee"],
+        "reason": "Exceptional synergy around spatial composition, quiet cadence, and thoughtful urban discovery."
+      },
+      {
+        "candidate_id": "person-04",
+        "candidate_name": "Elena Rostova",
+        "score": 87.2,
+        "shared_tags": ["Literature", "Minimalism", "Tactile Print", "Coffee"],
+        "reason": "Deep mutual appreciation for thoughtful prose, quiet reflection, and artisanal craft."
+      },
+      {
+        "candidate_id": "person-06",
+        "candidate_name": "Chloe Dubois",
+        "score": 85.8,
+        "shared_tags": ["Ceramics", "Material Craft", "Design Aesthetics"],
+        "reason": "Shared tactile dedication to handmade ceramics, Japanese minimalism, and design systems."
+      }
+    ]
+  },
+  {
+    "id": "person-13",
+    "name": "Hannah Lindqvist",
+    "headline": "Nordic Furniture Designer & Woodcraft Artisan",
+    "linkedin_url": "https://www.linkedin.com/in/hannah-lindqvist-design",
+    "instagram_url": "https://www.instagram.com/hannah.nordiccraft",
+    "cached_linkedin_content": "Senior Furniture Designer at Scandinavian design studio in Stockholm. MFA from Konstfack. Winner of the Nordic Design Prize. Specializes in steam-bent ash and circular furniture design.",
+    "cached_instagram_content": "Wood shavings curling from hand planes • Steam bending timber • Swedish fika with cinnamon buns • Lake swimming in summer • Sauna rituals • Birch forests in mist.",
+    "profile": {
+      "professional_summary": "Stockholm furniture designer blending traditional hand joinery with modern circular Scandinavian aesthetics.",
+      "needs": ["Warmth and simplicity", "Appreciation for natural materials", "Calm and balanced daily life"],
+      "hobbies": ["Wood Joinery", "Lake Kayaking", "Nordic Sauna & Cold Plunges", "Baking Pastries"],
+      "interests": ["Scandinavian Minimalism", "Circular Design", "Timber Craftsmanship", "Mid-Century Furniture", "Forest Ecology"],
+      "lifestyle_signals": ["Work-life balance with daily fika", "Studio craftsmanship", "Connection to Nordic nature"],
+      "communication_style": "Warm, authentic, unpretentious, cheerful",
+      "explicit_preferences": ["Values cozy home gatherings (lagom)", "Enjoys hand-making gifts and cooking together"],
+      "conversation_topics": ["The tactile warmth of oiled birch wood", "Steam bending timber techniques", "The ritual of Swedish coffee and cinnamon buns", "Designing furniture to last generations"],
+      "positive_compatibility_signals": ["Warm and grounding personality", "Exceptional craft ethos"],
+      "potential_incompatibility_signals": ["Dislikes ostentatious luxury or high-stress environments"],
+      "evidence_notes": [
+        "LinkedIn verifies Konstfack MFA and Nordic Design Prize.",
+        "Instagram shares workshop joinery, timber bending, and Swedish outdoor traditions."
+      ],
+      "agent_summary": "A warm and talented Swedish furniture artisan whose love for wood joinery, fika rituals, and natural beauty brings cozy Scandinavian harmony."
+    }
+  },
+  {
+    "id": "person-14",
+    "name": "Oliver Sterling",
+    "headline": "Restorative Horticulturalist & Botanical Illustrator",
+    "linkedin_url": "https://www.linkedin.com/in/oliver-sterling-flora",
+    "instagram_url": "https://www.instagram.com/sterling.botanica",
+    "cached_linkedin_content": "Head Horticulturist at historic estate conservatory in the Cotswolds. Diploma in Horticulture from Royal Botanic Gardens, Kew. Author of illustrated guides to heirloom fruit varieties.",
+    "cached_instagram_content": "Victorian glasshouses filled with rare orchids • Watercolor botanical plates • Wool sweaters & wellington boots • Tea and scones • English walled gardens • Seed saving packets.",
+    "profile": {
+      "professional_summary": "Kew Gardens-trained estate horticulturist preserving heirloom fruit trees, orchids, and historic walled gardens.",
+      "needs": ["Gentle companionship", "Shared respect for living flora", "Peaceful countryside lifestyle"],
+      "hobbies": ["Botanical Watercolor Painting", "Heirloom Seed Saving", "Antique Glasshouse Restoration", "Birdwatching"],
+      "interests": ["Historical Horticulture", "Victorian Glasshouse Design", "Rare Orchids", "Folk Herbalism", "Classical Poetry"],
+      "lifestyle_signals": ["Early morning greenhouse checks", "Painting botanical plates by daylight", "Cozy evenings by the fireplace"],
+      "communication_style": "Gentle, whimsical, courteous, passionate about botany",
+      "explicit_preferences": ["Prefers garden strolls and countryside tea over busy city streets"],
+      "conversation_topics": ["Propagating century-old rose cultivars", "The microclimate inside glasshouses", "Techniques for watercolor botanical illustration", "The history of English walled gardens"],
+      "positive_compatibility_signals": ["Nurturing, kind, and deeply patient nature"],
+      "potential_incompatibility_signals": ["Firmly attached to quiet countryside life"],
+      "evidence_notes": [
+        "LinkedIn confirms Kew Gardens Diploma and historic estate management.",
+        "Instagram documents Victorian conservatories, watercolor plates, and heritage seeds."
+      ],
+      "agent_summary": "A delightful and gentle English horticulturist whose passion for heritage botanicals, glasshouses, and watercolor art evokes a serene countryside charm."
+    }
+  },
+  {
+    "id": "person-15",
+    "name": "Zoe Kravitz-Vogel",
+    "headline": "Computational Biologist & Wild Mycologist",
+    "linkedin_url": "https://www.linkedin.com/in/zoe-kravitz-vogel",
+    "instagram_url": "https://www.instagram.com/zoe.myco",
+    "cached_linkedin_content": "Senior Computational Biologist modeling fungal mycelial networks and subterranean carbon transport. PhD in Systems Biology from ETH Zurich. Former researcher at Max Planck Institute.",
+    "cached_instagram_content": "Fluorescent microscopy of fungal hyphae • Redwood forest foraging trips • Woven mushroom baskets • Sourdough pizza nights • Micro-brew kombucha • Scientific field notebooks.",
+    "profile": {
+      "professional_summary": "ETH Zurich systems biologist researching fungal network intelligence and ecosystem nutrient transfer.",
+      "needs": ["Intellectual depth", "Love of forests and earth sciences", "Shared adventurous spirit"],
+      "hobbies": ["Wild Mushroom Foraging", "Microscopy Photography", "Wood-Fired Sourdough Pizza", "Bouldering"],
+      "interests": ["Mycology", "Network Theory", "Forest Ecology", "Fermentation", "Science Communication"],
+      "lifestyle_signals": ["Weekend forest excursions", "Laboratory microscopy sessions", "Hosting cozy home-cooked feasts"],
+      "communication_style": "Inquisitive, vibrant, intellectually playful, deeply passionate",
+      "explicit_preferences": ["Loves cooking fresh foraged ingredients", "Values curiosity and open-minded discussions"],
+      "conversation_topics": ["How fungal mycelium communicates underground", "Foraging chanterelles in the Pacific Northwest", "Network theory in living systems", "Fermenting unique flavors at home"],
+      "positive_compatibility_signals": ["Enthusiastic and brilliant scientific mind with playful charm"],
+      "potential_incompatibility_signals": ["Unapologetically nerdy about fungi and biology"],
+      "evidence_notes": [
+        "LinkedIn confirms ETH Zurich PhD and high-impact publications on mycelial networks.",
+        "Instagram displays wild mushroom foraging, fluorescence microscopy, and sourdough baking."
+      ],
+      "agent_summary": "An energetic systems biologist and mycologist whose fascinating research on underground fungal networks pairs with her love for forest foraging and lively dinners."
+    }
+  },
+  {
+    "id": "person-16",
+    "name": "Ethan Vance",
+    "headline": "Documentary Cinematographer & Expedition Cameraman",
+    "linkedin_url": "https://www.linkedin.com/in/ethan-vance-cinema",
+    "instagram_url": "https://www.instagram.com/ethan.vance.dop",
+    "cached_linkedin_content": "Emmy-nominated director of photography specializing in natural history and high-altitude cinema. Work featured on National Geographic, BBC Earth, and Netflix. Member of the International Cinematographers Guild.",
+    "cached_instagram_content": "Arri Alexa camera rigs on stormy mountain peaks • Golden hour lens flares • Desert sunsets in Namibia • Campfire coffee • Waterproof pelican cases • 16mm film footage.",
+    "profile": {
+      "professional_summary": "Emmy-nominated documentary DP capturing remote landscapes, endangered wildlife, and cinematic human stories across seven continents.",
+      "needs": ["Adventurous spirit", "Deep visual appreciation", "Comfort with dynamic travel schedules"],
+      "hobbies": ["16mm Film Cinematography", "Surfing & Ocean Swimming", "Motorcycle Touring", "Campfire Storytelling"],
+      "interests": ["Visual Storytelling", "Optics & Vintage Lenses", "Wildlife Conservation", "Global Geography", "Oceanography"],
+      "lifestyle_signals": ["Chasing natural golden hour light", "Living out of rugged expedition gear", "Deep connection to wild places"],
+      "communication_style": "Vivid, cinematic, humble, engaging conversationalist",
+      "explicit_preferences": ["Values authenticity and respect for nature", "Enjoys sunset conversations by the water"],
+      "conversation_topics": ["The difference between optical glass characteristics", "Waiting days for a snow leopard shot in the Himalayas", "The sensory experience of 16mm film", "Surfing empty dawn breaks"],
+      "positive_compatibility_signals": ["Incredible storyteller with deep visual reverence and worldly wisdom"],
+      "potential_incompatibility_signals": ["Months spent on remote filming expeditions"],
+      "evidence_notes": [
+        "LinkedIn documents Emmy nomination and work for BBC Earth and National Geographic.",
+        "Instagram showcases cinematic camera rigs, mountain expeditions, and sunset lighting."
+      ],
+      "agent_summary": "An intrepid documentary cinematographer whose cinematic eye for natural beauty and authentic storytelling brings breathtaking worldliness to every conversation."
+    }
+  },
+  {
+    "id": "person-17",
+    "name": "Nadia Al-Mansoor",
+    "headline": "Urban Mobility Architect & Public Infrastructure Strategist",
+    "linkedin_url": "https://www.linkedin.com/in/nadia-almansoor-transit",
+    "instagram_url": "https://www.instagram.com/nadia.cities",
+    "cached_linkedin_content": "Principal transit designer and urban mobility strategist. Specializes in pedestrian-first city redesigns and high-speed rail integration. Master of City Planning from MIT. Advisor to international transit authorities.",
+    "cached_instagram_content": "Transit maps & geometric subway tiles • Cycling through Copenhagen and Amsterdam • Espresso bars in train stations • Architectural models • Modernist city skylines • Trench coats & city rain.",
+    "profile": {
+      "professional_summary": "MIT-trained urban transit planner redesigning global cities for pedestrian life, cycling networks, and high-speed rail connectivity.",
+      "needs": ["Civic-minded intellectual", "Passion for vibrant city life", "Shared appreciation for functional design"],
+      "hobbies": ["City Cycling", "Transit Map Collecting", "Architectural Model Making", "Exploring International Metro Systems"],
+      "interests": ["Urban Mobility", "Civic Design", "Pedestrian Infrastructure", "Train Travel", "Modernist Graphic Design"],
+      "lifestyle_signals": ["Commutes entirely by bike and train", "Thrives in dense walkable urban neighborhoods", "Passionate about public commons"],
+      "communication_style": "Dynamic, articulate, strategic, visionary",
+      "explicit_preferences": ["Loves cities that celebrate public spaces", "Enjoys spontaneous train trips across borders"],
+      "conversation_topics": ["How train station architecture shapes human movement", "The joy of car-free city centers", "The typography of vintage subway maps", "Future urban mobility systems"],
+      "positive_compatibility_signals": ["Inspiring vision for livable cities", "Passionate, energetic, and socially engaged"],
+      "potential_incompatibility_signals": ["Low tolerance for suburban sprawl or car-centric living"],
+      "evidence_notes": [
+        "LinkedIn verifies MIT City Planning degree and global transit design consultancy.",
+        "Instagram features urban cycling infrastructure, subway tiles, and architectural sketches."
+      ],
+      "agent_summary": "A brilliant urban transit strategist who brings contagious energy and sharp design thinking to making cities more humane, walkable, and connected."
+    }
+  },
+  {
+    "id": "person-18",
+    "name": "Felix Baumgartner-Cole",
+    "headline": "Vintage Horologist & Mechanical Restoration Specialist",
+    "linkedin_url": "https://www.linkedin.com/in/felix-baumgartner-watches",
+    "instagram_url": "https://www.instagram.com/felix.horology",
+    "cached_linkedin_content": "Master Watchmaker specializing in the restoration of 18th and 19th-century mechanical pocket watches and chronographs. Graduate of the WOSTEP watchmaking academy in Neuchâtel, Switzerland. Advisor to horological museums.",
+    "cached_instagram_content": "Watch balance wheels spinning under loupes • Tiny blued steel screws • Oiled watchmaker's bench • Brass gears & mainsprings • High-altitude Swiss chalets • Vintage chronograph dials.",
+    "profile": {
+      "professional_summary": "WOSTEP-trained Swiss watchmaker dedicated to restoring historic mechanical timepieces and micro-engineering marvels.",
+      "needs": ["Appreciation for meticulous craftsmanship", "Patience and focus", "Quiet and refined companionship"],
+      "hobbies": ["Mechanical Watch Restoration", "Precision Metalworking", "Alpine Skiing", "Espresso Machine Rebuilding"],
+      "interests": ["Horology", "Micro-Engineering", "Metallurgy", "Swiss Alpine History", "Classical Mechanics"],
+      "lifestyle_signals": ["Quiet hours at the watchmaker's bench", "Precision craftsmanship in all things", "Weekend skiing in the Alps"],
+      "communication_style": "Calm, precise, deeply attentive, possessing quiet craftsmanship pride",
+      "explicit_preferences": ["Values quality over quantity in all possessions", "Enjoys quiet dinners and fine espresso"],
+      "conversation_topics": ["The physics of gravity-defying tourbillons", "How watchmakers hand-finish steel components", "The history of marine chronometers in navigation", "The meditative state of micro-mechanics"],
+      "positive_compatibility_signals": ["Remarkable patience and focus", "Cultured, quiet, and reliable demeanor"],
+      "potential_incompatibility_signals": ["Requires long periods of solitude for delicate bench work"],
+      "evidence_notes": [
+        "LinkedIn documents WOSTEP Neuchâtel certification and museum restoration tenure.",
+        "Instagram shares microscopic watch movements, blued screws, and precision tools."
+      ],
+      "agent_summary": "A refined and masterfully skilled Swiss watchmaker whose reverence for mechanical precision, patience, and classical horology creates an aura of timeless craftsmanship."
+    }
+  },
+  {
+    "id": "person-19",
+    "name": "Clara Vane",
+    "headline": "Cellist & Baroque Acoustic Researcher",
+    "linkedin_url": "https://www.linkedin.com/in/clara-vane-cello",
+    "instagram_url": "https://www.instagram.com/clara.strings",
+    "cached_linkedin_content": "Principal cellist with early music ensemble. Lecturer on historical acoustic performance practice. Master of Music from Juilliard School. Researches gut-string resonance and period acoustic spaces.",
+    "cached_instagram_content": "18th-century Italian cello • Rosin dust on spruce wood • Rehearsals in stone cathedrals • Sheet music manuscripts • Herbal teas & cashmere scarves • Candlelit chamber recitals.",
+    "profile": {
+      "professional_summary": "Juilliard-trained concert cellist and baroque specialist exploring historical acoustics, gut strings, and expressive performance.",
+      "needs": ["Musical sensitivity", "Emotional depth and active listening", "Appreciation for the performing arts"],
+      "hobbies": ["Baroque Cello Performance", "Rosin and Bow Making", "Baking French Tarts", "Attending Chamber Music"],
+      "interests": ["Early Music", "Acoustic Resonance", "Spruce & Maple Tonewoods", "Cathedral Architecture", "Chamber Music"],
+      "lifestyle_signals": ["Daily acoustic practice rituals", "Evening concert performances", "Quiet candlelit home spaces"],
+      "communication_style": "Poetic, expressive, emotionally attuned, graceful",
+      "explicit_preferences": ["Values deep emotional connection and presence", "Enjoys candlelit chamber music and acoustic warmth"],
+      "conversation_topics": ["The resonance of 300-year-old Italian tonewood", "How gut strings produce warmer overtones", "The acoustics of stone chapels", "Bach's Cello Suites interpretation"],
+      "positive_compatibility_signals": ["Deeply empathetic and expressive", "Brings acoustic beauty into life"],
+      "potential_incompatibility_signals": ["Strict daily rehearsal schedules"],
+      "evidence_notes": [
+        "LinkedIn verifies Juilliard Master of Music and international concert performances.",
+        "Instagram features baroque cello setups, stone church rehearsals, and vintage sheet music."
+      ],
+      "agent_summary": "A graceful and profoundly gifted baroque cellist whose acoustic sensitivity, lyrical voice, and emotional intelligence create immediate intimacy and depth."
+    }
+  },
+  {
+    "id": "person-20",
+    "name": "Gabriel Santos",
+    "headline": "Artisanal Chocolatier & Cacao Geneticist",
+    "linkedin_url": "https://www.linkedin.com/in/gabriel-santos-cacao",
+    "instagram_url": "https://www.instagram.com/gabriel.cacao",
+    "cached_linkedin_content": "Co-founder of single-origin bean-to-bar chocolate lab in Bahia and Zurich. PhD in Plant Genetics from University of São Paulo. Researches heirloom wild Criollo cacao biodiversity.",
+    "cached_instagram_content": "Heirloom cacao pods glowing crimson • Stone melangeur grinders running • Tempered chocolate gloss • Rainforest field trips in Bahia • Pour-over coffee • Sunlit kitchen counters.",
+    "profile": {
+      "professional_summary": "São Paulo geneticist and craft chocolatier preserving wild heirloom cacao varieties through sustainable single-origin chocolate making.",
+      "needs": ["Sensory delight", "Shared culinary joy", "Warmhearted generosity"],
+      "hobbies": ["Bean-to-Bar Chocolate Making", "Rainforest Trekking", "Bossa Nova Guitar", "Culinary Tasting"],
+      "interests": ["Cacao Genetics", "Fermentation Science", "Agroforestry", "Sensory Gastronomy", "Brazilian Music"],
+      "lifestyle_signals": ["Sensory tasting rituals", "Hands-on chocolate crafting", "Warm music and laughter at home"],
+      "communication_style": "Warm, sensory, joyous, captivating storyteller",
+      "explicit_preferences": ["Loves sharing handcrafted foods with friends", "Appreciates laughter and relaxed evenings"],
+      "conversation_topics": ["The complex fermentation genetics of cacao", "The sensory profile of wild Amazonian chocolate", "Playing bossa nova on acoustic guitar", "Sustainable shade-grown agroforestry"],
+      "positive_compatibility_signals": ["Generous, joyful, and deeply sensory personality", "Warm and welcoming host"],
+      "potential_incompatibility_signals": ["Can spend hours discussing chocolate nuances"],
+      "evidence_notes": [
+        "LinkedIn confirms PhD in Plant Genetics and acclaimed bean-to-bar chocolate venture.",
+        "Instagram showcases vibrant cacao harvest, stone chocolate grinders, and Bahia rainforests."
+      ],
+      "agent_summary": "A delightful Brazilian cacao geneticist and master craft chocolatier whose warmth, culinary genius, and musical joy bring irresistible sweetness to every encounter."
+    }
+  },
+  {
+    "id": "person-21",
+    "name": "Astrid Lindberg",
+    "headline": "Glaciologist & Polar Expedition Leader",
+    "linkedin_url": "https://www.linkedin.com/in/astrid-lindberg-polar",
+    "instagram_url": "https://www.instagram.com/astrid.polar",
+    "cached_linkedin_content": "Polar climate scientist and glaciologist leading Greenland ice core drilling expeditions. PhD in Polar Sciences from University of Copenhagen. Senior Fellow of the Polar Research Institute.",
+    "cached_instagram_content": "Ice core cylinders gleaming blue • Arctic research tents under Aurora Borealis • Sledge dogs & snowmobiles • Wool beanies & steaming thermoses • Icebergs drifting in Svalbard.",
+    "profile": {
+      "professional_summary": "Copenhagen glaciologist analyzing thousand-year-old atmospheric bubbles trapped inside deep Greenland ice cores.",
+      "needs": ["Courageous partner", "Curiosity about planetary systems", "Resilience and warmth"],
+      "hobbies": ["Polar Ski Trekking", "Dog Sledding", "Astrophotography in the Arctic", "Knitting Wool Sweaters"],
+      "interests": ["Paleoclimatology", "Glaciology", "Arctic Wildlife", "Ancient Atmospheres", "Aurora Dynamics"],
+      "lifestyle_signals": ["Months in high-latitude field camps", "Thrives in crisp polar cold", "Deep appreciation for cozy warmth"],
+      "communication_style": "Steadfast, witty, adventurous, clear-minded",
+      "explicit_preferences": ["Values authenticity, loyalty, and humor in tough situations", "Loves warm campfires after cold days"],
+      "conversation_topics": ["Reading ancient air bubbles trapped in ice cores", "Experiencing total silence on the Greenland ice sheet", "The dynamics of the Northern Lights", "Hand-knitting traditional Icelandic wool patterns"],
+      "positive_compatibility_signals": ["Fiercely capable and deeply loyal with an adventurous spirit"],
+      "potential_incompatibility_signals": ["Extended remote Arctic fieldwork"],
+      "evidence_notes": [
+        "LinkedIn confirms University of Copenhagen PhD and leadership of Greenland drilling expeditions.",
+        "Instagram displays ice core research camps, Svalbard landscapes, and northern lights."
+      ],
+      "agent_summary": "An intrepid and warmhearted Danish glaciologist who deciphers ancient climate secrets from polar ice cores while embodying steadfast Arctic resilience."
+    }
+  },
+  {
+    "id": "person-22",
+    "name": "Dante Moretti",
+    "headline": "Monumental Stone Carver & Classical Sculptor",
+    "linkedin_url": "https://www.linkedin.com/in/dante-moretti-stone",
+    "instagram_url": "https://www.instagram.com/dante.marmo",
+    "cached_linkedin_content": "Master stone sculptor specializing in monumental Carrara marble carving and classical restoration. Trained at the Accademia di Belle Arti di Firenze. Public commissions across Rome and Florence.",
+    "cached_instagram_content": "Carrara marble dust covering studio • Mallets and chisels on white stone • Tuscan hillside sunsets • Espresso and freshly baked focaccia • Classical anatomy sketches • Olive groves.",
+    "profile": {
+      "professional_summary": "Florentine master sculptor carving classical figurative sculptures and restoring historic stone monuments in Carrara marble.",
+      "needs": ["Shared love of classical art and form", "Respect for physical dedication", "Warm Italian conviviality"],
+      "hobbies": ["Marble Carving", "Anatomical Drawing", "Tuscan Cooking", "Road Cycling in the Hills"],
+      "interests": ["Classical Sculpture", "Carrara Marble Quarry History", "Renaissance Art", "Italian Gastronomy", "Ancient Architecture"],
+      "lifestyle_signals": ["Early mornings in the stone studio", "Cooking fresh pasta for friends", "Riding through Tuscan olive groves"],
+      "communication_style": "Passionate, tactile, sincere, warmly expressive",
+      "explicit_preferences": ["Values deep passion and physical dedication to craft", "Loves long family-style dinners with great conversation"],
+      "conversation_topics": ["Listening to the sound of marble before striking", "The anatomy of Renaissance marble drapery", "The best ways to roll handmade pasta", "The geology of the Apuan Alps"],
+      "positive_compatibility_signals": ["Deeply passionate, romantic, and grounded in physical beauty"],
+      "potential_incompatibility_signals": ["Intense physical exhaustion after long days carving marble"],
+      "evidence_notes": [
+        "LinkedIn verifies Accademia di Belle Arti di Firenze training and public classical commissions.",
+        "Instagram shares Carrara marble carving in progress, chisels, and Tuscan scenery."
+      ],
+      "agent_summary": "A passionate Florentine master sculptor whose physical mastery over Carrara marble and warm Italian spirit bring timeless Renaissance romance."
+    }
+  },
+  {
+    "id": "person-23",
+    "name": "Mei-Ling Zhou",
+    "headline": "Traditional Tea Master & Ceramic Ware Collector",
+    "linkedin_url": "https://www.linkedin.com/in/meiling-zhou-tea",
+    "instagram_url": "https://www.instagram.com/meiling.cha",
+    "cached_linkedin_content": "Tea Master and founder of contemporary Cha Dao tea sanctuary in Taipei and San Francisco. Certified National Senior Tea Evaluator. Researches ancient Wuyi rock oolong tea terroirs and Yixing teaware.",
+    "cached_instagram_content": "Clay Yixing teapots seasoned with dark tea • Bamboo tea trays • Charcoal brewing kettles • Wuyi Mountain cliff views • Incense smoke curling in calm tea room • Porcelain cups.",
+    "profile": {
+      "professional_summary": "Certified tea master dedicated to the meditative Cha Dao tea art, Yixing clay seasoning, and rare Wuyi rock oolong teas.",
+      "needs": ["Peaceful presence", "Mindfulness and intentionality", "Respect for cultural heritage"],
+      "hobbies": ["Gongfu Tea Brewing", "Yixing Clay Seasoning", "Calligraphy", "Incense Blending"],
+      "interests": ["Cha Dao Philosophy", "Wuyi Rock Teas", "Song Dynasty Ceramics", "Meditation", "Daoist Philosophy"],
+      "lifestyle_signals": ["Quiet morning tea rituals", "Carefully curated peaceful home environment", "Hosting mindful tea gatherings"],
+      "communication_style": "Serene, mindful, articulate, deeply centering",
+      "explicit_preferences": ["Values tranquility, emotional stillness, and genuine presence", "Dislikes rushed or superficial encounters"],
+      "conversation_topics": ["The mineral resonance of cliff-grown rock oolongs", "How purple clay teapots enhance specific teas", "The meditative mindfulness of tea brewing", "Song Dynasty ceramic minimalism"],
+      "positive_compatibility_signals": ["Profoundly calming, centered, and graceful presence"],
+      "potential_incompatibility_signals": ["Sensitive to rushed environments or excessive restlessness"],
+      "evidence_notes": [
+        "LinkedIn validates Senior Tea Evaluator certification and tea sanctuary stewardship.",
+        "Instagram displays antique Yixing teapots, Gongfu tea setups, and misty Wuyi tea mountains."
+      ],
+      "agent_summary": "A tranquil and graceful tea master whose mastery of Gongfu tea, ceramic seasoning, and meditative presence brings an oasis of serene contemplation."
+    }
+  },
+  {
+    "id": "person-24",
+    "name": "Sebastian Cruz",
+    "headline": "Experimental Luthier & Acoustic Instrument Builder",
+    "linkedin_url": "https://www.linkedin.com/in/sebastian-cruz-luthier",
+    "instagram_url": "https://www.instagram.com/cruz.guitars",
+    "cached_linkedin_content": "Master luthier building custom acoustic and classical guitars using sustainably harvested local tonewoods. Trained in Granada, Spain. Instruments played by international concert guitarists.",
+    "cached_instagram_content": "Acoustic guitar bracing under clamps • French polishing with shellac • Tap-tuning spruce soundboards • Spanish courtyards • Classical guitar playing in the evening • Wood shavings on workbench.",
+    "profile": {
+      "professional_summary": "Granada-trained master luthier crafting heirloom acoustic and classical guitars with precision tap-tuning and French polishing.",
+      "needs": ["Acoustic appreciation", "Respect for patience and craftsmanship", "Warm creative companionship"],
+      "hobbies": ["Luthiery & Guitar Building", "Flamenco & Classical Guitar", "French Polishing", "Wood Selection Foraging"],
+      "interests": ["Acoustic Dynamics", "Tonewood Forestry", "Spanish Guitar History", "Organic Finishing", "Acoustic Physics"],
+      "lifestyle_signals": ["Days spent hand-carving bracing and soundboards", "Evenings playing Spanish guitar", "Attuned to wood grain and resonance"],
+      "communication_style": "Warm, musical, humble, deeply dedicated",
+      "explicit_preferences": ["Values handmade authenticity and acoustic resonance", "Loves cozy evenings with music and good food"],
+      "conversation_topics": ["How wood grain stiffness determines guitar voice", "The art of traditional shellac French polishing", "Flamenco rhythms and classical guitar repertoire", "Sustainable forestry for musical instruments"],
+      "positive_compatibility_signals": ["Incredible craftsmanship dedication combined with gentle musical soul"],
+      "potential_incompatibility_signals": ["Can be fully absorbed in guitar build deadlines"],
+      "evidence_notes": [
+        "LinkedIn confirms Granada apprenticeship and concert-grade instrument commissions.",
+        "Instagram displays acoustic guitar bracing, French polish gloss, and tonewood workshop."
+      ],
+      "agent_summary": "A soulful and masterly Spanish luthier whose handmade guitars, rich musical spirit, and gentle craftsmanship embody pure acoustic beauty."
+    }
+  },
+  {
+    "id": "person-25",
+    "name": "Seraphina Vance",
+    "headline": "Astrophysicist & Radio Astronomy Data Architect",
+    "linkedin_url": "https://www.linkedin.com/in/seraphina-vance-astro",
+    "instagram_url": "https://www.instagram.com/seraphina.cosmos",
+    "cached_linkedin_content": "Radio Astronomer and data architect processing deep-space signals from the Square Kilometre Array (SKA). PhD in Astrophysics from Cambridge University. Contributor to cosmic background radiation mapping.",
+    "cached_instagram_content": "Radio telescope dishes pointing at the stars • Python spectrogram heatmaps • Night desert observations in Atacama • Hot tea under stargazing skies • Vintage star atlases • Cozy observatory control rooms.",
+    "profile": {
+      "professional_summary": "Cambridge astrophysicist analyzing radio waves from the early universe and mapping cosmic structure.",
+      "needs": ["Cosmic perspective", "Intellectual curiosity about the universe", "Appreciation for quiet desert nights"],
+      "hobbies": ["Stargazing & Telescope Observation", "Astrophotography", "Vintage Star Atlas Collecting", "Baking Pies"],
+      "interests": ["Cosmology", "Radio Astronomy", "Data Visualization", "Desert Skies", "History of Astronomy"],
+      "lifestyle_signals": ["Night observation shifts", "Deep intellectual contemplation", "Finding beauty in vast cosmic scales"],
+      "communication_style": "Witty, awe-inspired, intellectually curious, warmly engaging",
+      "explicit_preferences": ["Loves sitting under unpolluted night skies", "Values humility in the face of the universe"],
+      "conversation_topics": ["Listening to electromagnetic echoes of the Big Bang", "The sheer scale of radio telescope arrays", "Historical constellations and antique star charts", "How looking at stars changes our perspective on daily life"],
+      "positive_compatibility_signals": ["Brings wonder, intelligence, and a calming cosmic perspective to everything"],
+      "potential_incompatibility_signals": ["Observatory night shifts may alter sleep schedules"],
+      "evidence_notes": [
+        "LinkedIn verifies Cambridge Astrophysics PhD and Square Kilometre Array research.",
+        "Instagram displays radio telescope arrays in Atacama, deep space spectrograms, and stargazing."
+      ],
+      "agent_summary": "A brilliant and wonder-filled radio astronomer who listens to the echoes of the early universe and brings a grounded, poetic perspective to human connection."
+    }
+  }
+]
